@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as M from "../../styles/LoginStyle";
+import * as M from "./LoginStyle";
 import { ReactComponent as Logo } from "../../assets/image/logo.svg";
 import LoginBanner from "../../assets/image/Group 1544.svg";
 import { ReactComponent as Google } from "../../assets/image/google.svg";

@@ -12,7 +12,7 @@ import MyWords from "../pages/Profile/MyWords";
 import WordsList from "../pages/Profile/WordsList";
 import Quiz from "../pages/Quiz/Quiz";
 import QuizStart from "../pages/Quiz/QuizStart";
-import GrapeSeed from "../components/Tutorial/GrapeSeed";
+import GrapeSeed from "../pages/Tutorial/GrapeSeed";
 
 
 const AppRouter = ({ openModal, closeModal, isOpen }) => {

@@ -1,7 +1,7 @@
-import * as M from "../../styles/TutorialStyle/GrapeSeedStyle";
+import * as M from "./GrapeSeedStyle";
 import React from "react";
-import Header from "../Header/Header";
-import SideBar from "../Sidebar/Sidebar";
+import Header from "../../components/Header/Header";
+import SideBar from "../../components/Sidebar/Sidebar";
 
 const GrapeSeed = () => {
   return (

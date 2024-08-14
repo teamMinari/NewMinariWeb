@@ -1,8 +1,8 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 import { Link } from 'react-router-dom';
-import Oimg from "../assets/image/O.png";
-import Ximg from "../assets/image/X.png";
-import Wowimg from "../assets/image/Wow.png";
+import Oimg from "../../assets/image/O.png";
+import Ximg from "../../assets/image/X.png";
+import Wowimg from "../../assets/image/Wow.png";
 export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
