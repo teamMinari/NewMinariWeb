@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
-import homeIconSrc from "../assets/image/home.svg";
-import dictionaryIconSrc from "../assets/image/dictionary.svg";
-import newsIconSrc from "../assets/image/news.svg";
-import quizIconSrc from "../assets/image/quiz.svg";
-import profileIconSrc from "../assets/image/my.svg";
+import homeIconSrc from "../../assets/image/home.svg";
+import dictionaryIconSrc from "../../assets/image/dictionary.svg";
+import newsIconSrc from "../../assets/image/news.svg";
+import quizIconSrc from "../../assets/image/quiz.svg";
+import profileIconSrc from "../../assets/image/my.svg";
 
 const iconStyle = `
   margin-right: 19px;

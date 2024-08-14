@@ -1,5 +1,5 @@
 import { useState , React , Fragment } from "react";
-import * as M from "../../styles/SidebarStyle";
+import * as M from "./SidebarStyle";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const SideBar = () => {

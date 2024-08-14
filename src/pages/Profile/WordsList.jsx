@@ -1,5 +1,5 @@
 import React from "react";
-import * as M from "../../styles/WordsListStyle";
+import * as M from "./WordsListStyle";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Words from "../../components/Words/Words";

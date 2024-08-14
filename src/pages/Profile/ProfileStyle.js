@@ -1,9 +1,9 @@
 import styled, { createGlobalStyle, keyframes } from "styled-components";
-import RequestIconSrc from "../assets/image/request.svg";
-import MyWordsIconSrc from "../assets/image/myword.svg";
-import ProfileImgSrc from "../assets/image/whaleprofile.svg";
-import ChangeIconSrc from "../assets/image/change.svg";
-import MoreIconSrc from "../assets/image/more.svg";
+import RequestIconSrc from "../../assets/image/request.svg";
+import MyWordsIconSrc from "../../assets/image/myword.svg";
+import ProfileImgSrc from "../../assets/image/whaleprofile.svg";
+import ChangeIconSrc from "../../assets/image/change.svg";
+import MoreIconSrc from "../../assets/image/more.svg";
 import { Link } from "react-router-dom";
 
 export const GlobalStyles = createGlobalStyle`
