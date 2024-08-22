@@ -3,16 +3,17 @@ import homeIconSrc from "../../assets/image/home.svg";
 import dictionaryIconSrc from "../../assets/image/dictionary.svg";
 import newsIconSrc from "../../assets/image/news.svg";
 import quizIconSrc from "../../assets/image/quiz.svg";
+import tutorialIconSrc from "../../assets/image/tutorial.svg";
 import profileIconSrc from "../../assets/image/my.svg";
 
 const iconStyle = `
   margin-right: 19px;
-  margin-bottom: -1px;
+  margin-bottom: 2px;
   color: #7E84A3;
 `;
 
 export const Sidebar = styled.div`
-  width: 300px;
+  width: 288px;
   height: auto;
   background-color: #fafbff;
   border-right: 1px solid #d7dbec;
@@ -26,28 +27,38 @@ export const Menu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 70px;
-  margin-left: 30px;
-  font-size: 20px;
-  font-weight: 600;
+  padding-left: 70px;
+  font-size: 17px;
+  font-weight: 500;
   color: #7e84a3;
   :hover {
     cursor: pointer;
   }
 `;
 
+const activeContainerStyle = css`
+  background-color: #363cd5;
+  color: #fff;
+
+  img {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+      hue-rotate(0deg) brightness(100%) contrast(100%);
+  }
+`;
+
 export const HomeContainer = styled.div`
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 22px;
   background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
-  width: 170px;
-  height: 45px;
+  width: 196px;
+  height: 40px;
   border-radius: 5px;
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
   padding: 10px;
   &:hover {
     background-color: ${(props) => (props.isActive ? "#363CD5" : "#eee")};
   }
+  ${(props) => props.isActive && activeContainerStyle}
 `;
 
 export const HomeImg = styled.img.attrs({
@@ -56,7 +67,7 @@ export const HomeImg = styled.img.attrs({
 })`
   ${iconStyle}
   margin-left: 1px;
-  
+  margin-bottom: -1px;
 `;
 
 export const HomeMenu = styled.div`
@@ -66,9 +77,9 @@ export const HomeMenu = styled.div`
 
 export const DictionaryContainer = styled.div`
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 22px;
   background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
-  width: 170px;
+  width: 196px;
   height: 45px;
   border-radius: 5px;
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
@@ -76,6 +87,7 @@ export const DictionaryContainer = styled.div`
   &:hover {
     background-color: ${(props) => (props.isActive ? "#363CD5" : "#eee")};
   }
+  ${(props) => props.isActive && activeContainerStyle}
 `;
 
 export const DictionaryImg = styled.img.attrs({
@@ -88,9 +100,9 @@ export const DictionaryImg = styled.img.attrs({
 
 export const NewsContainer = styled.div`
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 22px;
   background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
-  width: 170px;
+  width: 196px;
   height: 45px;
   border-radius: 5px;
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
@@ -98,12 +110,7 @@ export const NewsContainer = styled.div`
   &:hover {
     background-color: ${(props) => (props.isActive ? "#363CD5" : "#eee")};
   }
-  ${(props) =>
-    props.selected &&
-    css`
-      filter: brightness(0) saturate(100%) invert(14%) sepia(63%)
-        saturate(6142%) hue-rotate(243deg) brightness(92%) contrast(93%);
-    `}
+  ${(props) => props.isActive && activeContainerStyle}
 `;
 
 export const NewsImg = styled.img.attrs({
@@ -115,9 +122,9 @@ export const NewsImg = styled.img.attrs({
 
 export const QuizContainer = styled.div`
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 22px;
   background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
-  width: 170px;
+  width: 196px;
   height: 45px;
   border-radius: 5px;
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
@@ -125,6 +132,7 @@ export const QuizContainer = styled.div`
   &:hover {
     background-color: ${(props) => (props.isActive ? "#363CD5" : "#eee")};
   }
+  ${(props) => props.isActive && activeContainerStyle}
 `;
 
 export const QuizImg = styled.img.attrs({
@@ -134,11 +142,11 @@ export const QuizImg = styled.img.attrs({
   ${iconStyle}
 `;
 
-export const ProfileContainer = styled.div`
+export const TutorialContainer = styled.div`
   display: flex;
-  margin-bottom: 230px;
+  margin-bottom: 22px;
   background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
-  width: 170px;
+  width: 196px;
   height: 45px;
   border-radius: 5px;
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
@@ -146,6 +154,29 @@ export const ProfileContainer = styled.div`
   &:hover {
     background-color: ${(props) => (props.isActive ? "#363CD5" : "#eee")};
   }
+  ${(props) => props.isActive && activeContainerStyle}
+`;
+
+export const TutorialImg = styled.img.attrs({
+  src: tutorialIconSrc,
+  alt: "tutorialIcon",
+})`
+  ${iconStyle}
+`;
+
+export const ProfileContainer = styled.div`
+  display: flex;
+  margin-bottom: 230px;
+  background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
+  width: 196px;
+  height: 45px;
+  border-radius: 5px;
+  color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
+  padding: 10px;
+  &:hover {
+    background-color: ${(props) => (props.isActive ? "#363CD5" : "#eee")};
+  }
+  ${(props) => props.isActive && activeContainerStyle}
 `;
 
 export const ProfileImg = styled.img.attrs({
@@ -153,4 +184,4 @@ export const ProfileImg = styled.img.attrs({
   alt: "profileIcon",
 })`
   ${iconStyle}
-`
+`;
