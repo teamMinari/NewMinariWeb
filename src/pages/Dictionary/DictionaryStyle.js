@@ -37,7 +37,7 @@ export const DictionaryContainer = styled.div`
 
 export const PageText = styled.div`
   font-weight: 600;
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 35px;
   margin-top: 45px;
 `;

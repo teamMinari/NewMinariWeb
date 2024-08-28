@@ -8,26 +8,27 @@ export const starImg = styled.img.attrs({
 })``;
 
 export const wordContainer = styled.div`
-  width: 230px;
-  height: 60px;
+  width: 256px;
+  height: 50px;
   background-color: #f5f6fa;
   border-radius: 7px;
   padding-left: 18px;
   padding-right: 18px;
   display: flex;
-  margin-right: 55px;
+  margin-right: 40px;
   font-weight: 600;
   align-items: center;
   margin-bottom: 25px;
 `;
 
 export const text = styled.div`
-  font-weight: 600;
+  font-weight: 500;
 `;
 
 export const starsContainer = styled.div`
   display: flex;
-  margin-left: 10px;
+  height: 13px;
+  margin-left: 8px;
   margin-right: 35px;
 `;
 
@@ -44,6 +45,7 @@ export const likeIcon = styled.img.attrs((props) => ({
 }))`
   width: 20px;
   height: 20px;
-  margin-bottom:-5px;
-  filter: ${(props) => (props.liked ? "grayscale(0%) " : "grayscale(80%) brightness(200%)")};
+  margin-bottom: -5px;
+  filter: ${(props) =>
+    props.liked ? "grayscale(0%) " : "grayscale(80%) brightness(200%)"};
 `;
