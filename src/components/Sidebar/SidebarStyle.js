@@ -31,6 +31,7 @@ export const Menu = styled.div`
   font-size: 17px;
   font-weight: 500;
   color: #7e84a3;
+  margin-bottom: 160px;
   :hover {
     cursor: pointer;
   }

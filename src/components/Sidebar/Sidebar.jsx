@@ -22,10 +22,10 @@ const SideBar = () => {
             <M.HomeMenu>홈</M.HomeMenu>
           </M.HomeContainer>
           <M.DictionaryContainer
-            onClick={() => navigate("/dictionary")}
-            isActive={isActive("/dictionary")}
+            onClick={() => navigate("/dictionarymain")}
+            isActive={isActive("/dictionarymain")}
           >
-            <M.DictionaryImg isActive={isActive("/dictionary")} />
+            <M.DictionaryImg isActive={isActive("/dictionarymain", "dictionary")} />
             용어 사전
           </M.DictionaryContainer>
           <M.NewsContainer
