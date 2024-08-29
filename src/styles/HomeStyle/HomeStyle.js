@@ -319,7 +319,7 @@ export const ChartContainer = styled.div`
 export const HorizontalLine = styled.div`
   width: 1px;
   height: 60px;
-  background-color: #d5ddfd; /* 선의 색상을 설정합니다 */
+  background-color: #d5ddfd;
   margin: 0 -25px;
 `;
 export const Banner = styled.img.attrs({
