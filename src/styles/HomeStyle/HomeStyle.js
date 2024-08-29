@@ -288,6 +288,7 @@ export const GrapeContainer = styled.div`
   border-radius: 10px;
   margin-top: 20px;
   margin-left: 16px;
+  position: relative; /* Add this line */
 `;
 
 export const SimpleNewsContainer = styled.div`
