@@ -84,7 +84,7 @@ const Dictionary = () => {
   const [filteredTerms, setFilteredTerms] = useState(terms);
   const [selectedTag, setSelectedTag] = useState(null);
   const [selectedTxt, setSelectedTxt] = useState("가나다순");
-  const [maxChars, setMaxChars] = useState(150);
+  const [maxChars, setMaxChars] = useState(60);
 
   const handleSearch = (searchTerm) => {
     const filtered = terms.filter((term) =>
@@ -122,41 +122,11 @@ const Dictionary = () => {
         <Sidebar />
         <M.MainContent>
           <M.CenteredContent>
+            <M.SearchBarContainer>
             <SearchBar onSearch={handleSearch} />
+            </M.SearchBarContainer>
             <M.DictionaryContainer>
               <M.PageText>경제 용어</M.PageText>
-              <M.BtnContainer>
-                <M.TagBtn
-                  selected={selectedTag === "금융"}
-                  onClick={() => handleTagClick("금융")}
-                >
-                  금융
-                </M.TagBtn>
-                <M.TagBtn
-                  selected={selectedTag === "증권"}
-                  onClick={() => handleTagClick("증권")}
-                >
-                  증권
-                </M.TagBtn>
-                <M.TagBtn
-                  selected={selectedTag === "부동산"}
-                  onClick={() => handleTagClick("부동산")}
-                >
-                  부동산
-                </M.TagBtn>
-                <M.TagBtn
-                  selected={selectedTag === "글로벌 경제"}
-                  onClick={() => handleTagClick("글로벌 경제")}
-                >
-                  글로벌 경제
-                </M.TagBtn>
-                <M.TagBtn
-                  selected={selectedTag === "산업/재계"}
-                  onClick={() => handleTagClick("산업/재계")}
-                >
-                  산업/재계
-                </M.TagBtn>
-              </M.BtnContainer>
               <M.TextContainer>
                 <M.TextSort
                   selected={selectedTxt === "가나다순"}
