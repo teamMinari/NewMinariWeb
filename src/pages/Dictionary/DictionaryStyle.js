@@ -17,7 +17,7 @@ export const PageContent = styled.div`
 `;
 
 export const MainContent = styled.div`
-  margin-left: 70px;
+  margin-left: 60px;
   margin-top: 47px;
 `;
 
@@ -27,43 +27,24 @@ export const CenteredContent = styled.div`
   align-items: center;
 `;
 
+export const SearchBarContainer = styled.div`
+margin-top: 32px;
+`
+
 export const DictionaryContainer = styled.div`
-  width: 900px;
-  height: auto;
+  width: 934px;
+  height: 1480px;
   background-color: #ffffff;
   border-radius: 10px;
-  margin-top: 47px;
+  margin-top: 32px;
+  margin-bottom: 80px;
 `;
 
 export const PageText = styled.div`
   font-weight: 600;
   font-size: 20px;
-  margin-left: 35px;
-  margin-top: 45px;
-`;
-
-export const BtnContainer = styled.div`
-  space-between: 15px;
-  padding: 35px;
-`;
-
-export const TagBtn = styled.button`
-  width: 95px;
-  height: 35px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  border: 1px solid #d7dbec;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
-  color: #7e84a3;
-  margin-right: 15px;
-  ${(props) =>
-    props.selected &&
-    css`
-      background-color: #ff9900;
-      color: #ffffff;
-    `}
+  margin-left: 40px;
+  margin-top: 32px;
 `;
 
 export const TextContainer = styled.div`
@@ -72,9 +53,10 @@ export const TextContainer = styled.div`
 `;
 
 export const TextSort = styled.div`
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
   margin-right: 10px;
+  margin-top: 12px;
   color: #7e84a3;
   cursor: pointer;
   ${(props) =>
