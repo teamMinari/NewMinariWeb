@@ -73,6 +73,54 @@ export const TagBtn = styled.button`
     `}
 `;
 
+export const FlexibleContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  column-gap: 30px;
+`;
+
+export const ContainerElement = styled.div`
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 280px;
+  padding: 22px 21px;
+  margin-bottom: 30px;
+`;
+
+export const MainContainer = styled.div`
+  width: 70%;
+  display: flex;
+  margin-left: 85px;
+  margin-top: 69px;
+`;
+
+export const SubContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  margin-left: 30px;
+`;
+
+export const recommend = styled.div`
+  background-color: #ffffff;
+  border-radius: 10px;
+  height: 130px;
+`;
+
+export const CompanyName = styled.div`
+  display: flex;
+  justify-content: baseline;
+`;
+
+export const Title = styled.div`
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: baseline;
+`;
+
+
 export const NewsContainer = styled.div`
   width: 950px;
   height: auto;
@@ -80,14 +128,6 @@ export const NewsContainer = styled.div`
   border-radius: 10px;
   align-items: center;
   padding: 5px 50px;
-
-`;
-
-export const CenterdContent = styled.div`
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 export const SearchContainer = styled.div`

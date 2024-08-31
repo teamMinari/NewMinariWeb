@@ -41,44 +41,56 @@ const News = ({ query }) => {
             <M.GlobalStyles />
             <M.PageContent>
                 <Sidebar/>
-                <M.CenterdContent>
-                    <M.SearchContainer>
-                        <SearchBar/>
-                    </M.SearchContainer>
-                    <M.NewsContainer>
-                        <M.BtnContainer>
-                            <M.TagBtn selected={selectedTag === "금융"}
-                            onClick={() => handleTagClick("금융")}>금융</M.TagBtn>
-                            <M.TagBtn selected={selectedTag === "증권"}
-                            onClick={() => handleTagClick("증권")}>증권</M.TagBtn>
-                            <M.TagBtn selected={selectedTag === "부동산"}
-                            onClick={() => handleTagClick("부동산")}>부동산</M.TagBtn>
-                            <M.TagBtn selected={selectedTag === "글로벌 경제"}
-                            onClick={() => handleTagClick("글로벌 경제")}>글로벌 경제</M.TagBtn>
-                            <M.TagBtn selected={selectedTag === "채권"}
-                            onClick={() => handleTagClick("채권")}>채권</M.TagBtn>
-                        </M.BtnContainer>
-                        {articles && articles.length > 0 ? (
-                        articles.map((article, index) => (
-                            <M.Article key={index}>
-                                    <M.ArticleImage/>
-                                <M.ArticleTitle href={article.link} target="_blank" rel="noopener noreferrer">
-                                    {decodeHtml(article.title).replace(/<[^>]*>?/g, '')}
-                                </M.ArticleTitle>
-                                <M.ArticleDescription>
-                                    {decodeHtml(article.description).replace(/<[^>]*>?/g, '')}
-                                </M.ArticleDescription>
-                            </M.Article>
-                            ))
-                        ) : (
-                            <Spinner/>
-                        )}
-                    </M.NewsContainer>
-                    
-                </M.CenterdContent>
+                <M.MainContainer>
+                    <M.FlexibleContainer>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                    </M.FlexibleContainer>
+                </M.MainContainer>
             </M.PageContent>
         </React.Fragment>
     );
 };
 
 export default News;
+
+{/* <M.SearchContainer>
+<SearchBar/>
+</M.SearchContainer>
+<M.NewsContainer>
+<M.BtnContainer>
+    <M.TagBtn selected={selectedTag === "금융"}
+    onClick={() => handleTagClick("금융")}>금융</M.TagBtn>
+    <M.TagBtn selected={selectedTag === "증권"}
+    onClick={() => handleTagClick("증권")}>증권</M.TagBtn>
+    <M.TagBtn selected={selectedTag === "부동산"}
+    onClick={() => handleTagClick("부동산")}>부동산</M.TagBtn>
+    <M.TagBtn selected={selectedTag === "글로벌 경제"}
+    onClick={() => handleTagClick("글로벌 경제")}>글로벌 경제</M.TagBtn>
+    <M.TagBtn selected={selectedTag === "채권"}
+    onClick={() => handleTagClick("채권")}>채권</M.TagBtn>
+</M.BtnContainer>
+{articles && articles.length > 0 ? (
+articles.map((article, index) => (
+    <M.Article key={index}>
+            <M.ArticleImage/>
+        <M.ArticleTitle href={article.link} target="_blank" rel="noopener noreferrer">
+            {decodeHtml(article.title).replace(/<[^>]*>?/g, '')}
+        </M.ArticleTitle>
+        <M.ArticleDescription>
+            {decodeHtml(article.description).replace(/<[^>]*>?/g, '')}
+        </M.ArticleDescription>
+    </M.Article>
+    ))
+) : (
+    <Spinner/>
+)}
+</M.NewsContainer> */}
