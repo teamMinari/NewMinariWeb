@@ -43,7 +43,14 @@ const News = ({ query }) => {
                 <Sidebar/>
                 <M.MainContainer>
                     <M.FlexibleContainer>
-                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement>
+                            <M.TextContainer>
+                                <M.TitleText>언론사별 뉴스</M.TitleText>
+                                <M.More>더보기</M.More>
+                                
+
+                            </M.TextContainer>
+                        </M.ContainerElement>
                         <M.ContainerElement></M.ContainerElement>
                         <M.ContainerElement></M.ContainerElement>
                         <M.ContainerElement></M.ContainerElement>

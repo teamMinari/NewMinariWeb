@@ -52,7 +52,21 @@ export const ArticleImage = styled.img`
     margin-bottom: 10px;
 `;
 
+export const TextContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
+export const TitleText = styled.div`
+  font-size: 13px;
+  font-weight: 800;
+`;
+
+export const More = styled.div`
+  font-size: 12px;
+  color: #878787;
+  font-weight: 600;
+`;
 
 export const TagBtn = styled.button`
   width: 95px;
