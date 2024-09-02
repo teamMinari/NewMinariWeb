@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle, css } from "styled-components";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Oimg from "../../assets/image/O.png";
 import Ximg from "../../assets/image/X.png";
 import Wowimg from "../../assets/image/Wow.png";
@@ -16,8 +16,8 @@ export const GlobalStyles = createGlobalStyle`
 
 export const WowStyle = css`
   object-fit: contain;
-  width: 200px;  /* 아이콘 너비 */
-  height: 200px;  /* 아이콘 높이 */
+  width: 200px; /* 아이콘 너비 */
+  height: 200px; /* 아이콘 높이 */
   max-width: 100%;
   max-height: 100%;
   margin: 10% 0 2% 0;
@@ -30,11 +30,10 @@ export const StyledWowImg = styled.img.attrs({
   ${WowStyle}
 `;
 
-
 export const OIconStyle = css`
   object-fit: contain;
-  width: 60px;  /* 아이콘 너비 */
-  height: 60px;  /* 아이콘 높이 */
+  width: 60px; /* 아이콘 너비 */
+  height: 60px; /* 아이콘 높이 */
   max-width: 100%;
   max-height: 100%;
 `;
@@ -48,8 +47,8 @@ export const StyledOImg = styled.img.attrs({
 
 export const XIconStyle = css`
   object-fit: contain;
-  width: 60px;  /* 아이콘 너비 */
-  height: 60px;  /* 아이콘 높이 */
+  width: 60px; /* 아이콘 너비 */
+  height: 60px; /* 아이콘 높이 */
   max-width: 100%;
   max-height: 100%;
 `;
@@ -80,7 +79,6 @@ export const OXButton = styled.div`
   height: 100px;
 `;
 
-
 export const Question = styled.h2`
   margin: 0px 15%;
   margin-top: -30px;
@@ -89,11 +87,11 @@ export const Question = styled.h2`
 
 export const Zindex = styled.div`
   z-index: 1;
-`
+`;
 
 export const Button = styled(Link)`
-  background-color: #363CD5;
-  color: white;
+  background-color: #ECEFFC;
+  color: #000;
   border: none;
   padding: 10px 50px;
   top: 75%;
@@ -101,17 +99,16 @@ export const Button = styled(Link)`
   position: absolute;
   border-radius: 10px;
   font-size: 16px;
+  font-weight: 600;
   z-index: 1000;
   transition: 300ms;
   &:hover {
-    background-color: #1A1D63;
-
+    background-color: #DAE2FF;
   }
-  
 `;
 
 export const QuizButton = styled.button`
-  background: #EAEAEA;
+  background: #eaeaea;
   color: white;
   border: none;
   padding: 20px 45px;
@@ -122,13 +119,12 @@ export const QuizButton = styled.button`
   z-index: 1000;
   transition: 300ms;
   &:hover {
-    background-color: #7176FF;
+    background-color: #DAE2FF;
   }
-  
 `;
 
 export const ResultNum = styled.div`
-  color: #363CD5;
+  color: #363cd5;
 `;
 
 export const Result = styled.div`
@@ -138,11 +134,9 @@ export const Result = styled.div`
   text-align: center;
 `;
 
-
 export const PageContent = styled.div`
   display: flex;
   z-index: 2;
-
 `;
 export const SplineContainer = styled.div`
   height: 875px;
@@ -152,7 +146,8 @@ export const SplineContainer = styled.div`
   canvas {
     z-index: 3;
   }
-  margin-top: -150px;
+  margin-top: -120px;
+  align-items: center;
 `;
 
 export const FitContainer = styled.div`
@@ -169,9 +164,8 @@ export const PointContainer = styled.div`
   height: 50px;
   width: 150px;
   border-radius: 20px;
-  transition: all 2s ease-out;
-  background: linear-gradient(to bottom right, #363CD5, #A322F8);
-  margin-top:50px;
+  background: #91C1FA;
+  margin-top: 50px;
 `;
 
 export const QuizNumContainer = styled.div`
@@ -181,12 +175,11 @@ export const QuizNumContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #6C92DF;
+  background-color: #91C1FA;
 `;
 
 export const QuizNum = styled.div`
   color: #fff;
-  
 `;
 
 export const PointTitle = styled.div`
@@ -203,30 +196,28 @@ export const PointNum = styled.div`
 
 export const Title = styled.div`
   margin-top: 40px;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 700;
 `;
 
 export const Description = styled.div`
-  font-size: 25px;
-  font-weight: 700;
-  color: #363CD5;
+  font-size: 18px;
+  font-weight: 500;
+  color: #414141;
+  margin-top: 4px;
 `;
 
-
 export const QuizContainer = styled.div`
-  width: 850px;
+  width: 934px;
   height: 600px;
   background-color: #ffffff;
   border-radius: 10px;
   display: flex;
-  margin-top: 50px;
-  margin-left: 80px;
+  margin-top: 79px;
+  margin-left: 60px;
   flex-direction: column;
   align-items: center;
 `;
-
-
 
 export const CenterdContent = styled.div`
   width: 80%;
