@@ -81,7 +81,7 @@ export const DictionaryContainer = styled.div`
   margin-bottom: 22px;
   background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
   width: 196px;
-  height: 45px;
+  height: 40px;
   border-radius: 5px;
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
   padding: 10px;
@@ -104,7 +104,7 @@ export const NewsContainer = styled.div`
   margin-bottom: 22px;
   background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
   width: 196px;
-  height: 45px;
+  height: 40px;
   border-radius: 5px;
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
   padding: 10px;
@@ -126,7 +126,7 @@ export const QuizContainer = styled.div`
   margin-bottom: 22px;
   background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
   width: 196px;
-  height: 45px;
+  height: 40px;
   border-radius: 5px;
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
   padding: 10px;
@@ -148,7 +148,7 @@ export const TutorialContainer = styled.div`
   margin-bottom: 22px;
   background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
   width: 196px;
-  height: 45px;
+  height: 40px;
   border-radius: 5px;
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
   padding: 10px;
@@ -170,7 +170,7 @@ export const ProfileContainer = styled.div`
   margin-bottom: 230px;
   background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
   width: 196px;
-  height: 45px;
+  height: 40px;
   border-radius: 5px;
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
   padding: 10px;
