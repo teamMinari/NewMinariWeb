@@ -23,7 +23,7 @@ export const PageContent = styled.div`
 `;
 
 export const MainContent = styled.div`
-  margin-left: 70px;
+  margin-left: 60px;
 `;
 
 export const CenteredContent = styled.div`
@@ -38,8 +38,7 @@ export const ProfileContainer = styled.div`
   background-color: #ffffff;
   border-bottom-left-radius: 35px;
   border-bottom-right-radius: 35px;
-  margin-bottom: 35px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 20px;
+  margin-bottom: 20px;
   position: relative;
   overflow: hidden;
 `;
@@ -153,18 +152,19 @@ export const LevelNum = styled.div`
 `;
 
 export const PageText = styled.div`
-  font-weight: 700;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 18px;
   margin-left: 35px;
   margin-top: 30px;
 `;
 
 export const GotoUse = styled.div`
-  font-weight: normal;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 16px;
   color: #a4a4a4;
   text-align: right;
-  margin-right: 40px;
+  margin-right: 35px;
+  margin-top: 32px;
   cursor: pointer;
 `;
 
@@ -174,15 +174,20 @@ export const boxContainer = styled.div`
 
 export const PointContainer = styled.div`
   width: 600px;
-  height: 280px;
+  height: 220px;
   background-color: #ffffff;
   border-radius: 30px;
   margin-right: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 20px;
+`;
+
+export const TopTextContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const PointText = styled.div`
-  font-size: 70px;
+  font-size: 48px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -193,11 +198,10 @@ export const PointText = styled.div`
 
 export const MyWordsContainer = styled(Link)`
   width: 280px;
-  height: 280px;
+  height: 220px;
   background-color: #ffffff;
   border-radius: 30px;
-  margin-bottom: 35px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 20px;
+  margin-bottom: 20px;
   text-decoration: none;
   color: #000;
 `;
@@ -206,8 +210,8 @@ export const MyWordsIcon = styled.img.attrs({
   src: MyWordsIconSrc,
   alt: "MyWordsIcon",
 })`
-  width: 130px;
-  margin-left: 75px;
+  width: 100px;
+  margin-left: 92px;
   margin-top: 25px;
 `;
 
@@ -217,7 +221,6 @@ export const StoreContainer = styled.div`
   background-color: #ffffff;
   border-radius: 30px;
   margin-bottom: 200px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 20px;
 `;
 
 export const StoreInfo = styled.div`
