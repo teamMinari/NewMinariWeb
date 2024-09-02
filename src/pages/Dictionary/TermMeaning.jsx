@@ -6,9 +6,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import loading from "../../assets/image/loading.svg";
 import SimpleNews from "../Home/SimpleNews";
 
-
 const TermMeaning = () => {
-
   const [isOpen, setIsOpen] = useState(false);
   const [showText, setShowText] = useState(false);
 
@@ -24,7 +22,6 @@ const TermMeaning = () => {
   useEffect(() => {
     setQuery(dummyData.title);
   }, [dummyData.title]);
-
 
   const openModal = () => {
     setIsOpen(true);
@@ -52,12 +49,12 @@ const TermMeaning = () => {
         <Sidebar />
         <M.MainContent>
           <M.CenteredContent>
-            <SearchBar />
+            <M.SearchBarContainer>
+              <SearchBar />
+            </M.SearchBarContainer>
             <M.DictionaryContainer>
               <M.TermText>{dummyData.title}</M.TermText>
-              <M.TermExplanation>
-                {dummyData.detail}
-              </M.TermExplanation>
+              <M.TermExplanation>{dummyData.detail}</M.TermExplanation>
               <M.Container>
                 <M.SimilarWord>
                   ► 연관검색어 : 총부채원리금상환비율(DSR)
@@ -68,7 +65,7 @@ const TermMeaning = () => {
               </M.Container>
               <M.RelatedNews>► 관련 기사&사건</M.RelatedNews>
               <M.News>
-                  <SimpleNews query={query}></SimpleNews>
+                <SimpleNews query={query}></SimpleNews>
               </M.News>
             </M.DictionaryContainer>
           </M.CenteredContent>
@@ -102,7 +99,10 @@ const TermMeaning = () => {
             ) : (
               <div className="loading-container">
                 <img src={loading} alt="Loading..." />
-                <div className="loading-text">현재 <span className="blue-text">인공지능</span>이 해당 용어의 해설을 불러오고 있어요!</div>
+                <div className="loading-text">
+                  현재 <span className="blue-text">인공지능</span>이 해당 용어의
+                  해설을 불러오고 있어요!
+                </div>
               </div>
             )}
           </div>
