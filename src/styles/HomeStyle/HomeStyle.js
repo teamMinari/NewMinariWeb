@@ -279,6 +279,7 @@ export const LearnBtn = styled.button`
   position: absolute;
   bottom: 24px;
   right: 28px;
+  cursor: pointer;
 `;
 
 export const GrapeContainer = styled.div`

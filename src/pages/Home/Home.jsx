@@ -107,7 +107,13 @@ const Home = () => {
                 </M.TextContainer>
                 <M.VerticalContainer>
                   <M.GrapesLocketImg />
-                  <M.LearnBtn>학습하기</M.LearnBtn>
+                  <M.LearnBtn
+                    onClick={() => {
+                      navigate("/tutorial");
+                    }}
+                  >
+                    학습하기
+                  </M.LearnBtn>
                 </M.VerticalContainer>
               </M.BunchOfGrapesContainer>
               <M.GrapeContainer>
@@ -116,7 +122,13 @@ const Home = () => {
                 <M.GrapeTitle>
                   10대 - 주니어 투자상품 {"(청소년 주식 계좌)"}
                 </M.GrapeTitle>
-                <M.LearnBtn>학습하기</M.LearnBtn>
+                <M.LearnBtn
+                  onClick={() => {
+                    navigate("/tutorial");
+                  }}
+                >
+                  학습하기
+                </M.LearnBtn>
               </M.GrapeContainer>
             </M.RecommendTutorialContainer>
             <M.SimpleNewsContainer>
