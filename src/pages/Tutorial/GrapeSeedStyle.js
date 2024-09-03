@@ -18,7 +18,7 @@ export const PageContent = styled.div`
 `;
 
 export const MainContent = styled.div`
-  margin-left: 70px;
+  margin-left: 60px;
   margin-top: 47px;
 `;
 
@@ -33,7 +33,7 @@ export const GrapeSeedContainer = styled.div`
   height: auto;
   background-color: #ffffff;
   border-radius: 10px;
-  margin-top: 47px;
+  margin-top: 32px;
   margin-bottom: 200px;
 `;
 
