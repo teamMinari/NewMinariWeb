@@ -6,6 +6,8 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import Spinner from '../Home/Spinner';
+import CompanyElement from './NewsComponents/CompanyElement';
+import RecommendElement from './NewsComponents/RecommendElement';
 
 
 const News = ({ query }) => {
@@ -42,25 +44,8 @@ const News = ({ query }) => {
             <M.PageContent>
                 <Sidebar/>
                 <M.MainContainer>
-                    <M.FlexibleContainer>
-                        <M.ContainerElement>
-                            <M.TextContainer>
-                                <M.TitleText>언론사별 뉴스</M.TitleText>
-                                <M.More>더보기</M.More>
-                                
-
-                            </M.TextContainer>
-                        </M.ContainerElement>
-                        <M.ContainerElement></M.ContainerElement>
-                        <M.ContainerElement></M.ContainerElement>
-                        <M.ContainerElement></M.ContainerElement>
-                        <M.ContainerElement></M.ContainerElement>
-                        <M.ContainerElement></M.ContainerElement>
-                        <M.ContainerElement></M.ContainerElement>
-                        <M.ContainerElement></M.ContainerElement>
-                        <M.ContainerElement></M.ContainerElement>
-                        <M.ContainerElement></M.ContainerElement>
-                    </M.FlexibleContainer>
+                        <CompanyElement></CompanyElement>
+                        <RecommendElement></RecommendElement>
                 </M.MainContainer>
             </M.PageContent>
         </React.Fragment>
@@ -69,35 +54,27 @@ const News = ({ query }) => {
 
 export default News;
 
-{/* <M.SearchContainer>
-<SearchBar/>
-</M.SearchContainer>
-<M.NewsContainer>
-<M.BtnContainer>
-    <M.TagBtn selected={selectedTag === "금융"}
-    onClick={() => handleTagClick("금융")}>금융</M.TagBtn>
-    <M.TagBtn selected={selectedTag === "증권"}
-    onClick={() => handleTagClick("증권")}>증권</M.TagBtn>
-    <M.TagBtn selected={selectedTag === "부동산"}
-    onClick={() => handleTagClick("부동산")}>부동산</M.TagBtn>
-    <M.TagBtn selected={selectedTag === "글로벌 경제"}
-    onClick={() => handleTagClick("글로벌 경제")}>글로벌 경제</M.TagBtn>
-    <M.TagBtn selected={selectedTag === "채권"}
-    onClick={() => handleTagClick("채권")}>채권</M.TagBtn>
-</M.BtnContainer>
-{articles && articles.length > 0 ? (
-articles.map((article, index) => (
-    <M.Article key={index}>
-            <M.ArticleImage/>
-        <M.ArticleTitle href={article.link} target="_blank" rel="noopener noreferrer">
-            {decodeHtml(article.title).replace(/<[^>]*>?/g, '')}
-        </M.ArticleTitle>
-        <M.ArticleDescription>
-            {decodeHtml(article.description).replace(/<[^>]*>?/g, '')}
-        </M.ArticleDescription>
-    </M.Article>
-    ))
-) : (
-    <Spinner/>
-)}
-</M.NewsContainer> */}
+
+
+{/* <M.BtnContainer>
+                        <M.TagBtn selected={selectedTag === "금융"}
+                        onClick={() => handleTagClick("금융")}>금융</M.TagBtn>
+                        <M.TagBtn selected={selectedTag === "증권"}
+                        onClick={() => handleTagClick("증권")}>증권</M.TagBtn>
+                        <M.TagBtn selected={selectedTag === "부동산"}
+                        onClick={() => handleTagClick("부동산")}>부동산</M.TagBtn>
+                        <M.TagBtn selected={selectedTag === "글로벌 경제"}
+                        onClick={() => handleTagClick("글로벌 경제")}>글로벌 경제</M.TagBtn>
+                        <M.TagBtn selected={selectedTag === "채권"}
+                        onClick={() => handleTagClick("채권")}>채권</M.TagBtn>
+                    </M.BtnContainer> 
+                    <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                        <M.ContainerElement></M.ContainerElement>
+                    */}

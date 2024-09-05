@@ -1,5 +1,7 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 
+
+
 export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
@@ -20,8 +22,9 @@ export const BtnContainer = styled.div`
   padding: 35px;
   padding-left: 0%;
   padding-bottom:0;
+  column-gap: 15px;
+  flex-direction: column;
 `;
-
 
 export const Article = styled.div`
   margin: 30px 0;
@@ -48,25 +51,12 @@ export const ArticleDescription = styled.p`
 
 export const ArticleImage = styled.img`
     max-width: 100%;
-    height: auto;
     margin-bottom: 10px;
 `;
 
-export const TextContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
 
-export const TitleText = styled.div`
-  font-size: 13px;
-  font-weight: 800;
-`;
 
-export const More = styled.div`
-  font-size: 12px;
-  color: #878787;
-  font-weight: 600;
-`;
+
 
 export const TagBtn = styled.button`
   width: 95px;
@@ -94,12 +84,12 @@ export const FlexibleContainer = styled.div`
   column-gap: 30px;
 `;
 
-export const ContainerElement = styled.div`
+export const CompanyContainerElement = styled.div`
   background-color: #ffffff;
   border-radius: 10px;
   width: 280px;
   padding: 22px 21px;
-  margin-bottom: 30px;
+  overflow: hidden;
 `;
 
 export const MainContainer = styled.div`
@@ -107,19 +97,8 @@ export const MainContainer = styled.div`
   display: flex;
   margin-left: 85px;
   margin-top: 69px;
-`;
-
-export const SubContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 340px;
-  margin-left: 30px;
-`;
-
-export const recommend = styled.div`
-  background-color: #ffffff;
-  border-radius: 10px;
-  height: 130px;
+  flex-wrap: wrap;
+  gap: 30px;
 `;
 
 export const CompanyName = styled.div`
@@ -127,17 +106,8 @@ export const CompanyName = styled.div`
   justify-content: baseline;
 `;
 
-export const Title = styled.div`
-  font-size: 14px;
-  font-weight: 600;
-  display: flex;
-  justify-content: baseline;
-`;
-
-
 export const NewsContainer = styled.div`
   width: 950px;
-  height: auto;
   background-color: #ffffff;
   border-radius: 10px;
   align-items: center;
