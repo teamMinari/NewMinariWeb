@@ -9,7 +9,7 @@ import profileIconSrc from "../../assets/image/my.svg";
 const iconStyle = css`
   margin-right: 19px;
   margin-bottom: 2px;
-  color: #7E84A3;
+  color: #7e84a3;
   transition: transform 0.3s ease, filter 0.3s ease;
 `;
 
@@ -41,13 +41,16 @@ export const Menu = styled.div`
 const activeContainerStyle = css`
   background-color: #363cd5;
   color: #fff;
-  border-radius: 5px 0 0 5px;
+  border-radius: 8px 0 0 8px;
   padding-left: 30px;
   width: 100%;
+  clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 6% 50%, 0% 0%);
   transition: all 0.3s ease;
+  position: relative;
 
   img {
-    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+      hue-rotate(0deg) brightness(100%) contrast(100%);
     transform: scale(1);
   }
 `;
@@ -57,16 +60,17 @@ const MenuItemContainer = styled.div`
   align-items: center;
   margin-bottom: 22px;
   background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
-  width: ${(props) => (props.isActive ? "100%" : "100")};
+  width: ${(props) => (props.isActive ? "100%" : "100%")};
   height: 50px;
-  border-radius: ${(props) => (props.isActive ? "5px 0 0 5px;" : "0")};
+  border-radius: ${(props) => (props.isActive ? "8px 0 0 8px;" : "0")};
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
   padding: ${(props) => (props.isActive ? "10px 10px 10px 30px" : "10px")};
   transition: all 0.3s ease;
+  position: relative;
 
   &:hover {
     background-color: ${(props) => (props.isActive ? "#363CD5" : "#F7F8FF")};
-    border-radius: ${(props) => (props.isActive ? "5px 0 0 5px;" : "5px")};
+    border-radius: ${(props) => (props.isActive ? "8px 0 0 8px;" : "5px")};
     padding-left: ${(props) => (props.isActive ? "30px" : "20px")};
     width: ${(props) => (props.isActive ? "100%" : "100%")};
 
@@ -83,22 +87,40 @@ const MenuItemImg = styled.img`
 `;
 
 export const HomeContainer = styled(MenuItemContainer)``;
-export const HomeImg = styled(MenuItemImg).attrs({ src: homeIconSrc, alt: "HomeIcon" })``;
+export const HomeImg = styled(MenuItemImg).attrs({
+  src: homeIconSrc,
+  alt: "HomeIcon",
+})``;
 export const HomeMenu = styled.div``;
 
 export const DictionaryContainer = styled(MenuItemContainer)``;
-export const DictionaryImg = styled(MenuItemImg).attrs({ src: dictionaryIconSrc, alt: "dictionaryIcon" })``;
+export const DictionaryImg = styled(MenuItemImg).attrs({
+  src: dictionaryIconSrc,
+  alt: "dictionaryIcon",
+})``;
 
 export const NewsContainer = styled(MenuItemContainer)``;
-export const NewsImg = styled(MenuItemImg).attrs({ src: newsIconSrc, alt: "newsIcon" })``;
+export const NewsImg = styled(MenuItemImg).attrs({
+  src: newsIconSrc,
+  alt: "newsIcon",
+})``;
 
 export const QuizContainer = styled(MenuItemContainer)``;
-export const QuizImg = styled(MenuItemImg).attrs({ src: quizIconSrc, alt: "quizIcon" })``;
+export const QuizImg = styled(MenuItemImg).attrs({
+  src: quizIconSrc,
+  alt: "quizIcon",
+})``;
 
 export const TutorialContainer = styled(MenuItemContainer)``;
-export const TutorialImg = styled(MenuItemImg).attrs({ src: tutorialIconSrc, alt: "tutorialIcon" })``;
+export const TutorialImg = styled(MenuItemImg).attrs({
+  src: tutorialIconSrc,
+  alt: "tutorialIcon",
+})``;
 
 export const ProfileContainer = styled(MenuItemContainer)`
   margin-bottom: 230px;
 `;
-export const ProfileImg = styled(MenuItemImg).attrs({ src: profileIconSrc, alt: "profileIcon" })``;
+export const ProfileImg = styled(MenuItemImg).attrs({
+  src: profileIconSrc,
+  alt: "profileIcon",
+})``;
