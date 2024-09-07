@@ -1,7 +1,6 @@
 import React from 'react';
 import * as M from "./RecommendElementStyle";
 import * as G from "../NewsGlobalStyles";
-
 const RecommendElement = () => {
     return (
         <M.ContainerElement>
@@ -12,10 +11,31 @@ const RecommendElement = () => {
                 </M.ButtonText>
             </M.Button>
             <M.Article>
-                <M.ArticleTitle href="#">부실채권 비율 1%대로 떨어져</M.ArticleTitle>
-                <M.ArticleDescription>
-                    부실채권 비율이 1%대로 떨어졌다. 이에 대해 금융당국은 긍정적인 평가를 내놓았다.
-                </M.ArticleDescription>
+                <M.ArticleImage src="https://via.placeholder.com/113x73" />
+                <M.ArticleTextContainer>
+                    <M.ArticleTitle href="#">부실채권 비율 1%대로 떨어져</M.ArticleTitle>
+                    <M.ArticleDescription>
+                        08월 27일  00:00
+                    </M.ArticleDescription>
+                </M.ArticleTextContainer>
+            </M.Article>
+            <M.Article>
+                <M.ArticleImage src="https://via.placeholder.com/113x73" />
+                <M.ArticleTextContainer>
+                    <M.ArticleTitle href="#">부실채권 비율 1%대로 떨어져</M.ArticleTitle>
+                    <M.ArticleDescription>
+                        08월 27일  00:00
+                    </M.ArticleDescription>
+                </M.ArticleTextContainer>
+            </M.Article>
+            <M.Article>
+                <M.ArticleImage src="https://via.placeholder.com/113x73" />
+                <M.ArticleTextContainer>
+                    <M.ArticleTitle href="#">부실채권 비율 1%대로 떨어져</M.ArticleTitle>
+                    <M.ArticleDescription>
+                        08월 27일  00:00
+                    </M.ArticleDescription>
+                </M.ArticleTextContainer>
             </M.Article>
         </M.ContainerElement>
     );

@@ -8,6 +8,8 @@ export const ContainerElement = styled.div`
   padding: 22px 21px;
   overflow: hidden;
   height: 400px;
+  box-sizing: border-box;
+  grid-row-end: span 14;
 `;
 
 export const Button = styled.button`
@@ -30,13 +32,14 @@ export const ButtonText = styled.div`
 `;
 
 export const Article = styled.div`
-  margin: 30px 0;
+  margin: 24px 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const ArticleTitle = styled.a`
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     color: #333;
 
@@ -46,8 +49,13 @@ export const ArticleTitle = styled.a`
     
 `;
 
+export const ArticleTextContainer = styled.a`
+    display: flex;
+    flex-direction: column;
+`;
+
 export const ArticleDescription = styled.p`
-    font-size: 12px;
+    font-size: 11px;
     color: #666;
     margin-top: 5px;
 
@@ -55,6 +63,8 @@ export const ArticleDescription = styled.p`
 `;
 
 export const ArticleImage = styled.img`
-    max-width: 100%;
-    margin-bottom: 10px;
+    max-width: 113px;
+    max-height: 73px;
+    margin-right: 12px;
+    border-radius: 5px;
 `;

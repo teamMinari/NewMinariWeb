@@ -7,6 +7,8 @@ import styled, { css } from "styled-components";
 export const CompanyStyle = css`
   width: 55px;
   height: 55px;
+  border-radius:15px;
+  box-shadow: 10px 10px 15px 10px rgba(0, 0, 0, 0.03);
 `;
 
 
@@ -42,18 +44,24 @@ export const ContainerElement = styled.div`
   background-color: #ffffff;
   border-radius: 10px;
   width: 280px;
-  padding: 22px 21px;
-  overflow: hidden;
   height: 138px;
+  box-sizing: border-box;
+  grid-row-end: span 5;
 `;
 
 export const NewsCompanyContainer = styled.div`
   display: flex;
   gap: 15px;
-  margin-top: 20px;
+  overflow: scroll;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  padding-right: 259px ;
+  padding-left: 21px;
 `;
 
 export const TextContainer = styled.div`
+  padding: 0px 22px;
+  padding-top: 21px;
   display: flex;
   justify-content: space-between;
 `;

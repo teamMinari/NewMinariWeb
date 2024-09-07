@@ -14,6 +14,10 @@ const CompanyElement = () => {
                     <M.News2Image></M.News2Image>
                     <M.News3Image></M.News3Image>
                     <M.News4Image></M.News4Image>
+                    <M.News1Image></M.News1Image>
+                    <M.News2Image></M.News2Image>
+                    <M.News3Image></M.News3Image>
+                    <M.News4Image></M.News4Image>
                 </M.NewsCompanyContainer>
         </M.ContainerElement>
     );

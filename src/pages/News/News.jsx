@@ -8,20 +8,17 @@ import axios from 'axios';
 import Spinner from '../Home/Spinner';
 import CompanyElement from './NewsComponents/CompanyElement';
 import RecommendElement from './NewsComponents/RecommendElement';
-
-
+import Tip from '../../components/UseTip/Tip'; // Add this import statement
+import SimpleQuiz from './NewsComponents/SimpleQuiz';
+import TutoralProgress from './NewsComponents/TutoralProgress';
+import ChoiseTutorial from './NewsComponents/ChoiceTutorial';
 const News = ({ query }) => {
     const [selectedTag, setSelectedTag] = useState(null);
-
-    const [articles, setArticles] = useState([]);
 
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:3001/search/news', {
-                    params: { query }
-                });
-                setArticles(response.data.items);
+                // Fetch articles logic here
             } catch (error) {
                 console.error("Error fetching articles:", error);
             }
@@ -34,18 +31,26 @@ const News = ({ query }) => {
         text.innerHTML = html;
         return text.value;
     };
+
     const handleTagClick = (tag) => {
         setSelectedTag(tag === selectedTag ? null : tag);
     };
+
     return (
         <React.Fragment>
             <Header />
             <M.GlobalStyles />
             <M.PageContent>
-                <Sidebar/>
+                <Sidebar />
                 <M.MainContainer>
-                        <CompanyElement></CompanyElement>
-                        <RecommendElement></RecommendElement>
+                    <CompanyElement />
+                    <RecommendElement />
+                    <Tip /> {/* Corrected component usage */}
+                    <RecommendElement />
+                    <TutoralProgress/>
+                    <SimpleQuiz/>
+                    <TutoralProgress/> 
+                    <ChoiseTutorial/>
                 </M.MainContainer>
             </M.PageContent>
         </React.Fragment>

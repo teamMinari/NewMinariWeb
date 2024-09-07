@@ -94,11 +94,12 @@ export const CompanyContainerElement = styled.div`
 
 export const MainContainer = styled.div`
   width: 70%;
-  display: flex;
+  display: grid; /* CSS Grid 컨테이너로 설정 */
+  grid-template-columns: repeat(auto-fill, minmax(250px,280px)); /* 최소 150px, 최대 1fr로 설정하여 반응형 배치 */
+  grid-auto-rows: 15px; /* 기본 행 높이를 10px로 설정 */
+  gap: 15px; /* 아이템 사이의 간격 */
   margin-left: 85px;
   margin-top: 69px;
-  flex-wrap: wrap;
-  gap: 30px;
 `;
 
 export const CompanyName = styled.div`
