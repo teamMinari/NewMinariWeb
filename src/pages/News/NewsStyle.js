@@ -1,5 +1,7 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 
+
+
 export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
@@ -20,8 +22,9 @@ export const BtnContainer = styled.div`
   padding: 35px;
   padding-left: 0%;
   padding-bottom:0;
+  column-gap: 15px;
+  flex-direction: column;
 `;
-
 
 export const Article = styled.div`
   margin: 30px 0;
@@ -48,9 +51,10 @@ export const ArticleDescription = styled.p`
 
 export const ArticleImage = styled.img`
     max-width: 100%;
-    height: auto;
     margin-bottom: 10px;
 `;
+
+
 
 
 
@@ -73,21 +77,42 @@ export const TagBtn = styled.button`
     `}
 `;
 
+export const FlexibleContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  column-gap: 30px;
+`;
+
+export const CompanyContainerElement = styled.div`
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 280px;
+  padding: 22px 21px;
+  overflow: hidden;
+`;
+
+export const MainContainer = styled.div`
+  width: 70%;
+  display: grid; /* CSS Grid 컨테이너로 설정 */
+  grid-template-columns: repeat(auto-fill, minmax(250px,280px)); /* 최소 150px, 최대 1fr로 설정하여 반응형 배치 */
+  grid-auto-rows: 15px; /* 기본 행 높이를 10px로 설정 */
+  gap: 15px; /* 아이템 사이의 간격 */
+  margin-left: 85px;
+  margin-top: 69px;
+`;
+
+export const CompanyName = styled.div`
+  display: flex;
+  justify-content: baseline;
+`;
+
 export const NewsContainer = styled.div`
   width: 950px;
-  height: auto;
   background-color: #ffffff;
   border-radius: 10px;
   align-items: center;
   padding: 5px 50px;
-
-`;
-
-export const CenterdContent = styled.div`
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 export const SearchContainer = styled.div`
