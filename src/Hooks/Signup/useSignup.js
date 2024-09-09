@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState(""); // 성공 메시지 상태 추가
 
   const navigate = useNavigate();
 
@@ -25,14 +26,22 @@ const useSignup = () => {
 
     setLoading(true);
     setError("");
+    setSuccessMessage(""); // 성공 메시지 초기화
+
     try {
       console.log("Sending request to the server...");
       const response = await axios.post(
         "http://3.35.152.231:8080/member/register",
         { email, id, password, confirmPassword }
       );
+
       console.log("Response from server:", response.data);
-      navigate("/login");
+
+      // 성공 메시지 설정
+      setSuccessMessage("회원가입이 성공적으로 완료되었습니다!");
+
+      // 서버 응답에 따라 적절히 처리
+      navigate("/login"); // 회원가입 성공 후 로그인 페이지로 이동
     } catch (err) {
       console.error("Error occurred:", err);
       setError(err.response?.data?.message || "회원가입에 실패했습니다.");
@@ -41,7 +50,7 @@ const useSignup = () => {
     }
   };
 
-  return { signupUser, loading, error };
+  return { signupUser, loading, error, successMessage }; // 성공 메시지 반환
 };
 
 export default useSignup;

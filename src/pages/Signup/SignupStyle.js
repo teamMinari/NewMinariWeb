@@ -173,3 +173,8 @@ export const ErrorMessage = styled.div`
   color: red;
   margin-top: 10px;
 `;
+
+export const SuccessMessage = styled.div`
+  color: black;
+  margin-top: 10px;
+`;
