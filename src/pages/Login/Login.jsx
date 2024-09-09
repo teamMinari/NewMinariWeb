@@ -8,7 +8,7 @@ import useLogin from "../../Hooks/Login/useLogin";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { loginUser, loading, error } = useLogin();
+  const { loginUser, loading, error } = useLogin(); // useLogin 훅을 통한 상태 관리
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,10 +16,13 @@ const Login = () => {
     navigate("/googleLogin");
   };
 
+  // 로그인 폼 제출 시 호출되는 함수
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await loginUser(id, password);
+      await loginUser(id, password); // loginUser 함수 호출
+      // 로그인 성공 시 메인 페이지로 리다이렉트
+      navigate("/");
     } catch (err) {
       console.error("로그인 에러:", err);
     }
