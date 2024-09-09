@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import * as M from "../../styles/TermStyle";
 import { useNavigate } from "react-router-dom";
 
-const Term = ({ title, explanation, refer }) => {
+const Term = ({ title, explanation, difficulty }) => {
   const [selectedHeart, setSelectedHeart] = useState(false);
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   const handleHeartClick = () => {
     setSelectedHeart(!selectedHeart);
@@ -14,15 +14,15 @@ const Term = ({ title, explanation, refer }) => {
     <div>
       <M.Container>
         <M.InfoContainer>
-          <M.TermTxt onClick={() => navigation("/termmeaning")}>{title}</M.TermTxt>
+          <M.TermTxt onClick={() => navigate("/termmeaning")}>{title}</M.TermTxt>
           <M.HeartContainer selected={selectedHeart} onClick={handleHeartClick}>
             <M.HeartImg />
           </M.HeartContainer>
         </M.InfoContainer>
         <M.TermExplanation>{explanation}</M.TermExplanation>
-        <M.ReferContainer>
-          <M.ReferTxt onClick={() => window.open("https://www.bok.or.kr/portal/bbs/B0000249/view.do?nttId=235017&menuNo=200765")}>{refer}</M.ReferTxt>
-        </M.ReferContainer>
+        <M.DifficultyContainer>
+          난이도: {difficulty}
+        </M.DifficultyContainer>
       </M.Container>
     </div>
   );
