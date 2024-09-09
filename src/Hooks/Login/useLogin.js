@@ -15,9 +15,10 @@ const useLogin = () => {
         id,
         password,
       });
+      localStorage.setItem("user", JSON.stringify(response.data)); // 사용자 정보 저장
       setLoading(false);
-      navigate("/");
-      return response.data;
+      navigate("/"); // 로그인 성공 시 메인 페이지로 리다이렉트
+      return response.data; // 사용자 정보 반환
     } catch (err) {
       setLoading(false);
       if (err.response) {
