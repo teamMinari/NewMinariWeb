@@ -7,7 +7,7 @@ import useSignup from "../../Hooks/Signup/useSignup";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { signupUser, loading, error } = useSignup();
+  const { signupUser, loading, error, successMessage } = useSignup();
   const [email, setEmail] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
@@ -49,7 +49,6 @@ const Signup = () => {
 
     try {
       await signupUser(email, id, password, confirmPassword);
-      navigate("/login"); // 성공 시 로그인 페이지로 이동
     } catch (err) {
       console.error("회원가입 에러:", err);
     }
@@ -121,6 +120,11 @@ const Signup = () => {
           <M.ErrorMessage style={{ marginLeft: "120px" }}>
             {error}
           </M.ErrorMessage>
+        )}
+        {successMessage && (
+          <M.SuccessMessage style={{ marginLeft: "120px" }}>
+            {successMessage}
+          </M.SuccessMessage>
         )}
         <M.SignupBtn type="submit" disabled={loading} onClick={onSubmit}>
           {loading ? "회원가입 중..." : "회원가입"}
