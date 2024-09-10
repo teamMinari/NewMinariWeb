@@ -44,7 +44,7 @@ const News = ({ query }) => {
                 <Sidebar />
                 <M.MainContainer>
                     <CompanyElement />
-                    <RecommendElement />
+                    <RecommendElement /> {/* TODO: react-masonry-css라이브러리 사용하여 리팩토링하기. CHATGPT에 예제 있으니까 참고해서 해보세요 */}
                     <Tip /> {/* Corrected component usage */}
                     <RecommendElement />
                     <TutoralProgress/>

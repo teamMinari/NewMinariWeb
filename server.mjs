@@ -1,12 +1,16 @@
-const express = require('express');
+import { NotionAPI } from 'notion-client';
+
+import express  from 'express';
+import request from 'request';
+import cors from 'cors';
+
 const app = express();
-const request = require('request');
-const cors = require('cors');
 
 const client_id = '069DAvm7A9WRXrhkh8SS';
 const client_secret = 'sUeEviNvPN';
-
+// 
 app.use(cors());
+const notion = new NotionAPI();
 
 app.get('/search/news', function (req, res) {
    const query = encodeURI(req.query.query);
@@ -29,7 +33,13 @@ app.get('/search/news', function (req, res) {
    });
 });
 
-app.listen(3001, function () {
+app.get('/notion', async (req, res) => {
+    const query = req.query.notion;
+    res.writeHead(200, {'Content-Type': 'application/json;charset=utf-8'});
+    res.end(JSON.stringify(await notion.getPage(query)));
+});
+
+app.listen(6974, function () {
    console.log('http://127.0.0.1:3001/search/news?query=경제 app listening on port 3000!');
 });
 

@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import TipBox from "../../components/TipBox/TipBox";
+import Tip from "../../components/UseTip/Tip";
 
 const DictionaryMain = () => {
   const [terms, setTerms] = useState([
@@ -138,7 +139,7 @@ const DictionaryMain = () => {
                   </M.TextContainer>
                 </M.ContentContainer>
               </M.GoToDictionary>
-              <TipBox />
+              <Tip/>
             </M.HorizontalContainer>
           </M.CenteredContent>
         </M.MainContent>

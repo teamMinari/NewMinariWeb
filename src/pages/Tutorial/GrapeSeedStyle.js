@@ -38,8 +38,7 @@ export const GrapeSeedContainer = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  margin-left: 155px;
-  margin-right: 155px;
+  padding: 30px 50px;
 `;
 
 export const TopContainer = styled.div`
@@ -67,12 +66,14 @@ export const Path = styled(NavLink)`
 `;
 
 export const XpContainer = styled.div`
-  width: 100px;
-  height: 20px;
-  border-radius: 4px;
+  display: flex;
+  border-radius: 50px;
   background-color: #5dc067;
   text-align: center;
   margin-right: 10px;
+  padding: 10px 30px;
+  color: #fff;
+  font-weight: 600;
 `;
 
 export const PageText = styled.div`
