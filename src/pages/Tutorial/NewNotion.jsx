@@ -9,7 +9,7 @@ const NewNotion = () => {
 
     useEffect(() => {
       const NOTION_ID = "44540191e49042e1b12dac3bb710b042";
-      axios.get(`http://localhost:6974/notion?notion=${NOTION_ID}`).then((res) => {
+      axios.get(`http://localhost:3001/notion?notion=${NOTION_ID}`).then((res) => {
         console.log(res.data);
         setSomething(res.data);
         console.log(something);

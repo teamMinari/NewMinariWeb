@@ -77,9 +77,8 @@ export const XpContainer = styled.div`
 `;
 
 export const PageText = styled.div`
-  font-weight: 600;
+  font-weight: 750;
   font-size: 30px;
-  margin-top: 65px;
 `;
 
 export const TimeText = styled.div`
