@@ -21,7 +21,7 @@ export const QuizchoiceContainer = styled.div`
     align-items: center;
     justify-content: center;
     gap: 15px;
-    margin-top: 5px;
+    margin-top: 5px; 
 `;
 
 export const QuizChoice = styled.div`

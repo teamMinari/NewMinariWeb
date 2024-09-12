@@ -33,7 +33,7 @@ export const News3Image = styled.img.attrs({
   src: News3,
   alt: "News3",
 })`
-  ${CompanyStyle}
+  ${CompanyStyle} 
 `;
 
 export const News4Image = styled.img.attrs({

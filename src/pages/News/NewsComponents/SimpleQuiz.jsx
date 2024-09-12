@@ -23,5 +23,5 @@ const SimpleQuiz = () => {
         </M.ContainerElement>
     );
 };
-
+ 
 export default SimpleQuiz;

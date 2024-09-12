@@ -20,4 +20,4 @@ const TutoralProgress = () => {
     );
 };
 
-export default TutoralProgress;
+export default TutoralProgress; 

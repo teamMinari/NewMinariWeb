@@ -18,7 +18,7 @@ export const ImgContainer = styled.div`
     display: flex;
     gap: 10px;
     margin-top: 12.5px;
-`;
+`; 
 
 
 export const NewsTutorialStyle = css`

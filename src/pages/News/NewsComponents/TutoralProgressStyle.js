@@ -22,7 +22,7 @@ export const GrapesLocketImgStyle = styled.div`
 `;
 
 export const VerticalContainer = styled.div`
-    display: flex;
+    display: flex; 
     justify-content: space-between;
     flex-direction: row;
     align-items: center;

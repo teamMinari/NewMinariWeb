@@ -15,4 +15,4 @@ const ChoiceTutorial = () => {
     );
 };
 
-export default ChoiceTutorial;
+export default ChoiceTutorial; 

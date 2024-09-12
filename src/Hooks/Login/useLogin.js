@@ -18,6 +18,11 @@ const useLogin = () => {
       localStorage.setItem("user", JSON.stringify(response.data)); // 사용자 정보 저장
       setLoading(false);
       navigate("/"); // 로그인 성공 시 메인 페이지로 리다이렉트
+      // zustand 이용 시 store.setState({ accessToken = response.data.accessToken }); 이런 느낌으로 작성
+      // jotai 이용 시 atomAccessToken.set(response.data.accessToken); 이런 느낌으로 작성
+      // 원하는거 쓰기
+      localStorage.setItem("accessToken", response.data.data.accessToken);
+      localStorage.setItem("refreshToken", response.data.data.refreshToken);
       return response.data; // 사용자 정보 반환
     } catch (err) {
       setLoading(false);

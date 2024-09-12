@@ -23,7 +23,7 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+`; 
 
 export const ButtonText = styled.div`
   font-size: 11px;

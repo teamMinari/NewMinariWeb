@@ -23,7 +23,7 @@ const CompanyElement = () => {
                     <M.News3Image></M.News3Image>
                     <M.News4Image></M.News4Image>
                 </M.NewsCompanyContainer>
-        </M.ContainerElement>
+        </M.ContainerElement> 
     );
 };
 

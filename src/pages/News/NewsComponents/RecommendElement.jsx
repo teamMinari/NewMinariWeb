@@ -11,7 +11,7 @@ const RecommendElement = (ver1, ver2) => {
                 </M.ButtonText>
             </M.Button>
             <M.Article>
-                <M.ArticleImage src="" />
+                <M.ArticleImage src="https://picsum.photos/200/140?random=1" />
                 <M.ArticleTextContainer>
                     <M.ArticleTitle href="#">부실채권 비율 1%대로 떨어져</M.ArticleTitle>
                     <M.ArticleDescription>
@@ -20,7 +20,7 @@ const RecommendElement = (ver1, ver2) => {
                 </M.ArticleTextContainer>
             </M.Article>
             <M.Article>
-                <M.ArticleImage src="https://via.placeholder.com/113x73" />
+                <M.ArticleImage src="https://picsum.photos/200/130?random=2`" />
                 <M.ArticleTextContainer>
                     <M.ArticleTitle href="#">부실채권 비율 1%대로 떨어져</M.ArticleTitle>
                     <M.ArticleDescription>
@@ -29,7 +29,7 @@ const RecommendElement = (ver1, ver2) => {
                 </M.ArticleTextContainer>
             </M.Article>
             <M.Article>
-                <M.ArticleImage src="https://via.placeholder.com/113x73" />
+                <M.ArticleImage src="https://picsum.photos/200/140?random=1`" />
                 <M.ArticleTextContainer>
                     <M.ArticleTitle href="#">부실채권 비율 1%대로 떨어져</M.ArticleTitle>
                     <M.ArticleDescription>
