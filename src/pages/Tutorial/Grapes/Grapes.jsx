@@ -11,7 +11,7 @@ const Grapes = () => {
     <React.Fragment>
       <Header />
       <M.PageContent>
-        <SideBar />
+        <SideBar/>
         <M.MainContent>
           <M.CenteredContent>
             <M.GrapesContainer>
