@@ -24,7 +24,7 @@ const Tutoirial = () => {
                     <M.VerticalContainer>
                         <M.FirstTutorial>
                             <M.ExampleTutorial onClick={() => {
-                      navigate("/grapeseed");
+                      navigate("/grapes");
                     }}></M.ExampleTutorial>
                         </M.FirstTutorial>
                         <Tip />

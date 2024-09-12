@@ -64,7 +64,6 @@ const MenuItemContainer = styled.div`
   height: 50px;
   border-radius: ${(props) => (props.isActive ? "8px 0 0 8px;" : "0")};
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
-  padding: ${(props) => (props.isActive ? "10px 10px 10px 30px" : "10px")};
   transition: all 0.3s ease;
   position: relative;
 

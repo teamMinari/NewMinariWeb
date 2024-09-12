@@ -16,6 +16,7 @@ import GrapeSeed from "../pages/Tutorial/GrapeSeed";
 import DictionaryMain from "../pages/Dictionary/DictionaryMain";
 import Tutoirial from "../pages/Tutorial/Tutoirial";
 import NewNotion from "../pages/Tutorial/NewNotion";
+import Grapes from "../pages/Tutorial/Grapes/Grapes";
 
 
 const AppRouter = ({ openModal, closeModal, isOpen }) => {
@@ -39,6 +40,7 @@ const AppRouter = ({ openModal, closeModal, isOpen }) => {
         <Route path="/grapeseed" element={<GrapeSeed />} />
         <Route path="/tutorial" element={<Tutoirial />} />
         <Route path="/newnotion" element={<NewNotion />} />
+        <Route path="/grapes" element={<Grapes />} />
       </Routes>
     </Router>
   );
