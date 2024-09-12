@@ -11,12 +11,25 @@ const useLogin = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post("http://cheong.baekjoon.kr/member/login", {
+      const response = await axios.post("http://10.80.161.209:8080/member/login", {
         id,
         password,
       });
+
+      localStorage.setItem("accessToken", response.data.data.accessToken)
+
+      // 로그인 성공 시 토큰 저장
+      const { accessToken, refreshToken } = response.data;
+
+      if (accessToken && refreshToken) {
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+      } else {
+        console.error("로그인 응답에서 토큰을 찾을 수 없습니다.");
+      }
+
       setLoading(false);
-      navigate("/");
+      navigate("/");  // 로그인 성공 후 홈으로 이동
       return response.data;
     } catch (err) {
       setLoading(false);

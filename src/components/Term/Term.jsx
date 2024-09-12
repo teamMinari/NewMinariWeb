@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as M from "../../styles/TermStyle";
 import { useNavigate } from "react-router-dom";
 
-const Term = ({ title, explanation, refer }) => {
+const Term = ({ title, explanation, difficulty }) => {
   const [selectedHeart, setSelectedHeart] = useState(false);
   const navigation = useNavigate();
 
@@ -20,9 +20,9 @@ const Term = ({ title, explanation, refer }) => {
           </M.HeartContainer>
         </M.InfoContainer>
         <M.TermExplanation>{explanation}</M.TermExplanation>
-        <M.ReferContainer>
-          <M.ReferTxt onClick={() => window.open("https://www.bok.or.kr/portal/bbs/B0000249/view.do?nttId=235017&menuNo=200765")}>{refer}</M.ReferTxt>
-        </M.ReferContainer>
+        <M.DifficultyContainer>
+          <M.DifficultyTxt>{difficulty}</M.DifficultyTxt>
+        </M.DifficultyContainer>
       </M.Container>
     </div>
   );

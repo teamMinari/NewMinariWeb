@@ -24,6 +24,7 @@ const Signup = () => {
       navigate("/login");
     } catch (err) {
       console.error("회원가입 에러:", err);
+      navigate("/signup");
     }
   };
 

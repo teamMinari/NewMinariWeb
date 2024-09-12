@@ -10,7 +10,7 @@ const useSignup = () => {
     setError("");
     try {
       const response = await axios.post(
-        "http://cheong.baekjoon.kr/member/register",
+        "http://10.80.161.209:8080/member/register",
         { email, id, password, confirmPassword }
       );
       return response.data;

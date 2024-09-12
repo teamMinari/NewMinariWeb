@@ -65,3 +65,11 @@ export const TextSort = styled.div`
       color: #000000;
     `}
 `;
+
+export const NoTermsFound = styled.div`
+  font-size: 18px;
+  color: #7e84a3;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 500;
+`;
