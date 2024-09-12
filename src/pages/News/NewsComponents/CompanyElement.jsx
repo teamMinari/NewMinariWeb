@@ -10,8 +10,12 @@ const CompanyElement = () => {
                 <G.More>더보기</G.More>
             </M.TextContainer>
                 <M.NewsCompanyContainer>
-                    <M.News1Image></M.News1Image>
-                    <M.News2Image></M.News2Image>
+                    <M.News1Image 
+                        onClick={() => window.open("https://www.mk.co.kr/")}
+                    ></M.News1Image>
+                    <M.News2Image
+                        onClick={() => window.open("https://ytn.co.kr/")}
+                    ></M.News2Image>
                     <M.News3Image></M.News3Image>
                     <M.News4Image></M.News4Image>
                     <M.News1Image></M.News1Image>

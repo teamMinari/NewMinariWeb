@@ -49,6 +49,6 @@ export const HeartContainer = styled.div`
     props.selected &&
     css`
       filter: brightness(0) saturate(100%) invert(14%) sepia(63%)
-        saturate(6142%) hue-rotate(243deg) brightness(92%) contrast(93%);
+      saturate(6142%) hue-rotate(243deg) brightness(92%) contrast(93%);
     `}
 `;

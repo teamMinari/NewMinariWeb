@@ -1,7 +1,7 @@
 import React from 'react';
 import * as M from "./RecommendElementStyle";
 import * as G from "../NewsGlobalStyles";
-const RecommendElement = () => {
+const RecommendElement = (ver1, ver2) => {
     return (
         <M.ContainerElement>
             <G.TitleText>추천 뉴스</G.TitleText>
@@ -11,7 +11,7 @@ const RecommendElement = () => {
                 </M.ButtonText>
             </M.Button>
             <M.Article>
-                <M.ArticleImage src="https://via.placeholder.com/113x73" />
+                <M.ArticleImage src="" />
                 <M.ArticleTextContainer>
                     <M.ArticleTitle href="#">부실채권 비율 1%대로 떨어져</M.ArticleTitle>
                     <M.ArticleDescription>

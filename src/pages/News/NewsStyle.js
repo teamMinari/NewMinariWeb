@@ -100,6 +100,10 @@ export const MainContainer = styled.div`
   gap: 15px; /* 아이템 사이의 간격 */
   margin-left: 85px;
   margin-top: 69px;
+  transition: 0.5s;
+  :hover{
+    scale: calc(1.02);
+  }
 `;
 
 export const CompanyName = styled.div`

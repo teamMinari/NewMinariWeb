@@ -9,6 +9,9 @@ export const CompanyStyle = css`
   height: 55px;
   border-radius:15px;
   box-shadow: 10px 10px 15px 10px rgba(0, 0, 0, 0.03);
+  :hover{
+    scale: calc(1.05);
+  }
 `;
 
 
@@ -47,6 +50,7 @@ export const ContainerElement = styled.div`
   height: 138px;
   box-sizing: border-box;
   grid-row-end: span 5;
+  overflow: hidden;
 `;
 
 export const NewsCompanyContainer = styled.div`
