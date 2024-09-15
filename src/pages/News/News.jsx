@@ -12,6 +12,7 @@ import Tip from '../../components/UseTip/Tip'; // Add this import statement
 import SimpleQuiz from './NewsComponents/SimpleQuiz';
 import TutoralProgress from './NewsComponents/TutoralProgress';
 import ChoiseTutorial from './NewsComponents/ChoiceTutorial';
+import RecommendElement2 from './NewsComponents/RecommendElement2';
 const News = ({ query }) => {
     const [selectedTag, setSelectedTag] = useState(null);
 
@@ -46,7 +47,7 @@ const News = ({ query }) => {
                     <CompanyElement />
                     <RecommendElement /> {/* TODO: react-masonry-css라이브러리 사용하여 리팩토링하기. CHATGPT에 예제 있으니까 참고해서 해보세요 */}
                     <Tip /> {/* Corrected component usage */}
-                    <RecommendElement />
+                    <RecommendElement2 />
                     <TutoralProgress/>
                     <SimpleQuiz/>
                     <TutoralProgress/> 

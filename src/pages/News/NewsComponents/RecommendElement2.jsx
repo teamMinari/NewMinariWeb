@@ -1,39 +1,39 @@
 import React from 'react';
-import * as M from "./RecommendElementStyle";
+import * as M from "./RecommendElementStyle2";
 import * as G from "../NewsGlobalStyles";
-const RecommendElement = (ver1, ver2) => {
+const RecommendElement2 = () => {
     return (
         <M.ContainerElement>
             <G.TitleText>추천 뉴스</G.TitleText>
             <M.Button>
                 <M.ButtonText>
-                    #부실채권비율
+                    #하이퍼 인플레이션
                 </M.ButtonText>
             </M.Button>
             <M.Article>
-                <M.ArticleImage src="https://picsum.photos/200/130?random=1" />
+                <M.ArticleImage src="https://picsum.photos/200/130?random=3" />
                 <M.ArticleTextContainer>
-                    <M.ArticleTitle href="#">부실채권 60조 '핵폭탄'‥1년 새 22조↑</M.ArticleTitle>
+                    <M.ArticleTitle href="#">2024년 미국배당 투자에 대한 생각 feat. 하이퍼 인플레이션</M.ArticleTitle>
                     <M.ArticleDescription>
-                        08월 27일  20:35
+                        02월 27일  23:03
                     </M.ArticleDescription>
                 </M.ArticleTextContainer>
             </M.Article>
             <M.Article>
-                <M.ArticleImage src="https://picsum.photos/200/130?random=2`" />
+                <M.ArticleImage src="https://picsum.photos/200/130?random=4`" />
                 <M.ArticleTextContainer>
-                    <M.ArticleTitle href="#">"대부분 담보채권인데"…보험사, 킥스 규제로 NPL 투자 못한다</M.ArticleTitle>
+                    <M.ArticleTitle href="#">하이퍼인플레 세대' 리처드 클라리다…</M.ArticleTitle>
                     <M.ArticleDescription>
-                        08월 17일  23:01
+                        09월 27일  00:35
                     </M.ArticleDescription>
                 </M.ArticleTextContainer>
             </M.Article>
             <M.Article>
-                <M.ArticleImage src="https://picsum.photos/200/130?random=1`" />
+                <M.ArticleImage src="https://picsum.photos/200/130?random=5`" />
                 <M.ArticleTextContainer>
-                    <M.ArticleTitle href="#">부실채권 비율 1%대로 떨어져</M.ArticleTitle>
+                    <M.ArticleTitle href="#">2024년 미국배당 투자에 대한 생각</M.ArticleTitle>
                     <M.ArticleDescription>
-                        08월 23일  02:23
+                        08월 15일  03:53
                     </M.ArticleDescription>
                 </M.ArticleTextContainer>
             </M.Article>
@@ -41,4 +41,4 @@ const RecommendElement = (ver1, ver2) => {
     );
 };
 
-export default RecommendElement;
+export default RecommendElement2;

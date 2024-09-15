@@ -15,10 +15,10 @@ export const ContainerElement = styled.div`
 export const Button = styled.button`
   margin-top: 15px;
   border-radius: 50px;
-  padding: 13px 10px;
+  padding: 13px 15px;
   height: 30px;
-  width: 100px;
-  background-color: #D940FF;
+  width: fit-content;
+  background-color: #363CD5;
   border: none;
   display: flex;
   align-items: center;
