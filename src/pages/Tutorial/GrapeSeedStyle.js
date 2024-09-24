@@ -18,7 +18,7 @@ export const PageContent = styled.div`
 `;
 
 export const MainContent = styled.div`
-  margin-left: 70px;
+  margin-left: 60px;
   margin-top: 47px;
 `;
 
@@ -33,13 +33,12 @@ export const GrapeSeedContainer = styled.div`
   height: auto;
   background-color: #ffffff;
   border-radius: 10px;
-  margin-top: 47px;
+  margin-top: 32px;
   margin-bottom: 200px;
 `;
 
 export const ContentContainer = styled.div`
-  margin-left: 155px;
-  margin-right: 155px;
+  padding: 30px 50px;
 `;
 
 export const TopContainer = styled.div`
@@ -67,18 +66,19 @@ export const Path = styled(NavLink)`
 `;
 
 export const XpContainer = styled.div`
-  width: 100px;
-  height: 20px;
-  border-radius: 4px;
+  display: flex;
+  border-radius: 50px;
   background-color: #5dc067;
   text-align: center;
   margin-right: 10px;
+  padding: 10px 30px;
+  color: #fff;
+  font-weight: 600;
 `;
 
 export const PageText = styled.div`
-  font-weight: 600;
+  font-weight: 750;
   font-size: 30px;
-  margin-top: 65px;
 `;
 
 export const TimeText = styled.div`

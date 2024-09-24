@@ -6,10 +6,11 @@ import quizIconSrc from "../../assets/image/quiz.svg";
 import tutorialIconSrc from "../../assets/image/tutorial.svg";
 import profileIconSrc from "../../assets/image/my.svg";
 
-const iconStyle = `
+const iconStyle = css`
   margin-right: 19px;
   margin-bottom: 2px;
-  color: #7E84A3;
+  color: #7e84a3;
+  transition: transform 0.3s ease, filter 0.3s ease;
 `;
 
 export const Sidebar = styled.div`
@@ -27,7 +28,7 @@ export const Menu = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 70px;
+  padding-left: 40px;
   font-size: 17px;
   font-weight: 500;
   color: #7e84a3;
@@ -40,149 +41,85 @@ export const Menu = styled.div`
 const activeContainerStyle = css`
   background-color: #363cd5;
   color: #fff;
+  border-radius: 8px 0 0 8px;
+  padding-left: 30px;
+  width: 100%;
+  clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 6% 50%, 0% 0%);
+  transition: all 0.3s ease;
+  position: relative;
 
   img {
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
       hue-rotate(0deg) brightness(100%) contrast(100%);
+    transform: scale(1);
   }
 `;
 
-export const HomeContainer = styled.div`
+const MenuItemContainer = styled.div`
   display: flex;
+  align-items: center;
   margin-bottom: 22px;
   background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
-  width: 196px;
-  height: 40px;
-  border-radius: 5px;
+  width: ${(props) => (props.isActive ? "100%" : "100%")};
+  height: 50px;
+  border-radius: ${(props) => (props.isActive ? "8px 0 0 8px;" : "0")};
   color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
-  padding: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+
   &:hover {
-    background-color: ${(props) => (props.isActive ? "#363CD5" : "#eee")};
+    background-color: ${(props) => (props.isActive ? "#363CD5" : "#F7F8FF")};
+    border-radius: ${(props) => (props.isActive ? "8px 0 0 8px;" : "5px")};
+    padding-left: ${(props) => (props.isActive ? "30px" : "20px")};
+    width: ${(props) => (props.isActive ? "100%" : "100%")};
+
+    img {
+      transform: scale(1.1);
+    }
   }
+
   ${(props) => props.isActive && activeContainerStyle}
 `;
 
-export const HomeImg = styled.img.attrs({
+const MenuItemImg = styled.img`
+  ${iconStyle}
+`;
+
+export const HomeContainer = styled(MenuItemContainer)``;
+export const HomeImg = styled(MenuItemImg).attrs({
   src: homeIconSrc,
   alt: "HomeIcon",
-})`
-  ${iconStyle}
-  margin-left: 1px;
-  margin-bottom: -1px;
-`;
+})``;
+export const HomeMenu = styled.div``;
 
-export const HomeMenu = styled.div`
-  text-decoration: none;
-  color: inherit;
-`;
-
-export const DictionaryContainer = styled.div`
-  display: flex;
-  margin-bottom: 22px;
-  background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
-  width: 196px;
-  height: 45px;
-  border-radius: 5px;
-  color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
-  padding: 10px;
-  &:hover {
-    background-color: ${(props) => (props.isActive ? "#363CD5" : "#eee")};
-  }
-  ${(props) => props.isActive && activeContainerStyle}
-`;
-
-export const DictionaryImg = styled.img.attrs({
+export const DictionaryContainer = styled(MenuItemContainer)``;
+export const DictionaryImg = styled(MenuItemImg).attrs({
   src: dictionaryIconSrc,
   alt: "dictionaryIcon",
-})`
-  ${iconStyle}
-  margin-left: -1px;
-`;
+})``;
 
-export const NewsContainer = styled.div`
-  display: flex;
-  margin-bottom: 22px;
-  background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
-  width: 196px;
-  height: 45px;
-  border-radius: 5px;
-  color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
-  padding: 10px;
-  &:hover {
-    background-color: ${(props) => (props.isActive ? "#363CD5" : "#eee")};
-  }
-  ${(props) => props.isActive && activeContainerStyle}
-`;
-
-export const NewsImg = styled.img.attrs({
+export const NewsContainer = styled(MenuItemContainer)``;
+export const NewsImg = styled(MenuItemImg).attrs({
   src: newsIconSrc,
   alt: "newsIcon",
-})`
-  ${iconStyle}
-`;
+})``;
 
-export const QuizContainer = styled.div`
-  display: flex;
-  margin-bottom: 22px;
-  background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
-  width: 196px;
-  height: 45px;
-  border-radius: 5px;
-  color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
-  padding: 10px;
-  &:hover {
-    background-color: ${(props) => (props.isActive ? "#363CD5" : "#eee")};
-  }
-  ${(props) => props.isActive && activeContainerStyle}
-`;
-
-export const QuizImg = styled.img.attrs({
+export const QuizContainer = styled(MenuItemContainer)``;
+export const QuizImg = styled(MenuItemImg).attrs({
   src: quizIconSrc,
   alt: "quizIcon",
-})`
-  ${iconStyle}
-`;
+})``;
 
-export const TutorialContainer = styled.div`
-  display: flex;
-  margin-bottom: 22px;
-  background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
-  width: 196px;
-  height: 45px;
-  border-radius: 5px;
-  color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
-  padding: 10px;
-  &:hover {
-    background-color: ${(props) => (props.isActive ? "#363CD5" : "#eee")};
-  }
-  ${(props) => props.isActive && activeContainerStyle}
-`;
-
-export const TutorialImg = styled.img.attrs({
+export const TutorialContainer = styled(MenuItemContainer)``;
+export const TutorialImg = styled(MenuItemImg).attrs({
   src: tutorialIconSrc,
   alt: "tutorialIcon",
-})`
-  ${iconStyle}
-`;
+})``;
 
-export const ProfileContainer = styled.div`
-  display: flex;
+export const ProfileContainer = styled(MenuItemContainer)`
   margin-bottom: 230px;
-  background-color: ${(props) => (props.isActive ? "#363CD5" : "transparent")};
-  width: 196px;
-  height: 45px;
-  border-radius: 5px;
-  color: ${(props) => (props.isActive ? "#fff" : "#7E84A3")};
-  padding: 10px;
-  &:hover {
-    background-color: ${(props) => (props.isActive ? "#363CD5" : "#eee")};
-  }
-  ${(props) => props.isActive && activeContainerStyle}
 `;
-
-export const ProfileImg = styled.img.attrs({
+export const ProfileImg = styled(MenuItemImg).attrs({
   src: profileIconSrc,
   alt: "profileIcon",
-})`
-  ${iconStyle}
-`;
+})``;

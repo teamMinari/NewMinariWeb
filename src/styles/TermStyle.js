@@ -67,3 +67,6 @@ export const DifficultyContainer = styled.div`
   align-items: center;
   bottom: 10px;
 `;
+
+export const DifficultyContainer = styled.div`
+`

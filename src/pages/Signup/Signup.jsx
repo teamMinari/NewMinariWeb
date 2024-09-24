@@ -7,21 +7,48 @@ import useSignup from "../../Hooks/Signup/useSignup";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { signupUser, loading, error } = useSignup();
+  const { signupUser, loading, error, successMessage } = useSignup();
   const [email, setEmail] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [formError, setFormError] = useState("");
+
+  const validateForm = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email) {
+      return "이메일을 입력해주세요.";
+    }
+    if (!emailRegex.test(email)) {
+      return "이메일 형식이 올바르지 않습니다.";
+    }
+    if (!id) {
+      return "아이디를 입력해주세요.";
+    }
+    if (!password) {
+      return "비밀번호를 입력해주세요.";
+    }
+    if (password !== confirmPassword) {
+      return "비밀번호가 일치하지 않습니다.";
+    }
+    return "";
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("비밀번호가 일치하지 않습니다.");
+
+    // 양식 유효성 검사
+    const errorMessage = validateForm();
+    if (errorMessage) {
+      setFormError(errorMessage);
       return;
     }
+
+    setFormError(""); // 양식이 올바르면 에러 메시지 초기화
+
     try {
       await signupUser(email, id, password, confirmPassword);
-      navigate("/login");
     } catch (err) {
       console.error("회원가입 에러:", err);
       navigate("/signup");
@@ -85,7 +112,21 @@ const Signup = () => {
             required
           />
         </M.PwContainer>
-        {error && <M.ErrorMessage>{error}</M.ErrorMessage>}
+        {formError && (
+          <M.ErrorMessage style={{ marginLeft: "120px" }}>
+            {formError}
+          </M.ErrorMessage>
+        )}
+        {error && (
+          <M.ErrorMessage style={{ marginLeft: "120px" }}>
+            {error}
+          </M.ErrorMessage>
+        )}
+        {successMessage && (
+          <M.SuccessMessage style={{ marginLeft: "120px" }}>
+            {successMessage}
+          </M.SuccessMessage>
+        )}
         <M.SignupBtn type="submit" disabled={loading} onClick={onSubmit}>
           {loading ? "회원가입 중..." : "회원가입"}
         </M.SignupBtn>

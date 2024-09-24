@@ -42,9 +42,11 @@ const Profile = () => {
             </M.ProfileContainer>
             <M.boxContainer>
               <M.PointContainer>
-                <M.PageText>My 포인트</M.PageText>
+                <M.TopTextContainer>
+                  <M.PageText>My 포인트</M.PageText>
+                  <M.GotoUse>사용하러 가기</M.GotoUse>
+                </M.TopTextContainer>
                 <M.PointText>2,584P</M.PointText>
-                <M.GotoUse>사용하러 가기 {">"}</M.GotoUse>
               </M.PointContainer>
               <M.MyWordsContainer to="/mywords">
                 <M.PageText>내 단어장</M.PageText>

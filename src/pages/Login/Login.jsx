@@ -8,7 +8,7 @@ import useLogin from "../../Hooks/Login/useLogin";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { loginUser, loading, error } = useLogin();
+  const { loginUser, loading, error } = useLogin(); // useLogin 훅을 통한 상태 관리
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,17 +16,20 @@ const Login = () => {
     navigate("/googleLogin");
   };
 
+  // 로그인 폼 제출 시 호출되는 함수
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await loginUser(id, password);
+      await loginUser(id, password); // loginUser 함수 호출
+      // 로그인 성공 시 메인 페이지로 리다이렉트
+      navigate("/");
     } catch (err) {
       console.error("로그인 에러:", err);
     }
   };
 
   return (
-    <M.Form >
+    <M.Form>
       <M.LoginPart>
         <M.Container>
           <Logo />
@@ -65,7 +68,11 @@ const Login = () => {
           <M.LoginSaveLabel htmlFor="loginSave">로그인 저장</M.LoginSaveLabel>
           <M.PwForgot>비밀번호를 잊으셨나요?</M.PwForgot>
         </M.SaveAndForgotContainer>
-        {error && <M.ErrorMessage>{error}</M.ErrorMessage>}
+        {error && (
+          <M.ErrorMessage style={{ marginLeft: "120px" }}>
+            {error}
+          </M.ErrorMessage>
+        )}
         <M.LoginBtn type="submit" disabled={loading} onClick={onSubmit}>
           {loading ? "로그인 중..." : "로그인"}
         </M.LoginBtn>

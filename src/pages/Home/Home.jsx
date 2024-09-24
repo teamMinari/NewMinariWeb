@@ -69,12 +69,12 @@ const Home = () => {
             <M.RecommendWordContainer>
               <M.PageText>오늘의 추천 경제 단어</M.PageText>
               <M.WordSpace>
-                <WordComponents txt="가산금리" score={1} />
-                <WordComponents txt="또 다른 단어" score={3} />
-                <WordComponents txt="가산금리" score={1} />
-                <WordComponents txt="또 다른 단어" score={3} />
-                <WordComponents txt="가산금리" score={2} />
-                <WordComponents txt="또 다른 단어" score={3} />
+                <WordComponents txt="주택담보대출" score={2} />
+                <WordComponents txt="서비스 수지" score={3} />
+                <WordComponents txt="핀테크" score={1} />
+                <WordComponents txt="금융안정지수" score={3} />
+                <WordComponents txt="내부자금" score={2} />
+                <WordComponents txt="가계부실위험지수" score={3} />
               </M.WordSpace>
             </M.RecommendWordContainer>
             <M.Menu>
@@ -107,7 +107,13 @@ const Home = () => {
                 </M.TextContainer>
                 <M.VerticalContainer>
                   <M.GrapesLocketImg />
-                  <M.LearnBtn>학습하기</M.LearnBtn>
+                  <M.LearnBtn
+                    onClick={() => {
+                      navigate("/tutorial");
+                    }}
+                  >
+                    학습하기
+                  </M.LearnBtn>
                 </M.VerticalContainer>
               </M.BunchOfGrapesContainer>
               <M.GrapeContainer>
@@ -116,7 +122,13 @@ const Home = () => {
                 <M.GrapeTitle>
                   10대 - 주니어 투자상품 {"(청소년 주식 계좌)"}
                 </M.GrapeTitle>
-                <M.LearnBtn>학습하기</M.LearnBtn>
+                <M.LearnBtn
+                  onClick={() => {
+                    navigate("/tutorial");
+                  }}
+                >
+                  학습하기
+                </M.LearnBtn>
               </M.GrapeContainer>
             </M.RecommendTutorialContainer>
             <M.SimpleNewsContainer>
@@ -143,18 +155,6 @@ const Home = () => {
               <M.Banner />
             </M.BannerWarp>
           </M.CenteredContent>
-          <M.ChartContent>
-            <M.PieChartContainer>
-              <M.ChartPageText>학습률</M.ChartPageText>
-              <IngChart />
-            </M.PieChartContainer>
-            <M.ChartContainer>
-              <M.ChartPageText>출석률</M.ChartPageText>
-              <M.ChartCenter>
-                <StackBars />
-              </M.ChartCenter>
-            </M.ChartContainer>
-          </M.ChartContent>
         </M.MainContent>
       </M.PageContent>
     </>
