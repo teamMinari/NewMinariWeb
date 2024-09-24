@@ -29,12 +29,17 @@ export const TermExplanation = styled.div`
   margin-top: 8px;
 `;
 
-export const DifficultyTxt = styled.div`
+export const ReferTxt = styled.div`
   font-size: 15px;
   font-weight: normal;
-  color: #898989;
+  color: #878787;
   margin-left: 10px;
-  margin-top: 8px;
+  margin-top: 4px;
+  bottom: 10px;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -62,7 +67,7 @@ export const HeartContainer = styled.div`
     `}
 `;
 
-export const DifficultyContainer = styled.div`
+export const ReferContainer = styled.div`
   display: flex;
   align-items: center;
   bottom: 10px;

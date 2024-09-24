@@ -21,8 +21,7 @@ const Term = ({ title, explanation, difficulty }) => {
         </M.InfoContainer>
         <M.TermExplanation>{explanation}</M.TermExplanation>
         <M.DifficultyContainer>
-          <M.DifficultyTxt>{difficulty}</M.DifficultyTxt>
-//           난이도: {difficulty}
+          난이도: {difficulty}
         </M.DifficultyContainer>
       </M.Container>
     </div>
