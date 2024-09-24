@@ -11,8 +11,8 @@ const Dictionary = () => {
   const [filteredTerms, setFilteredTerms] = useState([]);
   const [selectedTxt, setSelectedTxt] = useState("가나다순");
   const [maxChars, setMaxChars] = useState(60);
-  const tocken = String(localStorage.getItem("accessToken"));
-  console.log(tocken);
+  const token = String(localStorage.getItem("accessToken"));
+  console.log(token)
   useEffect(() => {
     const fetchTerms = async (page = 0, size = 20) => {
       try {
@@ -20,17 +20,24 @@ const Dictionary = () => {
         if (!accessToken) {
           throw new Error("인증 토큰이 없습니다.");
         }
-
         const response = await axios.get(
-          "http://54.180.220.149:8080/terms",
+          "http://cheongfordo.p-e.kr:8080/terms",
           {
             params: { page, size },
             headers: {
               Authorization: `Bearer ${accessToken}`, // 인증 토큰을 헤더에 추가
+              Accept: 'application/json',
+              "Content-Type": "application/json",
             },
           }
-        );
+        ).then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error)
+        });
 
+        console.log(response);
         if (response.data.status === 0) {
           const formattedTerms = response.data.data.map((term) => ({
             title: term.termNm,
