@@ -12,33 +12,23 @@ const Dictionary = () => {
   const [selectedTxt, setSelectedTxt] = useState("가나다순");
   const [maxChars, setMaxChars] = useState(60);
   const token = String(localStorage.getItem("accessToken"));
-  console.log(token)
+  
   useEffect(() => {
     const fetchTerms = async (page = 0, size = 20) => {
       try {
-        const accessToken = localStorage.getItem("accessToken"); // 로컬 스토리지에서 토큰 가져옴
+        const accessToken = localStorage.getItem("accessToken");
         if (!accessToken) {
           throw new Error("인증 토큰이 없습니다.");
         }
-        const response = await axios.get(
-          "http://cheongfordo.p-e.kr:8080/terms",
-          {
-            params: { page, size },
-            headers: {
-              Authorization: `Bearer ${accessToken}`, // 인증 토큰을 헤더에 추가
-              Accept: 'application/json',
-              "Content-Type": "application/json",
-            },
-          }
-        ).then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error)
+
+        const response = await axios.get("http://cheongfordo.p-e.kr:8080/terms", {
+          params: { page, size },
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         });
 
-        console.log(response);
-        if (response.data.status === 0) {
+        if (response.data.data.length > 0) {
           const formattedTerms = response.data.data.map((term) => ({
             title: term.termNm,
             explanation: term.termExplain,
@@ -47,10 +37,10 @@ const Dictionary = () => {
           setTerms(formattedTerms);
           setFilteredTerms(formattedTerms);
         } else {
-          console.error("Failed to fetch terms:", response.data.message);
+          console.error("용어 목록을 가져오지 못했습니다:", response.data.message);
         }
       } catch (error) {
-        console.error("Error fetching terms:", error);
+        console.error("용어를 가져오는 중 오류 발생:", error);
       }
     };
 
