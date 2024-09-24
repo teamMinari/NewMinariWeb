@@ -15,15 +15,28 @@ const useLogin = () => {
         id,
         password,
       });
-      localStorage.setItem("user", JSON.stringify(response.data)); // 사용자 정보 저장
+
+      localStorage.setItem("accessToken", response.data.data.accessToken)
+      //localStorage.setItem("user", JSON.stringify(response.data)); // 사용자 정보 저장
       setLoading(false);
       navigate("/"); // 로그인 성공 시 메인 페이지로 리다이렉트
       // zustand 이용 시 store.setState({ accessToken = response.data.accessToken }); 이런 느낌으로 작성
       // jotai 이용 시 atomAccessToken.set(response.data.accessToken); 이런 느낌으로 작성
       // 원하는거 쓰기
-      localStorage.setItem("accessToken", response.data.data.accessToken);
-      localStorage.setItem("refreshToken", response.data.data.refreshToken);
-      return response.data; // 사용자 정보 반환
+      // 로그인 성공 시 토큰 저장
+      
+      const { accessToken, refreshToken } = response.data;
+
+      if (accessToken && refreshToken) {
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+      } else {
+        console.error("로그인 응답에서 토큰을 찾을 수 없습니다.");
+      }
+
+      setLoading(false);
+      navigate("/");  // 로그인 성공 후 홈으로 이동
+      return response.data;
     } catch (err) {
       setLoading(false);
       if (err.response) {

@@ -51,6 +51,7 @@ const Signup = () => {
       await signupUser(email, id, password, confirmPassword);
     } catch (err) {
       console.error("회원가입 에러:", err);
+      navigate("/signup");
     }
   };
 
