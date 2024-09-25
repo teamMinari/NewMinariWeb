@@ -141,12 +141,11 @@ export const PageContent = styled.div`
 export const SplineContainer = styled.div`
   height: 875px;
   width: 1500px;
-  position: absolute;
-  z-index: 3;
+  z-index: 1;
   canvas {
-    z-index: 3;
+    z-index: 1;
   }
-  margin-top: -120px;
+
   align-items: center;
 `;
 
@@ -154,6 +153,13 @@ export const FitContainer = styled.div`
   position: relative;
   flex-direction: row;
   z-index: 300;
+`;
+
+export const MainContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const PointContainer = styled.div`
@@ -207,6 +213,7 @@ export const Description = styled.div`
   margin-top: 4px;
 `;
 
+
 export const QuizContainer = styled.div`
   width: 934px;
   height: 600px;
@@ -217,6 +224,7 @@ export const QuizContainer = styled.div`
   margin-left: 60px;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 `;
 
 export const CenterdContent = styled.div`

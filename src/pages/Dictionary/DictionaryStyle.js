@@ -16,9 +16,19 @@ export const PageContent = styled.div`
   z-index: 1;
 `;
 
+export const NoTermsFound = styled.div`
+  font-size: 18px;
+  color: #7e84a3;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 500;
+`;
+
 export const MainContent = styled.div`
-  margin-left: 60px;
-  margin-top: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const CenteredContent = styled.div`

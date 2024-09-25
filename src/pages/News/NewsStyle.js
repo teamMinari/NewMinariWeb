@@ -16,7 +16,10 @@ export const GlobalStyles = createGlobalStyle`
 export const PageContent = styled.div`
   display: flex;
   z-index: 1;
+  width: 100%;
 `;
+
+
 
 export const BtnContainer = styled.div`
   padding: 35px;
@@ -92,8 +95,15 @@ export const CompanyContainerElement = styled.div`
   overflow: hidden;
 `;
 
+export const MainContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
+
 export const MainContainer = styled.div`
-  width: 70%;
+  width: 90%;
   display: grid; /* CSS Grid 컨테이너로 설정 */
   grid-template-columns: repeat(auto-fill, minmax(250px,280px)); /* 최소 150px, 최대 1fr로 설정하여 반응형 배치 */
   grid-auto-rows: 15px; /* 기본 행 높이를 10px로 설정 */

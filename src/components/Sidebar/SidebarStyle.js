@@ -14,7 +14,7 @@ const iconStyle = css`
 `;
 
 export const Sidebar = styled.div`
-  width: 288px;
+  width: 22%;
   height: auto;
   background-color: #fafbff;
   border-right: 1px solid #d7dbec;

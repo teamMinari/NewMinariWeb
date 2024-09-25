@@ -43,16 +43,18 @@ const News = ({ query }) => {
             <M.GlobalStyles />
             <M.PageContent>
                 <Sidebar />
-                <M.MainContainer>
-                    <CompanyElement />
-                    <RecommendElement /> {/* TODO: react-masonry-css라이브러리 사용하여 리팩토링하기. CHATGPT에 예제 있으니까 참고해서 해보세요 */}
-                    <Tip /> {/* Corrected component usage */}
-                    <RecommendElement2 />
-                    <TutoralProgress/>
-                    <SimpleQuiz/>
-                    <TutoralProgress/> 
-                    <ChoiseTutorial/>
-                </M.MainContainer>
+                <M.MainContent>
+                    <M.MainContainer>
+                        <CompanyElement />
+                        <RecommendElement /> {/* TODO: react-masonry-css라이브러리 사용하여 리팩토링하기. CHATGPT에 예제 있으니까 참고해서 해보세요 */}
+                        <Tip /> {/* Corrected component usage */}
+                        <RecommendElement2 />
+                        <TutoralProgress/>
+                        <SimpleQuiz/>
+                        <TutoralProgress/> 
+                        <ChoiseTutorial/>
+                    </M.MainContainer>
+                </M.MainContent>
             </M.PageContent>
         </React.Fragment>
     );

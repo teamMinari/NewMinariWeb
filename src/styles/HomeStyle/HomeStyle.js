@@ -149,8 +149,10 @@ export const PageContent = styled.div`
 `;
 
 export const MainContent = styled.div`
-  margin-left: 60px;
-  margin-top: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const CenteredContent = styled.div`

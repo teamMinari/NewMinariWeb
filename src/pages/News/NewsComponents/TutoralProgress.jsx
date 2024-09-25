@@ -1,8 +1,10 @@
 import React from 'react';
 import * as M from "./TutoralProgressStyle";
 import * as G from "../NewsGlobalStyles";
+import { useNavigate } from "react-router-dom";
 
 const TutoralProgress = () => {
+    const navigate = useNavigate();
     return (
         <M.ContainerElement>
             <G.TitleText>포도송이</G.TitleText>
@@ -14,7 +16,7 @@ const TutoralProgress = () => {
                 <M.GrapesLocketImg />
             </M.VerticalContainer>
             <M.VerticalContainer>
-                <M.LearnBtn>학습하기</M.LearnBtn>
+                <M.LearnBtn onClick={() => navigate("/tutorial")}>학습하기</M.LearnBtn>
             </M.VerticalContainer>
         </M.ContainerElement>
     );

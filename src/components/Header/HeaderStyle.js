@@ -6,7 +6,7 @@ export const Form = styled.form`
 `;
 
 export const Bar = styled.header`
-  width: 1800px;
+  width: 100%;
   height: 75px;
   background-color: #ffffff;
   box-shadow: 0px 2px 10px rgba(0, 2, 5, 0.1);
