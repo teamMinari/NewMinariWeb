@@ -4,8 +4,8 @@ import heartIconSrc from "../assets/image/heart.svg";
 export const Container = styled.div`
   width: 830px;
   height: 104px;
-  border-top: 0.6px solid #E7EBF9;
-  border-bottom: 0.6px solid #E7EBF9;
+  border-top: 0.6px solid #e7ebf9;
+  border-bottom: 0.6px solid #e7ebf9;
   margin: 0 auto;
   margin-top: 9px;
   margin-bottom: -10px;
@@ -15,31 +15,18 @@ export const Container = styled.div`
 export const TermTxt = styled.div`
   font-size: 17px;
   font-weight: 500;
-  color: #1B47B9;
+  color: #1b47b9;
   margin-left: 10px;
-  margin-top: 12px;
+  margin-top: 14px;
   cursor: pointer;
 `;
 
 export const TermExplanation = styled.div`
   font-size: 15px;
   font-weight: normal;
-  color: #4F4F4F;
+  color: #4f4f4f;
   margin-left: 10px;
   margin-top: 8px;
-`;
-
-export const ReferTxt = styled.div`
-  font-size: 15px;
-  font-weight: normal;
-  color: #878787;
-  margin-left: 10px;
-  margin-top: 4px;
-  bottom: 10px;
-  cursor: pointer;
-  &:hover{
-    text-decoration: underline;
-  }
 `;
 
 export const InfoContainer = styled.div`
@@ -51,14 +38,15 @@ export const HeartImg = styled.img.attrs({
   src: heartIconSrc,
   alt: "heartIcon",
 })`
-width: 18px;`;
+  width: 18px;
+`;
 
 export const HeartContainer = styled.div`
   position: absolute;
   right: 0;
   margin-right: 20px;
   cursor: pointer;
-  margin-top: 12px;
+  margin-top: 14px;
   ${(props) =>
     props.selected &&
     css`
@@ -67,11 +55,10 @@ export const HeartContainer = styled.div`
     `}
 `;
 
-export const ReferContainer = styled.div`
-  display: flex;
-  align-items: center;
-  bottom: 10px;
-`;
-
 export const DifficultyContainer = styled.div`
-`
+  font-size: 15px;
+  font-weight: normal;
+  color: #878787;
+  margin-left: 10px;
+  margin-top: 8px;
+`;
