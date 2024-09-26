@@ -73,6 +73,7 @@ const Dictionary = () => {
       return 0;
     });
     setFilteredTerms(sortedTerms);
+    setSelectedTxt(txt)
   };
 
   const renderExplanation = (text) => {
