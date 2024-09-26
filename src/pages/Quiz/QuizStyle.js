@@ -141,11 +141,12 @@ export const PageContent = styled.div`
 export const SplineContainer = styled.div`
   height: 875px;
   width: 1500px;
-  z-index: 1;
+  position: absolute;
+  z-index: 3;
   canvas {
-    z-index: 1;
+    z-index: 3;
   }
-
+  margin-top: -120px;
   align-items: center;
 `;
 
