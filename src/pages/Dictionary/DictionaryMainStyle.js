@@ -18,13 +18,14 @@ export const PageContent = styled.div`
 `;
 
 export const SearchBarContainer = styled.div`
-  margin-top: 32px;
+  margin-top: 70px;
   margin-left: 24px;
 `;
 
 export const MainContent = styled.div`
-  margin-left: 70px;
-  margin-top: 47px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const CenteredContent = styled.div`

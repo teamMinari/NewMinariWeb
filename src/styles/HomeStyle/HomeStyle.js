@@ -166,7 +166,7 @@ export const RecommendWordContainer = styled.div`
   height: 255px;
   background-color: #ffffff;
   border-radius: 10px;
-  margin-top: 32px;
+  margin-top: 70px;
   align-items: center;
   justify-content: flex-start;
 `;
