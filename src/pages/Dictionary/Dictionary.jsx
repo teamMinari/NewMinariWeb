@@ -20,7 +20,7 @@ const Dictionary = () => {
         }
 
         const response = await axios.get(
-          "http://cheongfordo.kr:8080/terms",
+          "https://cheongfordo.kr:8080/terms",
           {
             params: { page, size },
             headers: {
