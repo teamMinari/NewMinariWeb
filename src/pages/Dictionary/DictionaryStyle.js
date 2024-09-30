@@ -11,6 +11,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 `;
 
+
 export const PageContent = styled.div`
   display: flex;
   z-index: 1;

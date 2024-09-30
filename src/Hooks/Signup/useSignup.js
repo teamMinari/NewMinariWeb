@@ -31,7 +31,7 @@ const useSignup = () => {
     try {
       console.log("Sending request to the server...");
       const response = await axios.post(
-        "http://cheongfordo.p-e.kr:8080/member/register",
+        "http://cheongfordo.kr:8080/member/register",
         { email, id, password, confirmPassword }
       );
 
