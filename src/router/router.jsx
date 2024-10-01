@@ -17,6 +17,7 @@ import DictionaryMain from "../pages/Dictionary/DictionaryMain";
 import Tutoirial from "../pages/Tutorial/Tutoirial";
 import NewNotion from "../pages/Tutorial/NewNotion";
 import Grapes from "../pages/Tutorial/Grapes/Grapes";
+import InputTutorial from "../pages/InputTurorial/InputTurorial";
 
 
 const AppRouter = ({ openModal, closeModal, isOpen }) => {
@@ -41,6 +42,7 @@ const AppRouter = ({ openModal, closeModal, isOpen }) => {
         <Route path="/tutorial" element={<Tutoirial />} />
         <Route path="/newnotion" element={<NewNotion />} />
         <Route path="/grapes" element={<Grapes />} />
+        <Route path="/input" element={<InputTutorial />} />
       </Routes>
     </Router>
   );
