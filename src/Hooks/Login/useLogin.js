@@ -11,7 +11,7 @@ const useLogin = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post("https://cheongfordo.kr:8080/member/login", {
+      const response = await axios.post("https://cheongfordo.kr/member/login", {
         id,
         password,
       });
