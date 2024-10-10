@@ -126,20 +126,22 @@ const DictionaryMain = () => {
               </M.BtnContainer>
             </M.RecommendWords>
             <M.HorizontalContainer>
-              <M.GoToDictionary onClick={handleGoToDictionaryClick}>
-                <M.ContentContainer>
-                  <M.Book />
-                  <M.TextContainer>
-                    <M.QuestionText>
-                      더 많은 용어를 공부하고 싶다면?
-                    </M.QuestionText>
-                    <M.GoToDictionaryText>
-                      용어 사전 펼쳐보기
-                    </M.GoToDictionaryText>
-                  </M.TextContainer>
-                </M.ContentContainer>
-              </M.GoToDictionary>
-              <Tip/>
+              <M.MoreContainer>
+                <M.GoToDictionary onClick={handleGoToDictionaryClick}>
+                  <M.ContentContainer>
+                    <M.Book />
+                    <M.TextContainer>
+                      <M.QuestionText>
+                        더 많은 용어를 공부하고 싶다면?
+                      </M.QuestionText>
+                      <M.GoToDictionaryText>
+                        용어 사전 펼쳐보기
+                      </M.GoToDictionaryText>
+                    </M.TextContainer>
+                  </M.ContentContainer>
+                </M.GoToDictionary>
+                <Tip />
+              </M.MoreContainer>
             </M.HorizontalContainer>
           </M.CenteredContent>
         </M.MainContent>
