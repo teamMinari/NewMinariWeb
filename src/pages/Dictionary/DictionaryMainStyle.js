@@ -118,3 +118,10 @@ export const GoToDictionaryText = styled.div`
   font-weight: 700;
   cursor: pointer;
 `;
+
+export const MoreContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 856px;
+  margin-top: 8px;
+`;
