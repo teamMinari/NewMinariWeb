@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle, keyframes } from "styled-components";
 import RequestIconSrc from "../../assets/image/request.svg";
 import MyWordsIconSrc from "../../assets/image/myword.svg";
-import ProfileImgSrc from "../../assets/image/whaleprofile.svg";
+import ProfileImgSrc from "../../assets/image/profile.svg";
 import ChangeIconSrc from "../../assets/image/change.svg";
 import MoreIconSrc from "../../assets/image/more.svg";
 import { Link } from "react-router-dom";
@@ -84,15 +84,9 @@ export const IdTextContainer = styled.div`
   display: flex;
 `;
 
-export const IdText = styled.div`
-  font-weight: 700;
-  font-size: 20px;
-`;
-
 export const Id = styled.div`
-  font-weight: normal;
+  font-weight: 500;
   font-size: 20px;
-  margin-left: 8px;
 `;
 
 export const ChangeIcon = styled.img.attrs({
