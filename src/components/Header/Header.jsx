@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import * as M from "./HeaderStyle";
-import logoImg from '../../assets/image/logo.svg';
-import profileImg from '../../assets/image/profile.svg';
+import logoImg from "../../assets/image/logo.svg";
+import profileImg from "../../assets/image/profile.svg";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const [userData, setUserData] = useState(null); // 사용자 데이터를 저장할 상태
+  const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -35,7 +36,6 @@ const Header = () => {
       }
     };
 
-    // 페이지 로드 시 localStorage에서 사용자 ID를 가져오기
     const storedUserId = localStorage.getItem("userId");
     if (storedUserId) {
       setUserData({ id: storedUserId });
@@ -55,9 +55,16 @@ const Header = () => {
           </M.LogoLink>
         </M.Container>
         <M.AuthContainer to="/profile">
-          <M.MemberProfile src={profileImg} alt="profile" />
-          {/* 사용자 ID 표시 */}
-          <M.MemberName>{userData ? userData.id : "Loading..."}</M.MemberName>
+          {userData && userData.id !== "Guest" ? (
+            <>
+              <M.MemberProfile src={profileImg} alt="profile" />
+              <M.MemberName>{userData.id}</M.MemberName>
+            </>
+          ) : (
+            <M.MemberName to="/login" style={{ cursor: "pointer" }}>
+              로그인
+            </M.MemberName>
+          )}
         </M.AuthContainer>
       </M.Bar>
     </M.Form>

@@ -41,7 +41,7 @@ export const MemberProfile = styled.img`
   width: 37px;
 `;
 
-export const MemberName = styled.div`
+export const MemberName =  styled(NavLink)`
   font-size: 13px;
   font-weight: 600;
   color: #878787;
