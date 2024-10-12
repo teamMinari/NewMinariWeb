@@ -3,11 +3,14 @@ import * as M from "./ProfileStyle";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "./ModalStyle.css";
 
 const Profile = () => {
-  const [userData, setUserData] = useState(null); // 사용자 데이터를 저장할 상태
-  const [loading, setLoading] = useState(true); // 로딩 상태 관리
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -17,12 +20,10 @@ const Profile = () => {
         setLoading(false);
         return;
       }
-
       try {
         const response = await axios.get(
           "https://cheongfordo.kr/member/profile",
           {
-            // 적절한 API URL로 변경하세요
             headers: {
               Authorization: `Bearer ${storedToken}`,
             },
@@ -32,19 +33,30 @@ const Profile = () => {
       } catch (error) {
         console.error("Error fetching user data:", error);
       } finally {
-        setLoading(false); // 로딩 종료
+        setLoading(false);
       }
     };
-
     fetchUserData();
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("userId");
+    setUserData(null);
+    setShowLogoutModal(false);
+    navigate("/");
+  };
+
+  const toggleLogoutModal = () => {
+    setShowLogoutModal((prev) => !prev);
+  };
+
   if (loading) {
-    return <div>Loading...</div>; // 로딩 중일 때 표시할 컴포넌트
+    return <div>Loading...</div>;
   }
 
   if (!userData) {
-    return <div>No user data found</div>; // 사용자 데이터가 없을 때 표시할 컴포넌트
+    return <div>No user data found</div>;
   }
 
   return (
@@ -64,10 +76,17 @@ const Profile = () => {
                     <M.Id>{userData.id}</M.Id>
                     <M.ChangeIcon />
                     <M.MoreIcon />
+                    <M.LogoutButton onClick={toggleLogoutModal}>
+                      로그아웃
+                    </M.LogoutButton>
                   </M.IdTextContainer>
                   <M.Category>금융, 글로벌 경제, 채권</M.Category>
                   <M.LevelContainer>
-                    <M.MyLevel />
+                    <progress
+                      className="progress progress-info w-[550px] rounded-[5px]"
+                      value={userData.level}
+                      max="100"
+                    />
                     <M.LevelTextContainer>
                       <M.LevelRate>{userData.level}Lv</M.LevelRate>
                       <M.LevelNum>
@@ -109,6 +128,36 @@ const Profile = () => {
           </M.CenteredContent>
         </M.MainContent>
       </M.PageContent>
+      {/* 로그아웃 알림 모달 */}
+      {showLogoutModal && (
+        <div role="alert" className="alert p-4 bg-white rounded-lg shadow-md">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            className="stroke-info h-6 w-6 shrink-0 mb-2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          <span>로그아웃 하시겠습니까?</span>
+          <div className="mt-4">
+            <button
+              className="btn btn-sm mr-2"
+              onClick={() => setShowLogoutModal(false)}
+            >
+              취소
+            </button>
+            <button className="btn btn-sm btn-primary" onClick={handleLogout}>
+              로그아웃
+            </button>
+          </div>
+        </div>
+      )}
     </React.Fragment>
   );
 };

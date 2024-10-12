@@ -115,19 +115,8 @@ export const Category = styled.div`
 `;
 
 export const LevelContainer = styled.div`
-  width: 550px;
-  height: 8px;
-  border-radius: 5px;
-  background-color: black;
-  margin-top: 15px;
+  margin-top: 8px;
   position: relative;
-`;
-
-export const MyLevel = styled.div`
-  width: 200px;
-  height: 8px;
-  border-radius: 5px;
-  background-color: #00d33b;
 `;
 
 export const LevelTextContainer = styled.div`
@@ -353,4 +342,20 @@ export const WaveFive = styled.div`
   animation: ${waveAnimation3} 85000ms infinite ease-in-out;
   opacity: 0.1;
   background: #1e5eff;
+`;
+
+export const LogoutButton = styled.button`
+  margin-left: 10px;
+  padding: 4px 12px;
+  background-color: #F5F6FA;
+  color: #878787;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #E0E3E8;
+  }
 `;
