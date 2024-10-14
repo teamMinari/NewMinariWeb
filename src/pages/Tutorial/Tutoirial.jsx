@@ -1,13 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as M from "./TutoirialStyle";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Spline from "@splinetool/react-spline";
 import Tip from "../../components/UseTip/Tip";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Tutoirial = () => {
   const navigate = useNavigate();
+  const [tutorialData, setTutorialData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchTutorialData = async () => {
+      const storedToken = localStorage.getItem("accessToken");
+      if (!storedToken) {
+        console.error("Access token is missing");
+        setError("로그인이 필요합니다.");
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const response = await axios.get("https://cheongfordo.kr/gps", {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        });
+
+        console.log(response.data);
+
+        if (response.data.data && response.data.data.length > 0) {
+          setTutorialData(response.data.data);
+        } else {
+          throw new Error("데이터가 없습니다.");
+        }
+      } catch (error) {
+        console.error("Error fetching tutorial data:", error);
+        setError("데이터를 불러오는 데 실패했습니다.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTutorialData();
+  }, []);
+
+  if (loading) {
+    return <div>로딩 중...</div>;
+  }
+
+  if (error) {
+    return <div>오류 발생: {error}</div>;
+  }
+
   return (
     <React.Fragment>
       <Header />
@@ -42,6 +90,21 @@ const Tutoirial = () => {
             </M.FirstTutorial>
             <Tip />
           </M.VerticalContainer>
+          <M.GrapesContainer>
+            {tutorialData.map((tutorial) => (
+              <M.TutorialCard key={tutorial.gpsId}>
+                <M.TutorialTitle>{tutorial.gpsName}</M.TutorialTitle>
+                <M.ContentText>{tutorial.gpsContent}</M.ContentText>
+                <M.TimeText>시간: {tutorial.gpsTime}분</M.TimeText>
+                <M.ContentText>
+                  좋아요: {tutorial.gpsLike ? "YES" : "NO"}
+                </M.ContentText>
+                <M.ContentText>
+                  유형: {tutorial.gpTpList.join(", ")}
+                </M.ContentText>
+              </M.TutorialCard>
+            ))}
+          </M.GrapesContainer>
         </M.MainContainer>
       </M.PageContent>
     </React.Fragment>
