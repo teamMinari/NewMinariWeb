@@ -14,6 +14,43 @@ export const GlobalStyles = createGlobalStyle`
   }
 `;
 
+export const TestContainer = styled.div`
+  display: flex;
+  margin-top: 7.5vw;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
+export const MiniTxt = styled.div`
+  font-size: 16px;
+  color: #6B6B6B;
+`;
+
+export const LargeTitle = styled.div`
+  font-size: 28px;
+  font-weight: 700;
+`;
+
+export const SimButton = styled(Link)`
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  width: 150px;
+  font-weight: 700;
+  height: 50px;
+  text-decoration-line: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  &:hover {
+    background-color: #222;
+  }
+`;
 export const WowStyle = css`
   object-fit: contain;
   width: 200px; /* 아이콘 너비 */
@@ -90,7 +127,7 @@ export const Zindex = styled.div`
 `;
 
 export const Button = styled(Link)`
-  background-color: #ECEFFC;
+  background-color: #eceffc;
   color: #000;
   border: none;
   padding: 10px 50px;
@@ -103,7 +140,7 @@ export const Button = styled(Link)`
   z-index: 1000;
   transition: 300ms;
   &:hover {
-    background-color: #DAE2FF;
+    background-color: #dae2ff;
   }
 `;
 
@@ -119,7 +156,7 @@ export const QuizButton = styled.button`
   z-index: 1000;
   transition: 300ms;
   &:hover {
-    background-color: #DAE2FF;
+    background-color: #dae2ff;
   }
 `;
 
@@ -171,7 +208,7 @@ export const PointContainer = styled.div`
   height: 50px;
   width: 150px;
   border-radius: 20px;
-  background: #91C1FA;
+  background: #91c1fa;
   margin-top: 50px;
 `;
 
@@ -182,7 +219,7 @@ export const QuizNumContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #91C1FA;
+  background-color: #91c1fa;
 `;
 
 export const QuizNum = styled.div`
@@ -214,6 +251,14 @@ export const Description = styled.div`
   margin-top: 4px;
 `;
 
+export const QuizMainContainer = styled.div`
+  border-radius: 10px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  padding : 0 80px
+`;
 
 export const QuizContainer = styled.div`
   width: 934px;
