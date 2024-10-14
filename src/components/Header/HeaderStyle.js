@@ -47,4 +47,5 @@ export const MemberName =  styled(NavLink)`
   color: #878787;
   margin-left: 20px;
   margin-right: 80px;
+  text-decoration: none;
 `;
