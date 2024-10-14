@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 import Route from "../../assets/image/tutorialRoute.svg";
+
 export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
@@ -80,7 +81,6 @@ export const TutorialExplanation = styled.div`
   padding-top: 12px;
 `;
 
-
 export const TutorialRoute = styled.img.attrs({
   src: Route,
   alt: "Route",
@@ -88,8 +88,8 @@ export const TutorialRoute = styled.img.attrs({
   margin: 0 auto;
   width: 60%;
   padding-top: 32px;
+  cursor: pointer;
 `;
-
 
 export const VerticalContainer = styled.div`
   display: flex;
@@ -99,4 +99,36 @@ export const VerticalContainer = styled.div`
 
 export const Line = styled.div`
   /* border: 5px dashed #999999; */
+`;
+
+export const GrapesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+`;
+
+export const TutorialCard = styled.div`
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+`;
+
+export const ContentText = styled.div`
+  font-weight: normal;
+  font-size: 18px;
+  margin-top: 20px;
+`;
+
+export const TimeText = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  color: #575757;
+  margin-top: 8px;
 `;
