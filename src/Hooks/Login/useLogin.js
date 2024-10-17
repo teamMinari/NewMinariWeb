@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CONFIG from "../../config/config.json";
 
 const useLogin = () => {
   const [loading, setLoading] = useState(false);
@@ -11,7 +12,7 @@ const useLogin = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post("https://cheongfordo.kr/member/login", {
+      const response = await axios.post(`${CONFIG.serverUrl}/member/login`, {
         id,
         password,
       });

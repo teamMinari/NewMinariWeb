@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CONFIG from "../../config/config.json";
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
@@ -31,7 +32,7 @@ const useSignup = () => {
     try {
       console.log("Sending request to the server...");
       const response = await axios.post(
-        "https://cheongfordo.kr/member/register",
+        `${CONFIG.serverUrl}/member/register`,
         { email, id, password, confirmPassword }
       );
 

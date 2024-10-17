@@ -4,6 +4,7 @@ import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CONFIG from "../../config/config.json";
 import "./ModalStyle.css";
 
 const Profile = () => {
@@ -11,7 +12,6 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const navigate = useNavigate();
-
   useEffect(() => {
     const fetchUserData = async () => {
       const storedToken = localStorage.getItem("accessToken");
@@ -21,14 +21,11 @@ const Profile = () => {
         return;
       }
       try {
-        const response = await axios.get(
-          "https://cheongfordo.kr/member/profile",
-          {
-            headers: {
-              Authorization: `Bearer ${storedToken}`,
-            },
-          }
-        );
+        const response = await axios.get(`${CONFIG.serverUrl}/member/profile`, {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        });
         setUserData(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
