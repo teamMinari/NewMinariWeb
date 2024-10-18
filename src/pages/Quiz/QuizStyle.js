@@ -21,6 +21,13 @@ export const TestContainer = styled.div`
   gap: 1.5rem;
 `;
 
+export const TopBanner = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 1.5rem;
+`;
+
 export const MiniTxt = styled.div`
   font-size: 16px;
   color: #6B6B6B;
@@ -176,15 +183,9 @@ export const PageContent = styled.div`
   z-index: 2;
 `;
 export const SplineContainer = styled.div`
-  height: 875px;
-  width: 1500px;
-  position: absolute;
-  z-index: 3;
-  canvas {
-    z-index: 3;
-  }
-  margin-top: -120px;
-  align-items: center;
+  width: 250px;
+  margin-right: 7vw;
+  margin-top: 1.5vw;
 `;
 
 export const FitContainer = styled.div`
