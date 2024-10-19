@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import CONFIG from "../../config/config.json";
+import * as gvar from "../../common/global_variables"
 import "./ModalStyle.css";
 
 const Profile = () => {
@@ -21,7 +21,7 @@ const Profile = () => {
         return;
       }
       try {
-        const response = await axios.get(`${CONFIG.serverUrl}/member/profile`, {
+        const response = await axios.get(`${gvar.SERVER_URL}/member/profile`, {
           headers: {
             Authorization: `Bearer ${storedToken}`,
           },

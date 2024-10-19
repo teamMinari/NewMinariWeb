@@ -3,11 +3,12 @@ import { NotionAPI } from 'notion-client';
 import express  from 'express';
 import request from 'request';
 import cors from 'cors';
+import * as gvar from "./src/common/global_variables.js";
 
 const app = express();
 
-const client_id = '069DAvm7A9WRXrhkh8SS';
-const client_secret = 'sUeEviNvPN';
+const client_id = gvar.NAVER_CLIENT_ID;
+const client_secret = gvar.NAVER_CLIENT_SECRET;
 // 
 app.use(cors());
 const notion = new NotionAPI();

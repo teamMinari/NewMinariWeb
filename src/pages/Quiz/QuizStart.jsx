@@ -5,6 +5,8 @@ import * as M from "./QuizStyle";
 import Masonry from "react-masonry-css";
 import Spline from "@splinetool/react-spline";
 
+
+
 const QuizStart = () => {
   const [points, setPoints] = useState(2043);
   var items = [
