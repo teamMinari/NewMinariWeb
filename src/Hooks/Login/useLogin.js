@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import CONFIG from "../../config/config.json";
+import * as gvar from "../../common/global_variables"
 
 const useLogin = () => {
   const [loading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ const useLogin = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post(`${CONFIG.serverUrl}/member/login`, {
+      const response = await axios.post(`${gvar.SERVER_URL}/member/login`, {
         id,
         password,
       });

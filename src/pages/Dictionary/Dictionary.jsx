@@ -5,7 +5,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Term from "../../components/Term/Term";
 import axios from "axios";
-import CONFIG from "../../config/config.json";
+import * as gvar from "../../common/global_variables"
 
 const Dictionary = () => {
   const [terms, setTerms] = useState([]);
@@ -21,7 +21,7 @@ const Dictionary = () => {
         }
 
         const response = await axios.get(
-          `${CONFIG.serverUrl}/terms`,
+          `${gvar.SERVER_URL}/terms`,
           {
             params: { page, size },
             headers: {

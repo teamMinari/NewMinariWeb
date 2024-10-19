@@ -5,6 +5,7 @@ import LoginBanner from "../../assets/image/Group 1544.svg";
 import { useNavigate } from "react-router-dom";
 import useSignup from "../../Hooks/Signup/useSignup";
 
+
 const Signup = () => {
   const navigate = useNavigate();
   const { signupUser, loading, error, successMessage } = useSignup();
