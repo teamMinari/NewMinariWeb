@@ -90,7 +90,11 @@ const Tutoirial = () => {
             </M.FirstTutorial>
             <Tip />
           </M.VerticalContainer>
-          <M.GrapesContainer>
+          <M.GrapesContainer
+            onClick={() => {
+              navigate("/grapes");
+            }}
+          >
             {tutorialData.map((tutorial) => (
               <M.TutorialCard key={tutorial.gpsId}>
                 <M.TutorialTitle>{tutorial.gpsName}</M.TutorialTitle>
@@ -100,7 +104,10 @@ const Tutoirial = () => {
                   좋아요: {tutorial.gpsLike ? "YES" : "NO"}
                 </M.ContentText>
                 <M.ContentText>
-                  유형: {tutorial.gpTpList.join(", ")}
+                  연령대: {tutorial.gpsAgeGroup || "데이터 없음"}
+                </M.ContentText>
+                <M.ContentText>
+                  직업: {tutorial.gpsWork || "데이터 없음"}
                 </M.ContentText>
               </M.TutorialCard>
             ))}
