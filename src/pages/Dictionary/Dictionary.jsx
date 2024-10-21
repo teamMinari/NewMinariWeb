@@ -5,30 +5,29 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Term from "../../components/Term/Term";
 import axios from "axios";
-import * as gvar from "../../common/global_variables"
+import * as gvar from "../../common/global_variables";
 
 const Dictionary = () => {
   const [terms, setTerms] = useState([]);
   const [filteredTerms, setFilteredTerms] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 상태 추가
+  const [termsPerPage] = useState(13); // 페이지당 용어 개수 설정
   const token = String(localStorage.getItem("accessToken"));
 
   useEffect(() => {
-    const fetchTerms = async (page = 0, size = 20) => {
+    const fetchTerms = async (page = 0, size = 300) => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         if (!accessToken) {
           throw new Error("인증 토큰이 없습니다.");
         }
 
-        const response = await axios.get(
-          `${gvar.SERVER_URL}/terms`,
-          {
-            params: { page, size },
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
+        const response = await axios.get(`${gvar.SERVER_URL}/terms`, {
+          params: { page, size },
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
 
         if (response.data.data.length > 0) {
           const formattedTerms = response.data.data.map((term) => ({
@@ -39,10 +38,7 @@ const Dictionary = () => {
           setTerms(formattedTerms);
           setFilteredTerms(formattedTerms);
         } else {
-          console.error(
-            "용어 목록을 가져오지 못했습니다:",
-            response.data.message
-          );
+          console.error("용어 목록을 가져오지 못했습니다:", response.data.message);
         }
       } catch (error) {
         console.error("용어를 가져오는 중 오류 발생:", error);
@@ -52,8 +48,6 @@ const Dictionary = () => {
     fetchTerms();
   }, []);
 
-  // const [filteredTerms, setFilteredTerms] = useState(terms);
-  // const [selectedTag, setSelectedTag] = useState(null);
   const [selectedTxt, setSelectedTxt] = useState("가나다순");
   const [maxChars, setMaxChars] = useState(60);
 
@@ -62,6 +56,7 @@ const Dictionary = () => {
       term.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredTerms(filtered);
+    setCurrentPage(0); // 검색 시 현재 페이지를 0으로 리셋
   };
 
   const handleTxtClick = (txt) => {
@@ -74,12 +69,22 @@ const Dictionary = () => {
       return 0;
     });
     setFilteredTerms(sortedTerms);
-    setSelectedTxt(txt)
+    setSelectedTxt(txt);
+    setCurrentPage(0); // 정렬 시 현재 페이지를 0으로 리셋
   };
 
   const renderExplanation = (text) => {
     return text.length > maxChars ? text.slice(0, maxChars) + "..." : text;
   };
+
+  // 현재 페이지의 용어 목록을 가져오는 함수
+  const currentTerms = filteredTerms.slice(
+    currentPage * termsPerPage,
+    (currentPage + 1) * termsPerPage
+  );
+
+  // 총 페이지 수 계산
+  const totalPages = Math.ceil(filteredTerms.length / termsPerPage);
 
   return (
     <React.Fragment>
@@ -108,8 +113,8 @@ const Dictionary = () => {
                   • 최신순
                 </M.TextSort>
               </M.TextContainer>
-              {filteredTerms.length > 0 ? (
-                filteredTerms.map((term, index) => (
+              {currentTerms.length > 0 ? (
+                currentTerms.map((term, index) => (
                   <Term
                     key={index}
                     title={term.title}
@@ -120,6 +125,22 @@ const Dictionary = () => {
               ) : (
                 <M.NoTermsFound>용어를 찾을 수 없습니다.</M.NoTermsFound>
               )}
+              {/* 페이지네이션 버튼 추가 */}
+              <M.PaginationContainer>
+                <M.PaginationButton
+                  disabled={currentPage === 0}
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                >
+                  이전
+                </M.PaginationButton>
+                <span>{`${currentPage + 1} / ${totalPages}`}</span>
+                <M.PaginationButton
+                  disabled={currentPage === totalPages - 1}
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                >
+                  다음
+                </M.PaginationButton>
+              </M.PaginationContainer>
             </M.DictionaryContainer>
           </M.CenteredContent>
         </M.MainContent>

@@ -44,7 +44,7 @@ margin-top: 32px;
 
 export const DictionaryContainer = styled.div`
   width: 934px;
-  height: 1480px;
+  height: 1520px;
   background-color: #ffffff;
   border-radius: 10px;
   margin-top: 32px;
@@ -75,4 +75,32 @@ export const TextSort = styled.div`
     css`
       color: #000000;
     `}
+`;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+`;
+
+export const PaginationButton = styled.button`
+  background-color: #84BCFF;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  &:hover:not(:disabled) {
+    background-color: #458EE4;
+  }
 `;
