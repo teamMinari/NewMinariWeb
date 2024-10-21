@@ -1,3 +1,4 @@
+// Styled Components
 import styled, { createGlobalStyle, css } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
@@ -10,7 +11,6 @@ export const GlobalStyles = createGlobalStyle`
     background-color: #F5F6FA;
   }
 `;
-
 
 export const PageContent = styled.div`
   display: flex;
@@ -39,23 +39,24 @@ export const CenteredContent = styled.div`
 `;
 
 export const SearchBarContainer = styled.div`
-margin-top: 32px;
-`
+  margin-top: 40px;
+`;
 
 export const DictionaryContainer = styled.div`
   width: 934px;
   height: 1520px;
   background-color: #ffffff;
   border-radius: 10px;
-  margin-top: 32px;
+  margin-top: 28px;
   margin-bottom: 80px;
 `;
 
 export const PageText = styled.div`
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   margin-left: 40px;
-  margin-top: 32px;
+  margin-top: 24px;
+  margin-bottom: 12px;
 `;
 
 export const TextContainer = styled.div`
@@ -103,4 +104,35 @@ export const PaginationButton = styled.button`
   &:hover:not(:disabled) {
     background-color: #458EE4;
   }
+`;
+
+export const RecommendWords = styled.div`
+  width: 934px; 
+  height: 166px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin-top: 32px;
+`;
+
+export const BtnContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0 35px;
+  margin-bottom: 20px;
+  margin-left: 4px;
+`;
+
+export const WordsBtn = styled.button`
+  padding: 0 20px;
+  height: 35px;
+  border-radius: 24px;
+  background-color: ${(props) => props.bgColor || "#91C1FA"};
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

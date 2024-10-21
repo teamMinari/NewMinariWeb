@@ -20,16 +20,14 @@ const SideBar = () => {
             <M.HomeMenu>홈</M.HomeMenu>
           </M.HomeContainer>
           <M.DictionaryContainer
-            onClick={() => navigate("/dictionarymain")}
+            onClick={() => navigate("/dictionary")}
             isActive={isActive([
-              "/dictionarymain",
               "/dictionary",
               "/termmeaning",
             ])}
           >
             <M.DictionaryImg
               isActive={isActive([
-                "/dictionarymain",
                 "/dictionary",
                 "/termmeaning",
               ])}

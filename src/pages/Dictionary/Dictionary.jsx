@@ -10,8 +10,8 @@ import * as gvar from "../../common/global_variables";
 const Dictionary = () => {
   const [terms, setTerms] = useState([]);
   const [filteredTerms, setFilteredTerms] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 상태 추가
-  const [termsPerPage] = useState(13); // 페이지당 용어 개수 설정
+  const [currentPage, setCurrentPage] = useState(0);
+  const [termsPerPage] = useState(13);
   const token = String(localStorage.getItem("accessToken"));
 
   useEffect(() => {
@@ -38,7 +38,10 @@ const Dictionary = () => {
           setTerms(formattedTerms);
           setFilteredTerms(formattedTerms);
         } else {
-          console.error("용어 목록을 가져오지 못했습니다:", response.data.message);
+          console.error(
+            "용어 목록을 가져오지 못했습니다:",
+            response.data.message
+          );
         }
       } catch (error) {
         console.error("용어를 가져오는 중 오류 발생:", error);
@@ -56,7 +59,7 @@ const Dictionary = () => {
       term.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredTerms(filtered);
-    setCurrentPage(0); // 검색 시 현재 페이지를 0으로 리셋
+    setCurrentPage(0);
   };
 
   const handleTxtClick = (txt) => {
@@ -70,7 +73,7 @@ const Dictionary = () => {
     });
     setFilteredTerms(sortedTerms);
     setSelectedTxt(txt);
-    setCurrentPage(0); // 정렬 시 현재 페이지를 0으로 리셋
+    setCurrentPage(0);
   };
 
   const renderExplanation = (text) => {
@@ -83,7 +86,6 @@ const Dictionary = () => {
     (currentPage + 1) * termsPerPage
   );
 
-  // 총 페이지 수 계산
   const totalPages = Math.ceil(filteredTerms.length / termsPerPage);
 
   return (
@@ -97,6 +99,23 @@ const Dictionary = () => {
             <M.SearchBarContainer>
               <SearchBar onSearch={handleSearch} />
             </M.SearchBarContainer>
+            <M.RecommendWords>
+              <M.PageText>오늘의 경제 단어</M.PageText>
+              <M.BtnContainer>
+                <M.WordsBtn bgColor="#91C1FA">주택담보대출</M.WordsBtn>
+                <M.WordsBtn bgColor="#F6A6B8">서비스수지</M.WordsBtn>
+                <M.WordsBtn bgColor="#66D1A2">내부자금</M.WordsBtn>
+                <M.WordsBtn bgColor="#B1A1F1">가계부실위험지수</M.WordsBtn>
+                <M.WordsBtn bgColor="#FA9C92">금융안정지수</M.WordsBtn>
+                <M.WordsBtn bgColor="#F6A6B8">핀테크</M.WordsBtn>
+                <M.WordsBtn bgColor="#FA9C92">금융안정지수</M.WordsBtn>
+                <M.WordsBtn bgColor="#66D1A2">환율조작국</M.WordsBtn>
+                <M.WordsBtn bgColor="#91C1FA">주택담보대출</M.WordsBtn>
+                <M.WordsBtn bgColor="#B1A1F1">가계부실위험지수</M.WordsBtn>
+                <M.WordsBtn bgColor="#F6A6B8">서비스수지</M.WordsBtn>
+                <M.WordsBtn bgColor="#F6A6B8">실망실업자</M.WordsBtn>
+              </M.BtnContainer>
+            </M.RecommendWords>
             <M.DictionaryContainer>
               <M.PageText>경제 용어</M.PageText>
               <M.TextContainer>
@@ -125,7 +144,6 @@ const Dictionary = () => {
               ) : (
                 <M.NoTermsFound>용어를 찾을 수 없습니다.</M.NoTermsFound>
               )}
-              {/* 페이지네이션 버튼 추가 */}
               <M.PaginationContainer>
                 <M.PaginationButton
                   disabled={currentPage === 0}
