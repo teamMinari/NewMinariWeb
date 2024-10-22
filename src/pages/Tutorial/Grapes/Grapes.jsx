@@ -9,7 +9,7 @@ const Grapes = () => {
   const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const gpsId = 1;
+  const gpsId = 8;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,6 +46,34 @@ const Grapes = () => {
     fetchData();
   }, []);
 
+  const convertWorkToKorean = (workCode) => {
+    switch (workCode) {
+      case "MEMBEROFSOCIETY":
+        return "사회 초년생";
+      case "OFFICIAL":
+        return "공무원";
+      case "EMPLOYEE":
+        return "회사원";
+      case "BUSINESSMAN":
+        return "사업가";
+      default:
+        return "기타";
+    }
+  };
+
+  const convertAgeGroupToKorean = (ageGroup) => {
+    switch (ageGroup) {
+      case "TEENS":
+        return "10대";
+      case "TWENTIES":
+        return "20대";
+      case "THIRTIES":
+        return "30대";
+      default:
+        return ageGroup;
+    }
+  };
+
   return (
     <React.Fragment>
       <Header />
@@ -54,7 +82,6 @@ const Grapes = () => {
         <M.MainContent>
           <M.CenteredContent>
             <M.GrapesContainer>
-              {error && <M.ErrorMessage>{error}</M.ErrorMessage>}
               {data ? (
                 <M.DataContainer>
                   <M.ContentContainer>
@@ -70,9 +97,13 @@ const Grapes = () => {
                       <M.TagsContainer>
                         {data.gpsWork || data.gpsAgeGroup ? (
                           <>
-                            {data.gpsWork && <M.Tag>{data.gpsWork}</M.Tag>}
+                            {data.gpsWork && (
+                              <M.Tag>{convertWorkToKorean(data.gpsWork)}</M.Tag>
+                            )}
                             {data.gpsAgeGroup && (
-                              <M.Tag>{data.gpsAgeGroup}</M.Tag>
+                              <M.Tag>
+                                {convertAgeGroupToKorean(data.gpsAgeGroup)}
+                              </M.Tag>
                             )}
                           </>
                         ) : (
@@ -82,15 +113,12 @@ const Grapes = () => {
                       <M.GrapeExplanation>{data.gpsContent}</M.GrapeExplanation>
                     </M.TextContainer>
                   </M.ContentContainer>
+                  <M.NextBtn>다음 {">"}</M.NextBtn>
                 </M.DataContainer>
               ) : (
                 <M.LoadingMessage>로딩 중...</M.LoadingMessage>
               )}
-              {/* GrapeContainer 추가 */}
-              <M.GrapeContainer>
-                {/* 여기에 GrapeContainer의 내용 추가 가능 */}
-                {/* 예: <p>추가 내용</p> */}
-              </M.GrapeContainer>
+              <M.GrapeContainer></M.GrapeContainer>
             </M.GrapesContainer>
           </M.CenteredContent>
         </M.MainContent>

@@ -21,9 +21,9 @@ export const PageContent = styled.div`
 export const MainContent = styled.div`
   background-color: #f5f6fa;
   display: flex;
-  align-items: center;
   justify-content: center;
   width: 100%;
+  padding-top: 48px;
 `;
 
 export const CenteredContent = styled.div`
@@ -58,16 +58,16 @@ export const StyledLink = styled.a`
 `;
 
 export const NextBtn = styled.button`
-  width: 100px;
-  height: 45px;
+  width: 72px;
+  height: 34px;
   background-color: #1f6ad9;
   border: none;
   border-radius: 5px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   color: #fff;
-  margin-top: 10px;
-  margin-left: 220px;
+  margin-top: 24px;
+  margin-left: 256px;
   cursor: pointer;
 `;
 
@@ -130,12 +130,12 @@ export const GrapeImg = styled.img.attrs({
   width: 108px;
   position: relative;
   z-index: 1;
-  margin-left: 32px;
+  margin-left: 62px;
 `;
 
 export const GrapeContainer = styled.div`
   width: 820px;
-  height: 255px;
+  height: 455px;
   background-color: #ffffff;
   border-radius: 10px;
   display: flex;

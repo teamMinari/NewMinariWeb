@@ -62,3 +62,13 @@ export const DifficultyContainer = styled.div`
   margin-left: 10px;
   margin-top: 8px;
 `;
+
+
+// export const DifficultyLevel = styled.span`
+//   background-color: ${({ difficulty }) => 
+//     difficulty === "쉬움" ? "#66D1A2" : difficulty === "보통" ? "#FA9C92" : "#F6A6B8"};
+//   color: white;
+//   border-radius: 4px;
+//   padding: 2px 4px;
+//   font-size: 0.9rem;
+// `;

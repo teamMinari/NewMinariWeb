@@ -7,6 +7,7 @@ import Term from "../../components/Term/Term";
 import axios from "axios";
 import * as gvar from "../../common/global_variables";
 import Spinner from '../Home/Spinner';
+import { useNavigate } from "react-router-dom"; // react-router-dom 추가
 
 const Dictionary = () => {
   const [terms, setTerms] = useState([]);
@@ -14,9 +15,10 @@ const Dictionary = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [termsPerPage] = useState(13);
   const token = String(localStorage.getItem("accessToken"));
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   useEffect(() => {
-    const fetchTerms = async (page = 0, size = 300) => {
+    const fetchTerms = async (page = 0, size = 400) => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         if (!accessToken) {
@@ -89,6 +91,11 @@ const Dictionary = () => {
 
   const totalPages = Math.ceil(filteredTerms.length / termsPerPage);
 
+  const handleTermClick = (term) => {
+    // 용어 클릭 시 TermMeaning으로 네비게이션
+    navigate(`/term-meaning`, { state: { term } });
+  };
+
   return (
     <React.Fragment>
       <Header />
@@ -140,6 +147,7 @@ const Dictionary = () => {
                     title={term.title}
                     explanation={renderExplanation(term.explanation)}
                     difficulty={term.difficulty}
+                    onClick={() => handleTermClick(term)} // 클릭 이벤트 핸들러 추가
                   />
                 ))
               ) : (
