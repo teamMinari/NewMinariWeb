@@ -6,6 +6,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import Term from "../../components/Term/Term";
 import axios from "axios";
 import * as gvar from "../../common/global_variables";
+import Spinner from '../Home/Spinner';
 
 const Dictionary = () => {
   const [terms, setTerms] = useState([]);
@@ -142,7 +143,7 @@ const Dictionary = () => {
                   />
                 ))
               ) : (
-                <M.NoTermsFound>용어를 찾을 수 없습니다.</M.NoTermsFound>
+                <Spinner/>
               )}
               <M.PaginationContainer>
                 <M.PaginationButton
