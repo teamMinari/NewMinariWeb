@@ -6,8 +6,8 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import Term from "../../components/Term/Term";
 import axios from "axios";
 import * as gvar from "../../common/global_variables";
-import Spinner from "../Home/Spinner";
-import { useNavigate } from "react-router-dom";
+import Spinner from '../Home/Spinner';
+import { useNavigate } from "react-router-dom"; // react-router-dom 추가
 
 const Dictionary = () => {
   const [terms, setTerms] = useState([]);
@@ -15,7 +15,7 @@ const Dictionary = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [termsPerPage] = useState(13);
   const token = String(localStorage.getItem("accessToken"));
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // useNavigate 훅 사용
 
   useEffect(() => {
     const fetchTerms = async (page = 0, size = 400) => {
@@ -83,6 +83,7 @@ const Dictionary = () => {
     return text.length > maxChars ? text.slice(0, maxChars) + "..." : text;
   };
 
+  // 현재 페이지의 용어 목록을 가져오는 함수
   const currentTerms = filteredTerms.slice(
     currentPage * termsPerPage,
     (currentPage + 1) * termsPerPage
@@ -91,7 +92,8 @@ const Dictionary = () => {
   const totalPages = Math.ceil(filteredTerms.length / termsPerPage);
 
   const handleTermClick = (term) => {
-    navigate("/termmeaning", { state: { term } });
+    // 용어 클릭 시 TermMeaning으로 네비게이션
+    navigate(`/term-meaning`, { state: { term } });
   };
 
   return (
@@ -141,15 +143,14 @@ const Dictionary = () => {
               {currentTerms.length > 0 ? (
                 currentTerms.map((term, index) => (
                   <Term
-                    key={index}
                     title={term.title}
                     explanation={renderExplanation(term.explanation)}
                     difficulty={term.difficulty}
-                    onClick={() => handleTermClick(term)}
+                    onClick={() => handleTermClick(term)} // 클릭 이벤트 핸들러 추가
                   />
                 ))
               ) : (
-                <Spinner />
+                <Spinner/>
               )}
               <M.PaginationContainer>
                 <M.PaginationButton
