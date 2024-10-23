@@ -96,7 +96,9 @@ const GrapeSeed = () => {
                     <br />
                   </div>
                 )}
-                <Editer />
+                <M.EditorContainer>
+                  <Editer />
+                </M.EditorContainer>
                 <M.NextBtn onClick={() => navigate("/grapeseed")}>
                   다음으로 {">"}
                 </M.NextBtn>
