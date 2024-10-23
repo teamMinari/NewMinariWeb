@@ -116,3 +116,7 @@ export const NextBtn = styled.button`
   margin-bottom: 200px;
   cursor: pointer;
 `;
+
+export const EditorContainer = styled.div`
+  margin-top: 40px;
+`;

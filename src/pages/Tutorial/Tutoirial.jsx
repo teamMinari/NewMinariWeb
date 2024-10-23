@@ -48,6 +48,34 @@ const Tutoirial = () => {
     fetchTutorialData();
   }, []);
 
+  const convertWorkToKorean = (workCode) => {
+    switch (workCode) {
+      case "MEMBEROFSOCIETY":
+        return "사회 초년생";
+      case "OFFICIAL":
+        return "공무원";
+      case "EMPLOYEE":
+        return "회사원";
+      case "BUSINESSMAN":
+        return "사업가";
+      default:
+        return "기타";
+    }
+  };
+
+  const convertAgeGroupToKorean = (ageGroup) => {
+    switch (ageGroup) {
+      case "TEENS":
+        return "10대";
+      case "TWENTIES":
+        return "20대";
+      case "THIRTIES":
+        return "30대";
+      default:
+        return ageGroup;
+    }
+  };
+
   if (loading) {
     return <div>로딩 중...</div>;
   }
@@ -97,18 +125,27 @@ const Tutoirial = () => {
           >
             {tutorialData.map((tutorial) => (
               <M.TutorialCard key={tutorial.gpsId}>
-                <M.TutorialTitle>{tutorial.gpsName}</M.TutorialTitle>
-                <M.ContentText>{tutorial.gpsContent}</M.ContentText>
-                <M.TimeText>시간: {tutorial.gpsTime}분</M.TimeText>
-                <M.ContentText>
-                  좋아요: {tutorial.gpsLike ? "YES" : "NO"}
-                </M.ContentText>
-                <M.ContentText>
-                  연령대: {tutorial.gpsAgeGroup || "데이터 없음"}
-                </M.ContentText>
-                <M.ContentText>
-                  직업: {tutorial.gpsWork || "데이터 없음"}
-                </M.ContentText>
+                <M.TextContainer>
+                  <M.TutorialTitle>{tutorial.gpsName}</M.TutorialTitle>
+                  <M.ContentText>{tutorial.gpsContent}</M.ContentText>
+                  <M.TimeText>{tutorial.gpsTime}분</M.TimeText>
+                  <M.TagsContainer>
+                    {tutorial.gpsWork || tutorial.gpsAgeGroup ? (
+                      <>
+                        {tutorial.gpsWork && (
+                          <M.Tag>{convertWorkToKorean(tutorial.gpsWork)}</M.Tag>
+                        )}
+                        {tutorial.gpsAgeGroup && (
+                          <M.Tag>
+                            {convertAgeGroupToKorean(tutorial.gpsAgeGroup)}
+                          </M.Tag>
+                        )}
+                      </>
+                    ) : (
+                      <M.Tag>태그 없음</M.Tag>
+                    )}
+                  </M.TagsContainer>
+                </M.TextContainer>
               </M.TutorialCard>
             ))}
           </M.GrapesContainer>
