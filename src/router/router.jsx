@@ -13,12 +13,10 @@ import WordsList from "../pages/Profile/WordsList";
 import Quiz from "../pages/Quiz/Quiz";
 import QuizStart from "../pages/Quiz/QuizStart";
 import GrapeSeed from "../pages/Tutorial/GrapeSeed";
-import DictionaryMain from "../pages/Dictionary/DictionaryMain";
 import Tutoirial from "../pages/Tutorial/Tutoirial";
 import NewNotion from "../pages/Tutorial/NewNotion";
 import Grapes from "../pages/Tutorial/Grapes/Grapes";
 import InputTutorial from "../pages/InputTurorial/InputTurorial";
-
 
 const AppRouter = ({ openModal, closeModal, isOpen }) => {
   return (
@@ -27,12 +25,20 @@ const AppRouter = ({ openModal, closeModal, isOpen }) => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/dictionarymain" element={<DictionaryMain />} />
         <Route path="/dictionary" element={<Dictionary />} />
         <Route path="/searchbar" element={<SearchBar />} />
         <Route path="/termmeaning" element={<TermMeaning />} />
         <Route path="/news" element={<News query={"경제"} />} />
-        <Route path="/termmeaning" element={<TermMeaning openModal={openModal} closeModal={closeModal} isOpen={isOpen} />} />
+        <Route
+          path="/termmeaning"
+          element={
+            <TermMeaning
+              openModal={openModal}
+              closeModal={closeModal}
+              isOpen={isOpen}
+            />
+          }
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/mywords" element={<MyWords />} />
         <Route path="/wordslist" element={<WordsList />} />

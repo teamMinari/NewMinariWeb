@@ -72,7 +72,7 @@ export const TextContainer = styled.div`
 export const TutorialTitle = styled.div`
   font-size: 18px;
   font-weight: 700;
-  padding-top: 28px;
+  padding-top: 24px;
 `;
 
 export const TutorialExplanation = styled.div`
@@ -110,7 +110,7 @@ export const GrapesContainer = styled.div`
 export const TutorialCard = styled.div`
   background: #fff;
   border-radius: 8px;
-  padding: 15px;
+  padding-bottom: 24px;
   margin: 10px 0;
   transition: box-shadow 0.3s ease;
 
@@ -131,4 +131,19 @@ export const TimeText = styled.div`
   font-size: 16px;
   color: #575757;
   margin-top: 8px;
+`;
+
+
+export const TagsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+export const Tag = styled.span`
+  background-color: #9597b6;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 0px;
 `;

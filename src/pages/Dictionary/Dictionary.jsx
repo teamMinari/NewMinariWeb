@@ -5,30 +5,32 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Term from "../../components/Term/Term";
 import axios from "axios";
-import * as gvar from "../../common/global_variables"
+import * as gvar from "../../common/global_variables";
+import Spinner from "../Home/Spinner";
+import { useNavigate } from "react-router-dom";
 
 const Dictionary = () => {
   const [terms, setTerms] = useState([]);
   const [filteredTerms, setFilteredTerms] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [termsPerPage] = useState(13);
   const token = String(localStorage.getItem("accessToken"));
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchTerms = async (page = 0, size = 20) => {
+    const fetchTerms = async (page = 0, size = 400) => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         if (!accessToken) {
           throw new Error("인증 토큰이 없습니다.");
         }
 
-        const response = await axios.get(
-          `${gvar.SERVER_URL}/terms`,
-          {
-            params: { page, size },
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
+        const response = await axios.get(`${gvar.SERVER_URL}/terms`, {
+          params: { page, size },
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
 
         if (response.data.data.length > 0) {
           const formattedTerms = response.data.data.map((term) => ({
@@ -52,8 +54,6 @@ const Dictionary = () => {
     fetchTerms();
   }, []);
 
-  // const [filteredTerms, setFilteredTerms] = useState(terms);
-  // const [selectedTag, setSelectedTag] = useState(null);
   const [selectedTxt, setSelectedTxt] = useState("가나다순");
   const [maxChars, setMaxChars] = useState(60);
 
@@ -62,6 +62,7 @@ const Dictionary = () => {
       term.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredTerms(filtered);
+    setCurrentPage(0);
   };
 
   const handleTxtClick = (txt) => {
@@ -74,11 +75,23 @@ const Dictionary = () => {
       return 0;
     });
     setFilteredTerms(sortedTerms);
-    setSelectedTxt(txt)
+    setSelectedTxt(txt);
+    setCurrentPage(0);
   };
 
   const renderExplanation = (text) => {
     return text.length > maxChars ? text.slice(0, maxChars) + "..." : text;
+  };
+
+  const currentTerms = filteredTerms.slice(
+    currentPage * termsPerPage,
+    (currentPage + 1) * termsPerPage
+  );
+
+  const totalPages = Math.ceil(filteredTerms.length / termsPerPage);
+
+  const handleTermClick = (term) => {
+    navigate("/termmeaning", { state: { term } });
   };
 
   return (
@@ -92,6 +105,23 @@ const Dictionary = () => {
             <M.SearchBarContainer>
               <SearchBar onSearch={handleSearch} />
             </M.SearchBarContainer>
+            <M.RecommendWords>
+              <M.PageText>오늘의 경제 단어</M.PageText>
+              <M.BtnContainer>
+                <M.WordsBtn bgColor="#91C1FA">주택담보대출</M.WordsBtn>
+                <M.WordsBtn bgColor="#F6A6B8">서비스수지</M.WordsBtn>
+                <M.WordsBtn bgColor="#66D1A2">내부자금</M.WordsBtn>
+                <M.WordsBtn bgColor="#B1A1F1">가계부실위험지수</M.WordsBtn>
+                <M.WordsBtn bgColor="#FA9C92">금융안정지수</M.WordsBtn>
+                <M.WordsBtn bgColor="#F6A6B8">핀테크</M.WordsBtn>
+                <M.WordsBtn bgColor="#FA9C92">금융안정지수</M.WordsBtn>
+                <M.WordsBtn bgColor="#66D1A2">환율조작국</M.WordsBtn>
+                <M.WordsBtn bgColor="#91C1FA">주택담보대출</M.WordsBtn>
+                <M.WordsBtn bgColor="#B1A1F1">가계부실위험지수</M.WordsBtn>
+                <M.WordsBtn bgColor="#F6A6B8">서비스수지</M.WordsBtn>
+                <M.WordsBtn bgColor="#F6A6B8">실망실업자</M.WordsBtn>
+              </M.BtnContainer>
+            </M.RecommendWords>
             <M.DictionaryContainer>
               <M.PageText>경제 용어</M.PageText>
               <M.TextContainer>
@@ -108,18 +138,34 @@ const Dictionary = () => {
                   • 최신순
                 </M.TextSort>
               </M.TextContainer>
-              {filteredTerms.length > 0 ? (
-                filteredTerms.map((term, index) => (
+              {currentTerms.length > 0 ? (
+                currentTerms.map((term, index) => (
                   <Term
                     key={index}
                     title={term.title}
                     explanation={renderExplanation(term.explanation)}
                     difficulty={term.difficulty}
+                    onClick={() => handleTermClick(term)}
                   />
                 ))
               ) : (
-                <M.NoTermsFound>용어를 찾을 수 없습니다.</M.NoTermsFound>
+                <Spinner />
               )}
+              <M.PaginationContainer>
+                <M.PaginationButton
+                  disabled={currentPage === 0}
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                >
+                  이전
+                </M.PaginationButton>
+                <span>{`${currentPage + 1} / ${totalPages}`}</span>
+                <M.PaginationButton
+                  disabled={currentPage === totalPages - 1}
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                >
+                  다음
+                </M.PaginationButton>
+              </M.PaginationContainer>
             </M.DictionaryContainer>
           </M.CenteredContent>
         </M.MainContent>

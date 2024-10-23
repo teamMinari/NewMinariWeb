@@ -102,3 +102,10 @@ export const News = styled.div`
   margin: 35px auto 0;
   overflow: hidden;
 `;
+
+export const TermDifficulty = styled.div`
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+  font-weight: bold;
+`;

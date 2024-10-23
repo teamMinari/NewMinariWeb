@@ -8,8 +8,10 @@ import * as M from "./GrapesStyle";
 const Grapes = () => {
   const navigate = useNavigate();
   const [data, setData] = useState(null);
+  const [grapeData, setGrapeData] = useState([]);
   const [error, setError] = useState(null);
-  const gpsId = 1;
+  const gpsId = 8; // GPS ID
+  const gpId = 9; // Grape ID
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,6 +39,24 @@ const Grapes = () => {
         } else {
           setError(response.data.message);
         }
+
+        // 포도알 데이터 요청
+        const grapeResponse = await axios.get(
+          `https://cheongfordo.kr/gp/${gpId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${storedToken}`,
+            },
+          }
+        );
+
+        console.log("Grape API Response:", grapeResponse.data);
+
+        if (grapeResponse.data.status === 200) {
+          setGrapeData(grapeResponse.data.data);
+        } else {
+          setError(grapeResponse.data.message);
+        }
       } catch (err) {
         console.error("Error fetching data:", err);
         setError("데이터를 가져오는 중 오류가 발생했습니다.");
@@ -46,6 +66,34 @@ const Grapes = () => {
     fetchData();
   }, []);
 
+  const convertWorkToKorean = (workCode) => {
+    switch (workCode) {
+      case "MEMBEROFSOCIETY":
+        return "사회 초년생";
+      case "OFFICIAL":
+        return "공무원";
+      case "EMPLOYEE":
+        return "회사원";
+      case "BUSINESSMAN":
+        return "사업가";
+      default:
+        return "기타";
+    }
+  };
+
+  const convertAgeGroupToKorean = (ageGroup) => {
+    switch (ageGroup) {
+      case "TEENS":
+        return "10대";
+      case "TWENTIES":
+        return "20대";
+      case "THIRTIES":
+        return "30대";
+      default:
+        return ageGroup;
+    }
+  };
+
   return (
     <React.Fragment>
       <Header />
@@ -54,7 +102,6 @@ const Grapes = () => {
         <M.MainContent>
           <M.CenteredContent>
             <M.GrapesContainer>
-              {error && <M.ErrorMessage>{error}</M.ErrorMessage>}
               {data ? (
                 <M.DataContainer>
                   <M.ContentContainer>
@@ -70,9 +117,13 @@ const Grapes = () => {
                       <M.TagsContainer>
                         {data.gpsWork || data.gpsAgeGroup ? (
                           <>
-                            {data.gpsWork && <M.Tag>{data.gpsWork}</M.Tag>}
+                            {data.gpsWork && (
+                              <M.Tag>{convertWorkToKorean(data.gpsWork)}</M.Tag>
+                            )}
                             {data.gpsAgeGroup && (
-                              <M.Tag>{data.gpsAgeGroup}</M.Tag>
+                              <M.Tag>
+                                {convertAgeGroupToKorean(data.gpsAgeGroup)}
+                              </M.Tag>
                             )}
                           </>
                         ) : (
@@ -82,14 +133,97 @@ const Grapes = () => {
                       <M.GrapeExplanation>{data.gpsContent}</M.GrapeExplanation>
                     </M.TextContainer>
                   </M.ContentContainer>
+                  <M.NextBtn onClick={() => navigate("/grapeseed")}>
+                    다음 {">"}
+                  </M.NextBtn>
                 </M.DataContainer>
               ) : (
                 <M.LoadingMessage>로딩 중...</M.LoadingMessage>
               )}
-              {/* GrapeContainer 추가 */}
               <M.GrapeContainer>
-                {/* 여기에 GrapeContainer의 내용 추가 가능 */}
-                {/* 예: <p>추가 내용</p> */}
+                <M.TitleContainer>
+                  <M.DetailGrapeImg />
+                  <M.GrapeTextContainer>
+                    <M.DetailGrapeTitle>
+                      시작하기: 우리가 경제를 배워야하는 이유
+                    </M.DetailGrapeTitle>
+                    <M.DetailGrapeExplanation>
+                      경제를 알아보기 전에 국가에서 실시하는 나이별 경제
+                      제도를...
+                    </M.DetailGrapeExplanation>
+                  </M.GrapeTextContainer>
+                </M.TitleContainer>
+                <M.DetailBtnContainer>
+                  <M.NextBtn onClick={() => navigate("/grapeseed")}>
+                    다음 {">"}
+                  </M.NextBtn>
+                </M.DetailBtnContainer>
+                <M.SequenceContainer>
+                  <M.SequenceText>목차</M.SequenceText>
+                  {grapeData.length > 0 ? (
+                    grapeData.map((grape, index) => (
+                      <M.DataContainer key={grape.gpseId}>
+                        <M.GrapeInfoContainer>
+                          <M.SmallGrapeTitle>{`${index + 1}. ${
+                            grape.gpseNm
+                          }`}</M.SmallGrapeTitle>
+                          <M.Details>
+                            <M.TimeText>{grape.gpseTm}분</M.TimeText>
+                            <M.EndOrNot>
+                              {grape.gpseTF ? "완료" : "미완료"}
+                            </M.EndOrNot>
+                          </M.Details>
+                        </M.GrapeInfoContainer>
+                      </M.DataContainer>
+                    ))
+                  ) : (
+                    <M.LoadingMessage>
+                      포도알 데이터 로딩 중...
+                    </M.LoadingMessage>
+                  )}
+                </M.SequenceContainer>
+              </M.GrapeContainer>
+              <M.GrapeContainer>
+                <M.TitleContainer>
+                  <M.DetailGrapeImg />
+                  <M.GrapeTextContainer>
+                    <M.DetailGrapeTitle>
+                      10대 - 주니어 투자상품 (청소년 주식 계좌)
+                    </M.DetailGrapeTitle>
+                    <M.DetailGrapeExplanation>
+                      주니어 투자 상품이란?
+                    </M.DetailGrapeExplanation>
+                  </M.GrapeTextContainer>
+                </M.TitleContainer>
+                <M.DetailBtnContainer>
+                  <M.NextBtn onClick={() => navigate("/grapeseed")}>
+                    다음 {">"}
+                  </M.NextBtn>
+                </M.DetailBtnContainer>
+                <M.SequenceContainer>
+                  <M.SequenceText>목차</M.SequenceText>
+                  {grapeData.length > 0 ? (
+                    grapeData.map((grape, index) => (
+                      <M.DataContainer key={grape.gpseId}>
+                        <M.GrapeInfoContainer>
+                          <M.SmallGrapeTitle>{`${index + 1}. ${
+                            grape.gpseNm
+                          }`}</M.SmallGrapeTitle>
+                          <M.Details>
+                            <M.TimeText>{grape.gpseTm}분</M.TimeText>
+                            <M.EndOrNot>
+                              {grape.gpseTF ? "완료" : "미완료"}
+                            </M.EndOrNot>
+                          </M.Details>
+                        </M.GrapeInfoContainer>
+                      </M.DataContainer>
+                    ))
+                  ) : (
+                    <M.LoadingMessage>
+                      포도알 데이터 로딩 중...
+                    </M.LoadingMessage>
+                  )}
+                </M.SequenceContainer>
               </M.GrapeContainer>
             </M.GrapesContainer>
           </M.CenteredContent>
