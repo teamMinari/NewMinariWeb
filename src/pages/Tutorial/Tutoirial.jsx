@@ -76,14 +76,6 @@ const Tutoirial = () => {
     }
   };
 
-  if (loading) {
-    return <div>로딩 중...</div>;
-  }
-
-  if (error) {
-    return <div>오류 발생: {error}</div>;
-  }
-
   return (
     <React.Fragment>
       <Header />
