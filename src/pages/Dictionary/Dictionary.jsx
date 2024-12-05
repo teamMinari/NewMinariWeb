@@ -6,16 +6,36 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import Term from "../../components/Term/Term";
 import axios from "axios";
 import * as gvar from "../../common/global_variables";
-import Spinner from '../Home/Spinner';
-import { useNavigate } from "react-router-dom"; // react-router-dom 추가
+import Spinner from "../Home/Spinner";
+import { useNavigate } from "react-router-dom";
 
 const Dictionary = () => {
   const [terms, setTerms] = useState([]);
   const [filteredTerms, setFilteredTerms] = useState([]);
+  const [recommendedTerms, setRecommendedTerms] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [termsPerPage] = useState(13);
-  const token = String(localStorage.getItem("accessToken"));
-  const navigate = useNavigate(); // useNavigate 훅 사용
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const today = new Date().toDateString();
+    const storedDate = localStorage.getItem("lastColorUpdatedDate");
+
+    // 만약 저장된 날짜가 오늘이 아니면 색상 정보를 새로 생성
+    if (storedDate !== today) {
+      const newColors = ["#91C1FA", "#F6A6B8", "#66D1A2", "#B1A1F1", "#FA9C92"];
+      localStorage.setItem("colorScheme", JSON.stringify(newColors));
+      localStorage.setItem("lastColorUpdatedDate", today);
+    }
+  }, []);
+
+  const colors = JSON.parse(localStorage.getItem("colorScheme")) || [
+    "#91C1FA",
+    "#F6A6B8",
+    "#66D1A2",
+    "#B1A1F1",
+    "#FA9C92",
+  ];
 
   useEffect(() => {
     const fetchTerms = async (page = 0, size = 400) => {
@@ -40,6 +60,29 @@ const Dictionary = () => {
           }));
           setTerms(formattedTerms);
           setFilteredTerms(formattedTerms);
+
+          const today = new Date().toDateString();
+          const storedDate = localStorage.getItem("lastUpdatedDate");
+
+          // 오늘 날짜에 추천 용어를 새로 설정
+          if (storedDate !== today) {
+            const shuffled = [...formattedTerms].sort(
+              () => 0.5 - Math.random()
+            );
+            setRecommendedTerms(shuffled.slice(0, 10));
+            localStorage.setItem(
+              "recommendedTerms",
+              JSON.stringify(shuffled.slice(0, 12))
+            );
+            localStorage.setItem("lastUpdatedDate", today);
+          } else {
+            const storedTerms = JSON.parse(
+              localStorage.getItem("recommendedTerms")
+            );
+            if (storedTerms) {
+              setRecommendedTerms(storedTerms);
+            }
+          }
         } else {
           console.error(
             "용어 목록을 가져오지 못했습니다:",
@@ -83,7 +126,6 @@ const Dictionary = () => {
     return text.length > maxChars ? text.slice(0, maxChars) + "..." : text;
   };
 
-  // 현재 페이지의 용어 목록을 가져오는 함수
   const currentTerms = filteredTerms.slice(
     currentPage * termsPerPage,
     (currentPage + 1) * termsPerPage
@@ -92,8 +134,7 @@ const Dictionary = () => {
   const totalPages = Math.ceil(filteredTerms.length / termsPerPage);
 
   const handleTermClick = (term) => {
-    // 용어 클릭 시 TermMeaning으로 네비게이션
-    navigate(`/term-meaning`, { state: { term } });
+    navigate(`/termmeaning`, { state: { term } });
   };
 
   return (
@@ -110,18 +151,16 @@ const Dictionary = () => {
             <M.RecommendWords>
               <M.PageText>오늘의 경제 단어</M.PageText>
               <M.BtnContainer>
-                <M.WordsBtn bgColor="#91C1FA">주택담보대출</M.WordsBtn>
-                <M.WordsBtn bgColor="#F6A6B8">서비스수지</M.WordsBtn>
-                <M.WordsBtn bgColor="#66D1A2">내부자금</M.WordsBtn>
-                <M.WordsBtn bgColor="#B1A1F1">가계부실위험지수</M.WordsBtn>
-                <M.WordsBtn bgColor="#FA9C92">금융안정지수</M.WordsBtn>
-                <M.WordsBtn bgColor="#F6A6B8">핀테크</M.WordsBtn>
-                <M.WordsBtn bgColor="#FA9C92">금융안정지수</M.WordsBtn>
-                <M.WordsBtn bgColor="#66D1A2">환율조작국</M.WordsBtn>
-                <M.WordsBtn bgColor="#91C1FA">주택담보대출</M.WordsBtn>
-                <M.WordsBtn bgColor="#B1A1F1">가계부실위험지수</M.WordsBtn>
-                <M.WordsBtn bgColor="#F6A6B8">서비스수지</M.WordsBtn>
-                <M.WordsBtn bgColor="#F6A6B8">실망실업자</M.WordsBtn>
+                {recommendedTerms.map((term, index) => (
+                  <M.WordsBtn
+                    key={index}
+                    // 버튼 색상은 localStorage에 저장된 색상을 기반으로 고정
+                    bgColor={colors[index % colors.length]}
+                    onClick={() => handleTermClick(term)}
+                  >
+                    {term.title}
+                  </M.WordsBtn>
+                ))}
               </M.BtnContainer>
             </M.RecommendWords>
             <M.DictionaryContainer>
@@ -146,11 +185,11 @@ const Dictionary = () => {
                     title={term.title}
                     explanation={renderExplanation(term.explanation)}
                     difficulty={term.difficulty}
-                    onClick={() => handleTermClick(term)} // 클릭 이벤트 핸들러 추가
+                    onClick={() => handleTermClick(term)}
                   />
                 ))
               ) : (
-                <Spinner/>
+                <Spinner />
               )}
               <M.PaginationContainer>
                 <M.PaginationButton

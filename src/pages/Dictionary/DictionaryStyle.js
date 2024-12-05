@@ -86,7 +86,7 @@ export const PaginationContainer = styled.div`
 `;
 
 export const PaginationButton = styled.button`
-  background-color: #84BCFF;
+  background-color: #84bcff;
   border: none;
   color: white;
   padding: 10px 15px;
@@ -102,12 +102,12 @@ export const PaginationButton = styled.button`
     cursor: not-allowed;
   }
   &:hover:not(:disabled) {
-    background-color: #458EE4;
+    background-color: #458ee4;
   }
 `;
 
 export const RecommendWords = styled.div`
-  width: 934px; 
+  width: 934px;
   height: 166px;
   background-color: #ffffff;
   border-radius: 10px;
