@@ -41,10 +41,11 @@ export const MemberProfile = styled.img`
   width: 37px;
 `;
 
-export const MemberName = styled.div`
+export const MemberName =  styled(NavLink)`
   font-size: 13px;
   font-weight: 600;
   color: #878787;
   margin-left: 20px;
   margin-right: 80px;
+  text-decoration: none;
 `;

@@ -97,9 +97,10 @@ export const CompanyContainerElement = styled.div`
 
 export const MainContent = styled.div`
   display: flex;
+  width: 100%;
+  margin-top: 75px;
   align-items: center;
   justify-content: center;
-  width: 100%;
 `;
 
 export const MainContainer = styled.div`
@@ -108,8 +109,7 @@ export const MainContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(250px,280px)); /* 최소 150px, 최대 1fr로 설정하여 반응형 배치 */
   grid-auto-rows: 15px; /* 기본 행 높이를 10px로 설정 */
   gap: 15px; /* 아이템 사이의 간격 */
-  margin-left: 85px;
-  margin-top: 69px;
+  justify-content: center;
   transition: 0.5s;
   :hover{
     scale: calc(1.02);

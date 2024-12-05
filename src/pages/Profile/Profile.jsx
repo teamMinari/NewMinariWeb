@@ -1,10 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as M from "./ProfileStyle";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import * as gvar from "../../common/global_variables"
+import "./ModalStyle.css";
 
 const Profile = () => {
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const storedToken = localStorage.getItem("accessToken");
+      if (!storedToken) {
+        console.error("Access token is missing");
+        setLoading(false);
+        return;
+      }
+      try {
+        const response = await axios.get(`${gvar.SERVER_URL}/member/profile`, {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        });
+        setUserData(response.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUserData();
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("userId");
+    setUserData(null);
+    setShowLogoutModal(false);
+    navigate("/");
+  };
+
+  const toggleLogoutModal = () => {
+    setShowLogoutModal((prev) => !prev);
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!userData) {
+    return <div>No user data found</div>;
+  }
+
   return (
     <React.Fragment>
       <Header />
@@ -19,17 +70,25 @@ const Profile = () => {
                 <M.ProfileImg />
                 <M.ProfileDetails>
                   <M.IdTextContainer>
-                    <M.IdText>미나리</M.IdText>
-                    <M.Id>(minari123)</M.Id>
+                    <M.Id>{userData.id}</M.Id>
                     <M.ChangeIcon />
                     <M.MoreIcon />
+                    <M.LogoutButton onClick={toggleLogoutModal}>
+                      로그아웃
+                    </M.LogoutButton>
                   </M.IdTextContainer>
                   <M.Category>금융, 글로벌 경제, 채권</M.Category>
                   <M.LevelContainer>
-                    <M.MyLevel />
+                    <progress
+                      className="progress progress-info w-[550px] rounded-[5px]"
+                      value={userData.level}
+                      max="100"
+                    />
                     <M.LevelTextContainer>
-                      <M.LevelRate>8Lv</M.LevelRate>
-                      <M.LevelNum>10/1250</M.LevelNum>
+                      <M.LevelRate>{userData.level}Lv</M.LevelRate>
+                      <M.LevelNum>
+                        {userData.checkLevel}/{userData.totalExp}
+                      </M.LevelNum>
                     </M.LevelTextContainer>
                   </M.LevelContainer>
                 </M.ProfileDetails>
@@ -46,7 +105,7 @@ const Profile = () => {
                   <M.PageText>My 포인트</M.PageText>
                   <M.GotoUse>사용하러 가기</M.GotoUse>
                 </M.TopTextContainer>
-                <M.PointText>2,584P</M.PointText>
+                <M.PointText>{userData.point}P</M.PointText>
               </M.PointContainer>
               <M.MyWordsContainer to="/mywords">
                 <M.PageText>내 단어장</M.PageText>
@@ -66,6 +125,23 @@ const Profile = () => {
           </M.CenteredContent>
         </M.MainContent>
       </M.PageContent>
+      {/* 로그아웃 알림 모달 */}
+      {showLogoutModal && (
+        <div role="alert" className="alert p-4 bg-white rounded-lg shadow-md">
+          <span>로그아웃 하시겠습니까?</span>
+          <div className="my-16">
+            <button
+              className="btn btn-sm mr-2"
+              onClick={() => setShowLogoutModal(false)}
+            >
+              취소
+            </button>
+            <button className="btn btn-sm btn-primary" onClick={handleLogout}>
+              로그아웃
+            </button>
+          </div>
+        </div>
+      )}
     </React.Fragment>
   );
 };

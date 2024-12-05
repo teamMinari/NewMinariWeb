@@ -131,29 +131,6 @@ const Home = () => {
                 </M.LearnBtn>
               </M.GrapeContainer>
             </M.RecommendTutorialContainer>
-            <M.SimpleNewsContainer>
-              <M.PageText>오늘의 경제 관련 기사</M.PageText>
-              <M.SimpleNewsCenterWrapper>
-                <M.NewsContainer>
-                  <SimpleNews query={"경제"} />
-                </M.NewsContainer>
-                {/*                     
-                    검색 테스트용 인풋 창
-                    <input 
-                    =======
-                    
-                    {/* <input 
-                        type="text" 
-                        placeholder="검색어를 입력하세요" 
-                        value={input} 
-                        onChange={(e) => setInput(e.target.value)}
-                    />
-                    <button onClick={handleSearch}>검색</button> */}
-              </M.SimpleNewsCenterWrapper>
-            </M.SimpleNewsContainer>
-            <M.BannerWarp>
-              <M.Banner />
-            </M.BannerWarp>
           </M.CenteredContent>
         </M.MainContent>
       </M.PageContent>

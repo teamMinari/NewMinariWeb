@@ -63,10 +63,6 @@ const TermMeaning = () => {
                   쉬운 용어 풀이
                 </M.EasyMeaningBtn>
               </M.Container>
-              <M.RelatedNews>► 관련 기사&사건</M.RelatedNews>
-              <M.News>
-                <SimpleNews query={query}></SimpleNews>
-              </M.News>
             </M.DictionaryContainer>
           </M.CenteredContent>
         </M.MainContent>
@@ -113,3 +109,4 @@ const TermMeaning = () => {
 };
 
 export default TermMeaning;
+

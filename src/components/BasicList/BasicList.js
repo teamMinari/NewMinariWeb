@@ -8,7 +8,7 @@ import Divider from "@mui/material/Divider";
 import { useNavigate } from "react-router-dom";
 
 export default function BasicList() {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const onClickBtn = () => {
         navigate("/wordslist");

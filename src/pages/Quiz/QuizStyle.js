@@ -2,7 +2,13 @@ import styled, { createGlobalStyle, css } from "styled-components";
 import { Link } from "react-router-dom";
 import Oimg from "../../assets/image/O.png";
 import Ximg from "../../assets/image/X.png";
+import OColorimg from "../../assets/image/Ocolor.png";
+import XColorimg from "../../assets/image/Xcolor.png";
 import Wowimg from "../../assets/image/Wow.png";
+import QnAimg from "../../assets/image/QnAImg.png";
+import Titleimg from "../../assets/image/TitleImg.png";
+import Quizimg from "../../assets/image/Quizmain.png";
+
 export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
@@ -11,9 +17,71 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     background-color: #F5F6FA;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
   }
+  
 `;
 
+export const TopMenuContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const Middle = styled.div`
+  display: flex;
+  margin-top: 2vw;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
+export const TestContainer = styled.div`
+  display: flex;
+  margin-top: 7.5vw;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
+export const TopBanner = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 1.5rem;
+`;
+
+export const MiniTxt = styled.div`
+  font-size: 16px;
+  color: #6b6b6b;
+`;
+
+export const LargeTitle = styled.div`
+  font-size: 28px;
+  font-weight: 700;
+`;
+
+export const SimButton = styled(Link)`
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  width: 150px;
+  font-weight: 700;
+  height: 50px;
+  text-decoration-line: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  &:hover {
+    background-color: #222;
+  }
+`;
 export const WowStyle = css`
   object-fit: contain;
   width: 200px; /* 아이콘 너비 */
@@ -30,10 +98,10 @@ export const StyledWowImg = styled.img.attrs({
   ${WowStyle}
 `;
 
-export const OIconStyle = css`
+export const btnStyle = css`
   object-fit: contain;
-  width: 60px; /* 아이콘 너비 */
-  height: 60px; /* 아이콘 높이 */
+  width: 180px; /* 아이콘 너비 */
+  height: 230px; /* 아이콘 높이 */
   max-width: 100%;
   max-height: 100%;
 `;
@@ -42,32 +110,91 @@ export const StyledOImg = styled.img.attrs({
   src: Oimg,
   alt: "oimg",
 })`
-  ${OIconStyle}
-`;
-
-export const XIconStyle = css`
-  object-fit: contain;
-  width: 60px; /* 아이콘 너비 */
-  height: 60px; /* 아이콘 높이 */
-  max-width: 100%;
-  max-height: 100%;
+  ${btnStyle}
 `;
 
 export const StyledXImg = styled.img.attrs({
   src: Ximg,
   alt: "ximg",
 })`
-  ${XIconStyle}
+  ${btnStyle}
+`;
+
+export const ColorStyle = css`
+  object-fit: contain;
+  width: 180px; /* 아이콘 너비 */
+  height: 230px; /* 아이콘 높이 */
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  opacity: 0;
+  &:hover {
+    transition: 500ms;
+    opacity: 1;
+  }
+`;
+
+export const QuizMainStyle = css`
+  object-fit: contain;
+  width: 1200px; /* 아이콘 너비 */
+  max-width: 100%;
+  max-height: 100%;
+  margin-top: -30px;
+`;
+
+export const QuizMain= styled.img.attrs({
+  src: Quizimg,
+  alt: "oimg",
+})`
+  ${QuizMainStyle}
+`;
+
+
+export const StyledOColor = styled.img.attrs({
+  src: OColorimg,
+  alt: "oimg",
+})`
+  ${ColorStyle}
+`;
+
+export const StyledXColor = styled.img.attrs({
+  src: XColorimg,
+  alt: "ximg",
+})`
+  ${ColorStyle}
+`;
+
+export const MiddleMenu = css`
+  object-fit: contain;
+  width: auto; /* 아이콘 너비 */
+  height: 25px; /* 아이콘 높이 */
+  max-width: 100%;
+  max-height: 100%;
+`;
+
+
+export const TitleImg = styled.img.attrs({
+  src: Titleimg,
+  alt: "ximg",
+})`
+  ${MiddleMenu}
+`;
+
+export const QnAImg = styled.img.attrs({
+  src: QnAimg,
+  alt: "QnAImg",
+})`
+  ${MiddleMenu}
 `;
 
 export const OButton = styled.div`
   position: absolute;
-  right: 50%;
+  right: 52%;
 `;
 
 export const XButton = styled.div`
   position: absolute;
-  left: 50%;
+  left: 52%;
 `;
 
 export const OXButton = styled.div`
@@ -77,6 +204,7 @@ export const OXButton = styled.div`
   align-items: center;
   width: 100%;
   height: 100px;
+  top: 5%;
 `;
 
 export const Question = styled.h2`
@@ -90,7 +218,7 @@ export const Zindex = styled.div`
 `;
 
 export const Button = styled(Link)`
-  background-color: #ECEFFC;
+  background-color: #eceffc;
   color: #000;
   border: none;
   padding: 10px 50px;
@@ -103,24 +231,18 @@ export const Button = styled(Link)`
   z-index: 1000;
   transition: 300ms;
   &:hover {
-    background-color: #DAE2FF;
+    background-color: #dae2ff;
   }
 `;
 
 export const QuizButton = styled.button`
-  background: #eaeaea;
+  background-color: white;
   color: white;
   border: none;
-  padding: 20px 45px;
-  margin: 15px;
   cursor: pointer;
-  border-radius: 5px;
   font-size: 16px;
   z-index: 1000;
   transition: 300ms;
-  &:hover {
-    background-color: #DAE2FF;
-  }
 `;
 
 export const ResultNum = styled.div`
@@ -139,15 +261,12 @@ export const PageContent = styled.div`
   z-index: 2;
 `;
 export const SplineContainer = styled.div`
-  height: 875px;
-  width: 1500px;
-  position: absolute;
-  z-index: 3;
-  canvas {
-    z-index: 3;
-  }
-  margin-top: -120px;
-  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 250px;
+  margin-right: 7vw;
+  margin-top: 1.5vw;
+  padding-left: 30px;
 `;
 
 export const FitContainer = styled.div`
@@ -171,7 +290,7 @@ export const PointContainer = styled.div`
   height: 50px;
   width: 150px;
   border-radius: 20px;
-  background: #91C1FA;
+  background: #91c1fa;
   margin-top: 50px;
 `;
 
@@ -182,7 +301,7 @@ export const QuizNumContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #91C1FA;
+  background-color: #91c1fa;
 `;
 
 export const QuizNum = styled.div`
@@ -214,6 +333,14 @@ export const Description = styled.div`
   margin-top: 4px;
 `;
 
+export const QuizMainContainer = styled.div`
+  border-radius: 10px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0 8vw;
+`;
 
 export const QuizContainer = styled.div`
   width: 934px;
