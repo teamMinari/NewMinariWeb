@@ -5,29 +5,52 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Term from "../../components/Term/Term";
 import axios from "axios";
+import * as gvar from "../../common/global_variables";
+import Spinner from "../Home/Spinner";
+import { useNavigate } from "react-router-dom";
 
 const Dictionary = () => {
   const [terms, setTerms] = useState([]);
   const [filteredTerms, setFilteredTerms] = useState([]);
-  const token = String(localStorage.getItem("accessToken"));
+  const [recommendedTerms, setRecommendedTerms] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [termsPerPage] = useState(13);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchTerms = async (page = 0, size = 20) => {
+    const today = new Date().toDateString();
+    const storedDate = localStorage.getItem("lastColorUpdatedDate");
+
+    // 만약 저장된 날짜가 오늘이 아니면 색상 정보를 새로 생성
+    if (storedDate !== today) {
+      const newColors = ["#91C1FA", "#F6A6B8", "#66D1A2", "#B1A1F1", "#FA9C92"];
+      localStorage.setItem("colorScheme", JSON.stringify(newColors));
+      localStorage.setItem("lastColorUpdatedDate", today);
+    }
+  }, []);
+
+  const colors = JSON.parse(localStorage.getItem("colorScheme")) || [
+    "#91C1FA",
+    "#F6A6B8",
+    "#66D1A2",
+    "#B1A1F1",
+    "#FA9C92",
+  ];
+
+  useEffect(() => {
+    const fetchTerms = async (page = 0, size = 400) => {
       try {
         const accessToken = localStorage.getItem("accessToken");
         if (!accessToken) {
           throw new Error("인증 토큰이 없습니다.");
         }
 
-        const response = await axios.get(
-          "http://cheongfordo.p-e.kr:8080/terms",
-          {
-            params: { page, size },
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
+        const response = await axios.get(`${gvar.SERVER_URL}/terms`, {
+          params: { page, size },
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
 
         if (response.data.data.length > 0) {
           const formattedTerms = response.data.data.map((term) => ({
@@ -37,6 +60,29 @@ const Dictionary = () => {
           }));
           setTerms(formattedTerms);
           setFilteredTerms(formattedTerms);
+
+          const today = new Date().toDateString();
+          const storedDate = localStorage.getItem("lastUpdatedDate");
+
+          // 오늘 날짜에 추천 용어를 새로 설정
+          if (storedDate !== today) {
+            const shuffled = [...formattedTerms].sort(
+              () => 0.5 - Math.random()
+            );
+            setRecommendedTerms(shuffled.slice(0, 10));
+            localStorage.setItem(
+              "recommendedTerms",
+              JSON.stringify(shuffled.slice(0, 12))
+            );
+            localStorage.setItem("lastUpdatedDate", today);
+          } else {
+            const storedTerms = JSON.parse(
+              localStorage.getItem("recommendedTerms")
+            );
+            if (storedTerms) {
+              setRecommendedTerms(storedTerms);
+            }
+          }
         } else {
           console.error(
             "용어 목록을 가져오지 못했습니다:",
@@ -51,8 +97,6 @@ const Dictionary = () => {
     fetchTerms();
   }, []);
 
-  // const [filteredTerms, setFilteredTerms] = useState(terms);
-  // const [selectedTag, setSelectedTag] = useState(null);
   const [selectedTxt, setSelectedTxt] = useState("가나다순");
   const [maxChars, setMaxChars] = useState(60);
 
@@ -61,6 +105,7 @@ const Dictionary = () => {
       term.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredTerms(filtered);
+    setCurrentPage(0);
   };
 
   const handleTxtClick = (txt) => {
@@ -73,11 +118,23 @@ const Dictionary = () => {
       return 0;
     });
     setFilteredTerms(sortedTerms);
-    setSelectedTxt(txt)
+    setSelectedTxt(txt);
+    setCurrentPage(0);
   };
 
   const renderExplanation = (text) => {
     return text.length > maxChars ? text.slice(0, maxChars) + "..." : text;
+  };
+
+  const currentTerms = filteredTerms.slice(
+    currentPage * termsPerPage,
+    (currentPage + 1) * termsPerPage
+  );
+
+  const totalPages = Math.ceil(filteredTerms.length / termsPerPage);
+
+  const handleTermClick = (term) => {
+    navigate(`/termmeaning`, { state: { term } });
   };
 
   return (
@@ -91,6 +148,21 @@ const Dictionary = () => {
             <M.SearchBarContainer>
               <SearchBar onSearch={handleSearch} />
             </M.SearchBarContainer>
+            <M.RecommendWords>
+              <M.PageText>오늘의 경제 단어</M.PageText>
+              <M.BtnContainer>
+                {recommendedTerms.map((term, index) => (
+                  <M.WordsBtn
+                    key={index}
+                    // 버튼 색상은 localStorage에 저장된 색상을 기반으로 고정
+                    bgColor={colors[index % colors.length]}
+                    onClick={() => handleTermClick(term)}
+                  >
+                    {term.title}
+                  </M.WordsBtn>
+                ))}
+              </M.BtnContainer>
+            </M.RecommendWords>
             <M.DictionaryContainer>
               <M.PageText>경제 용어</M.PageText>
               <M.TextContainer>
@@ -107,18 +179,33 @@ const Dictionary = () => {
                   • 최신순
                 </M.TextSort>
               </M.TextContainer>
-              {filteredTerms.length > 0 ? (
-                filteredTerms.map((term, index) => (
+              {currentTerms.length > 0 ? (
+                currentTerms.map((term, index) => (
                   <Term
-                    key={index}
                     title={term.title}
                     explanation={renderExplanation(term.explanation)}
                     difficulty={term.difficulty}
+                    onClick={() => handleTermClick(term)}
                   />
                 ))
               ) : (
-                <M.NoTermsFound>용어를 찾을 수 없습니다.</M.NoTermsFound>
+                <Spinner />
               )}
+              <M.PaginationContainer>
+                <M.PaginationButton
+                  disabled={currentPage === 0}
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                >
+                  이전
+                </M.PaginationButton>
+                <span>{`${currentPage + 1} / ${totalPages}`}</span>
+                <M.PaginationButton
+                  disabled={currentPage === totalPages - 1}
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                >
+                  다음
+                </M.PaginationButton>
+              </M.PaginationContainer>
             </M.DictionaryContainer>
           </M.CenteredContent>
         </M.MainContent>
