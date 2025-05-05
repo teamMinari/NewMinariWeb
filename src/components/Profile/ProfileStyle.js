@@ -211,6 +211,7 @@ export const StoreContainer = styled.div`
 
 export const StoreInfo = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
 
 export const RequestContainer = styled.div`
@@ -358,4 +359,29 @@ export const LogoutButton = styled.button`
   &:hover {
     background-color: #E0E3E8;
   }
+`;
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은색 배경 */
+  z-index: 30; /* 오버레이가 다른 요소 위에 표시되도록 설정 */
+`;
+
+export const ModalContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 화면 중앙 정렬 */
+  background-color: #ffffff; /* 흰색 배경 */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  z-index: 50; /* 모달이 오버레이 위에 표시되도록 설정 */
+  width: 400px; /* 모달의 너비 */
+  height: 500px
+  text-align: center;
 `;

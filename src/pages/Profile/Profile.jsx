@@ -1,59 +1,24 @@
-import React, { useEffect, useState } from "react";
-import * as M from "./ProfileStyle";
+import React from "react";
+import * as M from "../../components/Profile/ProfileStyle";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import * as gvar from "../../common/global_variables"
+import ProfileInfo from "../../components/Profile/ProfileInfo/ProfileInfo";
 import "./ModalStyle.css";
+import useProfile from "../../Hooks/Profile/useProfile";
+import Spinner from "../Home/Spinner";
+import MyPoint from "../../components/Profile/MyPoint/MyPoint";
+import MyWord from "../../components/Profile/MyWord/MyWord";
+import MiniStore from "../../components/Profile/MiniStore/MiniStore";
 
 const Profile = () => {
-  const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const navigate = useNavigate();
-  useEffect(() => {
-    const fetchUserData = async () => {
-      const storedToken = localStorage.getItem("accessToken");
-      if (!storedToken) {
-        console.error("Access token is missing");
-        setLoading(false);
-        return;
-      }
-      try {
-        const response = await axios.get(`${gvar.SERVER_URL}/member/profile`, {
-          headers: {
-            Authorization: `Bearer ${storedToken}`,
-          },
-        });
-        setUserData(response.data);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchUserData();
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("userId");
-    setUserData(null);
-    setShowLogoutModal(false);
-    navigate("/");
-  };
-
-  const toggleLogoutModal = () => {
-    setShowLogoutModal((prev) => !prev);
-  };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const { userData } = useProfile();
 
   if (!userData) {
-    return <div>No user data found</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Spinner />
+      </div>
+    );
   }
 
   return (
@@ -64,84 +29,15 @@ const Profile = () => {
         <Sidebar />
         <M.MainContent>
           <M.CenteredContent>
-            <M.ProfileContainer>
-              <M.ProfileBackContainer />
-              <M.ProfileInfo>
-                <M.ProfileImg />
-                <M.ProfileDetails>
-                  <M.IdTextContainer>
-                    <M.Id>{userData.id}</M.Id>
-                    <M.ChangeIcon />
-                    <M.MoreIcon />
-                    <M.LogoutButton onClick={toggleLogoutModal}>
-                      로그아웃
-                    </M.LogoutButton>
-                  </M.IdTextContainer>
-                  <M.Category>금융, 글로벌 경제, 채권</M.Category>
-                  <M.LevelContainer>
-                    <progress
-                      className="progress progress-info w-[550px] rounded-[5px]"
-                      value={userData.level}
-                      max="100"
-                    />
-                    <M.LevelTextContainer>
-                      <M.LevelRate>{userData.level}Lv</M.LevelRate>
-                      <M.LevelNum>
-                        {userData.checkLevel}/{userData.totalExp}
-                      </M.LevelNum>
-                    </M.LevelTextContainer>
-                  </M.LevelContainer>
-                </M.ProfileDetails>
-              </M.ProfileInfo>
-              <M.WaveOne />
-              <M.WaveTwo />
-              <M.WaveThree />
-              <M.WaveFour />
-              <M.WaveFive />
-            </M.ProfileContainer>
+            <ProfileInfo />
             <M.boxContainer>
-              <M.PointContainer>
-                <M.TopTextContainer>
-                  <M.PageText>My 포인트</M.PageText>
-                  <M.GotoUse>사용하러 가기</M.GotoUse>
-                </M.TopTextContainer>
-                <M.PointText>{userData.point}P</M.PointText>
-              </M.PointContainer>
-              <M.MyWordsContainer to="/mywords">
-                <M.PageText>내 단어장</M.PageText>
-                <M.MyWordsIcon />
-              </M.MyWordsContainer>
+              <MyPoint />
+              <MyWord />
             </M.boxContainer>
-            <M.StoreContainer>
-              <M.StoreInfo>
-                <M.PageText>포인트 상점</M.PageText>
-                <M.RequestBtn>페이지 예시 보기</M.RequestBtn>
-              </M.StoreInfo>
-              <M.RequestContainer>
-                <M.RequestIcon />
-                <M.RequestText>아직 제작 중에 있는 기능이에요.</M.RequestText>
-              </M.RequestContainer>
-            </M.StoreContainer>
+            <MiniStore />
           </M.CenteredContent>
         </M.MainContent>
       </M.PageContent>
-      {/* 로그아웃 알림 모달 */}
-      {showLogoutModal && (
-        <div role="alert" className="alert p-4 bg-white rounded-lg shadow-md">
-          <span>로그아웃 하시겠습니까?</span>
-          <div className="my-16">
-            <button
-              className="btn btn-sm mr-2"
-              onClick={() => setShowLogoutModal(false)}
-            >
-              취소
-            </button>
-            <button className="btn btn-sm btn-primary" onClick={handleLogout}>
-              로그아웃
-            </button>
-          </div>
-        </div>
-      )}
     </React.Fragment>
   );
 };
