@@ -1,11 +1,8 @@
 import React from 'react';
 import * as M from "./NewsStyle";
-import Header from "../../components/Header/Header";
-import Sidebar from "../../components/Sidebar/Sidebar"; 
-import SearchBar from '../../components/SearchBar/SearchBar';
+import Header from "../../components/Common/Header/Header";
+import Sidebar from "../../components/Common/Sidebar/Sidebar"; 
 import { useState,useEffect } from 'react';
-import axios from 'axios';
-import Spinner from '../Home/Spinner';
 import CompanyElement from './NewsComponents/CompanyElement';
 import RecommendElement from './NewsComponents/RecommendElement';
 import Tip from '../../components/UseTip/Tip'; // Add this import statement

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as M from "./InputTurorialStyle";
-import Header from "../../components/Header/Header";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Header from "../../components/Common/Header/Header";
+import Sidebar from "../../components/Common/Sidebar/Sidebar";
 import axios from "axios";
 
 const InputTutorial = () => {

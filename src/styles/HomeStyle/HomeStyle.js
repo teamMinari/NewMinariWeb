@@ -164,6 +164,7 @@ export const CenteredContent = styled.div`
 export const RecommendWordContainer = styled.div`
   width: 934px;
   height: 255px;
+  margin-top: -40px;
   background-color: #ffffff;
   border-radius: 10px;
   align-items: center;

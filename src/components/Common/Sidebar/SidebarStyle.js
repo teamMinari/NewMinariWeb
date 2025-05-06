@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
-import homeIconSrc from "../../assets/image/home.svg";
-import dictionaryIconSrc from "../../assets/image/dictionary.svg";
-import newsIconSrc from "../../assets/image/news.svg";
-import quizIconSrc from "../../assets/image/quiz.svg";
-import tutorialIconSrc from "../../assets/image/tutorial.svg";
-import profileIconSrc from "../../assets/image/my.svg";
+import homeIconSrc from "../../../assets/image/home.svg";
+import dictionaryIconSrc from "../../../assets/image/dictionary.svg";
+import newsIconSrc from "../../../assets/image/news.svg";
+import quizIconSrc from "../../../assets/image/quiz.svg";
+import tutorialIconSrc from "../../../assets/image/tutorial.svg";
+import profileIconSrc from "../../../assets/image/my.svg";
 
 const iconStyle = css`
   margin-right: 19px;
@@ -22,6 +22,18 @@ export const Sidebar = styled.div`
   flex-direction: column;
   padding-top: 75px;
   z-index: 300;
+  @media screen and (max-width: 1300px) {
+    width: 120px;
+  }
+`;
+
+export const Text = styled.div`
+  font-size: 17px;
+
+  @media screen and (max-width: 1300px) {
+    opacity: 0;
+    display: none;
+  }
 `;
 
 export const Menu = styled.div`

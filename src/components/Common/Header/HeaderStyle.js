@@ -7,10 +7,10 @@ export const Form = styled.form`
 
 export const Bar = styled.header`
   width: 100%;
-  height: 75px;
+  height: 80px;
   background-color: #ffffff;
-  box-shadow: 0px 2px 10px rgba(0, 2, 5, 0.1);
   display: flex;
+  border-bottom: 1px solid #d7dbec;
   align-items: center;
   position: relative;
   z-index: 3000;

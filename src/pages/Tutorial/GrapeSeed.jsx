@@ -1,7 +1,7 @@
 import * as M from "./GrapeSeedStyle";
 import React, { useEffect, useState } from "react";
-import Header from "../../components/Header/Header";
-import SideBar from "../../components/Sidebar/Sidebar";
+import Header from "../../components/Common/Header/Header";
+import SideBar from "../../components/Common/Sidebar/Sidebar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { NotionRenderer } from "react-notion-x";

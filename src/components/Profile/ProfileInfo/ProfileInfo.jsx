@@ -1,14 +1,10 @@
 import React from "react";
-import * as M from "../ProfileStyle";
+import * as M from "../ProfileStyle.js";
 import useProfile from "../../../Hooks/Profile/useProfile";
 
 const ProfileInfo = () => {
-  const { 
-    userData, 
-    toggleLogoutModal, 
-    showLogoutModal, 
-    handleLogout 
-  } = useProfile();
+  const { userData, toggleLogoutModal, showLogoutModal, handleLogout } =
+    useProfile();
 
   if (!userData) {
     return <div>Loading...</div>;
@@ -16,6 +12,7 @@ const ProfileInfo = () => {
 
   return (
     <M.ProfileContainer>
+      
       <M.ProfileBackContainer />
       <M.ProfileInfo>
         <M.ProfileImg />
@@ -31,7 +28,7 @@ const ProfileInfo = () => {
           <M.Category>금융, 글로벌 경제, 채권</M.Category>
           <M.LevelContainer>
             <progress
-              className="progress progress-info w-[550px] rounded-[5px]"
+              style={{ width: "550px", Color: "#1f25be" }}
               value={userData.level}
               max="100"
             />
@@ -44,35 +41,29 @@ const ProfileInfo = () => {
           </M.LevelContainer>
         </M.ProfileDetails>
       </M.ProfileInfo>
+      {showLogoutModal && (
+        <div style={{width: "100%", textAlign: "center", margin: "20px"}}>
+          <div className="alert p-8 bg-white rounded-lg shadow-md">
+            <span>로그아웃 하시겠습니까?</span>
+            <div className="my-16">
+              <button
+                className="btn btn-sm mr-2"
+                onClick={() => toggleLogoutModal()}
+              >
+                취소
+              </button>
+              <button className="btn btn-sm btn-primary" onClick={handleLogout}>
+                로그아웃
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <M.WaveOne />
       <M.WaveTwo />
       <M.WaveThree />
       <M.WaveFour />
       <M.WaveFive />
-
-      {/* 로그아웃 모달 */}
-      {showLogoutModal && (
-        <div>
-          <M.ModalOverlay onClick={toggleLogoutModal} />
-            <div className="alert p-8 bg-white rounded-lg shadow-md">
-              <span>로그아웃 하시겠습니까?</span>
-              <div className="my-16">
-                <button
-                  className="btn btn-sm mr-2"
-                  onClick={() => toggleLogoutModal()}
-                >
-                  취소
-                </button>
-                <button
-                  className="btn btn-sm btn-primary"
-                  onClick={handleLogout}
-                >
-                  로그아웃
-                </button>
-              </div>
-            </div>
-        </div>
-      )}
     </M.ProfileContainer>
   );
 };

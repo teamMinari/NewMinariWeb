@@ -1,7 +1,7 @@
 import React from "react";
 import * as M from "./WordsListStyle";
-import Header from "../../components/Header/Header";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Header from "../../components/Common/Header/Header";
+import Sidebar from "../../components/Common/Sidebar/Sidebar";
 import Words from "../../components/Words/Words";
 import { useState } from "react";
 
