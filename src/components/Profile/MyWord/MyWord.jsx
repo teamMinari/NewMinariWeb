@@ -1,7 +1,5 @@
 import React from "react";
 import * as M from "../ProfileStyle";
-import useProfile from "../../../Hooks/Profile/useProfile";
-import { Link } from "react-router-dom";
 
 const MyWord = () => {
 

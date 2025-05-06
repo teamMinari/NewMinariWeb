@@ -3,7 +3,6 @@ import * as M from "../../components/Profile/ProfileStyle";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import ProfileInfo from "../../components/Profile/ProfileInfo/ProfileInfo";
-import "./ModalStyle.css";
 import useProfile from "../../Hooks/Profile/useProfile";
 import Spinner from "../Home/Spinner";
 import MyPoint from "../../components/Profile/MyPoint/MyPoint";

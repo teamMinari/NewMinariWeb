@@ -57,6 +57,7 @@ export const ProfileBackContainer = styled.div`
 
 export const ProfileInfo = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
 
 export const ProfileImg = styled.img.attrs({
@@ -78,6 +79,7 @@ export const ProfileDetails = styled.div`
   justify-content: center;
   margin-left: 20px;
   margin-top: -20px;
+  width : 80%;
 `;
 
 export const IdTextContainer = styled.div`
@@ -382,6 +384,6 @@ export const ModalContainer = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
   z-index: 50; /* 모달이 오버레이 위에 표시되도록 설정 */
   width: 400px; /* 모달의 너비 */
-  height: 500px
+  height: 500px;
   text-align: center;
 `;
