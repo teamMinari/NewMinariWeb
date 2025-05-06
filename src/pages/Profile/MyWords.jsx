@@ -1,8 +1,8 @@
 import React from "react";
 import * as M from "./MyWordsStyle";
-import Header from "../../components/Header/Header";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import BasicList from "../../components/BasicList/BasicList";
+import Header from "../../components/Common/Header/Header";
+import Sidebar from "../../components/Common/Sidebar/Sidebar";
+import BasicList from "../../components/Profile/BasicList/BasicList";
 import { Link } from "react-router-dom";
 
 const MyWords = () => {

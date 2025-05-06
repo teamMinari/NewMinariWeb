@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as M from "./DictionaryStyle";
-import Header from "../../components/Header/Header";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Header from "../../components/Common/Header/Header";
+import Sidebar from "../../components/Common/Sidebar/Sidebar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Term from "../../components/Term/Term";
 import axios from "axios";

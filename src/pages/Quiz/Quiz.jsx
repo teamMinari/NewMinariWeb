@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../../components/Header/Header";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Header from "../../components/Common/Header/Header";
+import Sidebar from "../../components/Common/Sidebar/Sidebar";
 import * as M from "./QuizStyle";
 
 import { useState } from "react";

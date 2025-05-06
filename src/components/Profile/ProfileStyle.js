@@ -117,6 +117,7 @@ export const Category = styled.div`
 export const LevelContainer = styled.div`
   margin-top: 8px;
   position: relative;
+  width : 550px;
 `;
 
 export const LevelTextContainer = styled.div`
@@ -211,6 +212,7 @@ export const StoreContainer = styled.div`
 
 export const StoreInfo = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
 
 export const RequestContainer = styled.div`

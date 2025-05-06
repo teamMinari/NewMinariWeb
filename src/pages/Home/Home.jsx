@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SideBar from "../../components/Sidebar/Sidebar";
-import Header from "../../components/Header/Header";
+import SideBar from "../../components/Common/Sidebar/Sidebar";
+import Header from "../../components/Common/Header/Header";
 import * as M from "../../styles/HomeStyle/HomeStyle";
 import WordComponents from "./wordComponents";
 import { useNavigate } from "react-router-dom";
