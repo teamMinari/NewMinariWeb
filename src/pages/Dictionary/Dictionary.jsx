@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as M from "./DictionaryStyle";
 import Header from "../../components/Common/Header/Header";
 import Sidebar from "../../components/Common/Sidebar/Sidebar";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchBar from "../../components/Common/SearchBar/SearchBar";
 import Term from "../../components/Term/Term";
 import axios from "axios";
 import * as gvar from "../../common/global_variables";

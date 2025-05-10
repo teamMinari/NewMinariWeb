@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SearchIconSrc from '../../assets/image/magnify.svg';
+import SearchIconSrc from '../../../assets/image/magnify.svg';
 
 export const Bar = styled.div`
 width: 750px;

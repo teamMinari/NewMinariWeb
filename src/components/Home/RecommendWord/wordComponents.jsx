@@ -1,4 +1,4 @@
-import * as M from "../../styles/HomeStyle/WordStyle";
+import * as M from "../../../styles/HomeStyle/WordStyle";
 import React, { useState } from 'react';
 
 const StarInARow = ({ count }) => {

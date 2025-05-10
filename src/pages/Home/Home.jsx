@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import SideBar from "../../components/Common/Sidebar/Sidebar";
 import Header from "../../components/Common/Header/Header";
 import * as M from "../../styles/HomeStyle/HomeStyle";
-import WordComponents from "./wordComponents";
+import WordComponents from "../../components/Home/RecommendWord/wordComponents";
 import { useNavigate } from "react-router-dom";
-import IngChart from "../Home/PieChart";
-import StackBars from "../Home/StackBarChart";
-import SimpleNews from "./SimpleNews";
+import RecommendWord from "../../components/Home/RecommendWord/RecommendWord";
+import { Menu } from "../../components/Common/Sidebar/SidebarStyle";
+import MenuComponent from "../../components/Home/Menu/Menu";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -38,26 +38,6 @@ const Home = () => {
     })
     .catch((error) => console.error("Error:", error));
 
-  const handleGoToHome = () => {
-    navigate("/dictionary");
-  };
-  const handleGoToChart = () => {
-    navigate("/dictionary");
-  };
-  const handleGoToCoin = () => {
-    navigate("/dictionary");
-  };
-  const handleGoToEarth = () => {
-    navigate("/dictionary");
-  };
-  const handleGoToWallet = () => {
-    navigate("/dictionary");
-  };
-
-  const handleSearch = () => {
-    setQuery(input);
-  };
-
   return (
     <>
       <Header />
@@ -66,38 +46,8 @@ const Home = () => {
         <SideBar />
         <M.MainContent>
           <M.CenteredContent>
-            <M.RecommendWordContainer>
-              <M.PageText>오늘의 추천 경제 단어</M.PageText>
-              <M.WordSpace>
-                <WordComponents txt="주택담보대출" score={2} />
-                <WordComponents txt="서비스 수지" score={3} />
-                <WordComponents txt="핀테크" score={1} />
-                <WordComponents txt="금융안정지수" score={3} />
-                <WordComponents txt="내부자금" score={2} />
-                <WordComponents txt="가계부실위험지수" score={3} />
-              </M.WordSpace>
-            </M.RecommendWordContainer>
-            <M.Menu>
-              <M.House onClick={handleGoToHome}>
-                <M.StyledHouseImg />
-              </M.House>
-              <M.HorizontalLine />
-              <M.Chart onClick={handleGoToChart}>
-                <M.StyledChartImg />
-              </M.Chart>
-              <M.HorizontalLine />
-              <M.Coin onClick={handleGoToCoin}>
-                <M.StyledCoinImg />
-              </M.Coin>
-              <M.HorizontalLine />
-              <M.Earth onClick={handleGoToEarth}>
-                <M.StyledEarthImg />
-              </M.Earth>
-              <M.HorizontalLine />
-              <M.Wallet onClick={handleGoToWallet}>
-                <M.StyledWalletImg />
-              </M.Wallet>
-            </M.Menu>
+            <RecommendWord />
+            <MenuComponent />
             <M.RecommendTutorialContainer>
               <M.BunchOfGrapesContainer>
                 <M.TextContainer>
