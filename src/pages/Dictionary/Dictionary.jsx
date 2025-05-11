@@ -54,6 +54,7 @@ const Dictionary = () => {
 
         if (response.data.data.length > 0) {
           const formattedTerms = response.data.data.map((term) => ({
+            termId: term.termId,
             title: term.termNm,
             explanation: term.termExplain,
             difficulty: term.termDifficulty,
@@ -134,7 +135,7 @@ const Dictionary = () => {
   const totalPages = Math.ceil(filteredTerms.length / termsPerPage);
 
   const handleTermClick = (term) => {
-    navigate(`/termmeaning`, { state: { term } });
+    navigate(`/termmeaning?termId=${term.termId}`);
   };
 
   return (
@@ -182,6 +183,7 @@ const Dictionary = () => {
               {currentTerms.length > 0 ? (
                 currentTerms.map((term, index) => (
                   <Term
+                    termId={term.termId}
                     title={term.title}
                     explanation={renderExplanation(term.explanation)}
                     difficulty={term.difficulty}
