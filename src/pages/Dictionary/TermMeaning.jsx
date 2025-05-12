@@ -6,7 +6,7 @@ import SearchBar from "../../components/Common/SearchBar/SearchBar";
 import loading from "../../assets/image/loading.svg";
 import Markdown from 'react-markdown';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import axios from "axios";
+import customAxios from "../../utils/customAxios";
 
 import Spinner from "../Home/Spinner";
 
@@ -23,17 +23,15 @@ const TermMeaning = () => {
   useEffect(() => {
     if (!termId) {
       navigate("/dictionary");
+      alert("없는 용어입니다.");
       return;
     }
     const storedToken = localStorage.getItem("accessToken");
     if (!storedToken) return;
 
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/terms/${termId}`, {
-      headers: {
-        Authorization: `Bearer ${storedToken}`,
-      },
-      "responseType": "json",
-    }).then((res) => res.data)
+    customAxios.get(`/terms/${termId}`, {
+    })
+      .then((res) => res.data)
       .then((data) => {
         console.log(data);
         setTerm(data.data);
@@ -46,12 +44,8 @@ const TermMeaning = () => {
   const openModal = () => {
     setIsOpen(true);
 
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/termary/summarize/${term.termNm}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      responseType: "text"
-    }).then((res) => res.data)
+    customAxios.get(`/termary/summarize/${term.termNm}`)
+      .then((res) => res.data)
       .then((data) => {
         setDetail(data);
         setShowText(true);
