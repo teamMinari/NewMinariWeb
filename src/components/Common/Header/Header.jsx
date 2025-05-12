@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import * as M from "./HeaderStyle";
-import logoImg from "../../assets/image/logo.svg";
-import profileImg from "../../assets/image/profile.svg";
+import logoImg from "../../../assets/image/logo.svg";
+import profileImg from "../../../assets/image/profile.svg";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [userData, setUserData] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {

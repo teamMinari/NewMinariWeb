@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as M from "./TutoirialStyle";
-import Header from "../../components/Header/Header";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Header from "../../components/Common/Header/Header";
+import Sidebar from "../../components/Common/Sidebar/Sidebar";
 import Spline from "@splinetool/react-spline";
 import Tip from "../../components/UseTip/Tip";
 import { useNavigate } from "react-router-dom";

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SearchIconSrc from '../../assets/image/magnify.svg';
+import SearchIconSrc from '../../../assets/image/magnify.svg';
 
 export const Bar = styled.div`
 width: 750px;
@@ -19,7 +19,7 @@ export const SearchIcon = styled.img.attrs({
   margin-top: 13px;
   `;
 
-  export const SearchInput = styled.input`
+export const SearchInput = styled.input`
   width: calc(100% - 80px);
   height: 30px;
   border: none;

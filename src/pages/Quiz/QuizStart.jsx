@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Header from "../../components/Header/Header";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import Header from "../../components/Common/Header/Header";
+import Sidebar from "../../components/Common/Sidebar/Sidebar";
 import * as M from "./QuizStyle";
 import Masonry from "react-masonry-css";
 import Spline from "@splinetool/react-spline";
