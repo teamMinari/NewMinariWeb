@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
 import Dictionary from "../pages/Dictionary/Dictionary";
-import SearchBar from "../components/SearchBar/SearchBar";
+import SearchBar from "../components/Common/SearchBar/SearchBar";
 import Home from "../pages/Home/Home";
 import TermMeaning from "../pages/Dictionary/TermMeaning";
 import News from "../pages/News/News";

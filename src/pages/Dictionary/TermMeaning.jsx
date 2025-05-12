@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as M from "../../styles/TermMeaningStyle";
 import Header from "../../components/Common/Header/Header";
 import Sidebar from "../../components/Common/Sidebar/Sidebar";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchBar from "../../components/Common/SearchBar/SearchBar";
 import loading from "../../assets/image/loading.svg";
 import SimpleNews from "../Home/SimpleNews";
 

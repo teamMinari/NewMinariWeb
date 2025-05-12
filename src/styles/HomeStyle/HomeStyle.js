@@ -186,8 +186,9 @@ export const WordSpace = styled.div`
   margin-top: 25px;
   justify-content: center;
 `;
+
 export const Menu = styled.div`
-  width: 934px;
+  width: 100%;
   height: 120px;
   background-color: #ffffff;
   border-radius: 10px;
@@ -199,7 +200,7 @@ export const Menu = styled.div`
 `;
 
 export const SimpleNewsCenterWrapper = styled.div`
-  width: 844px;
+  width: 100%;
   height: 280px;
   background-color: #ffffff;
   border-radius: 10px;
