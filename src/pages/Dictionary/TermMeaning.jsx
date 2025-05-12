@@ -85,7 +85,9 @@ const TermMeaning = () => {
                   쉬운 용어 풀이
                 </M.EasyMeaningBtn>
               </M.Container>
-            </M.DictionaryContainer> : <Spinner />}
+            </M.DictionaryContainer>
+            :
+            <Spinner />}
           </M.CenteredContent>
         </M.MainContent>
       </M.PageContent>

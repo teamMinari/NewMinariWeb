@@ -1,9 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const fetchTermDetail = async (query) => {
   const res = await axios.get(
-    `https://cheongfordo.kr/terms/keyword?keyword=${encodeURIComponent(query)}`
+    `${process.env.REACT_APP_SERVER_URL}/terms/keyword?keyword=${encodeURIComponent(query)}`
   );
   const data = res.data;
 
