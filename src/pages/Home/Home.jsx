@@ -4,9 +4,7 @@ import Header from "../../components/Common/Header/Header";
 import * as M from "../../styles/HomeStyle/HomeStyle";
 import WordComponents from "./wordComponents";
 import { useNavigate } from "react-router-dom";
-import IngChart from "../Home/PieChart";
-import StackBars from "../Home/StackBarChart";
-import SimpleNews from "./SimpleNews";
+
 
 const Home = () => {
   const navigate = useNavigate();
