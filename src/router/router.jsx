@@ -14,7 +14,6 @@ import Quiz from "../pages/Quiz/Quiz";
 import QuizStart from "../pages/Quiz/QuizStart";
 import GrapeSeed from "../pages/Tutorial/GrapeSeed";
 import Tutoirial from "../pages/Tutorial/Tutoirial";
-import NewNotion from "../pages/Tutorial/NewNotion";
 import Grapes from "../pages/Tutorial/Grapes/Grapes";
 import InputTutorial from "../pages/InputTurorial/InputTurorial";
 
@@ -46,7 +45,6 @@ const AppRouter = ({ openModal, closeModal, isOpen }) => {
         <Route path="/quizstart" element={<QuizStart />} />
         <Route path="/grapeseed" element={<GrapeSeed />} />
         <Route path="/tutorial" element={<Tutoirial />} />
-        <Route path="/newnotion" element={<NewNotion />} />
         <Route path="/grapes" element={<Grapes />} />
         <Route path="/input" element={<InputTutorial />} />
       </Routes>

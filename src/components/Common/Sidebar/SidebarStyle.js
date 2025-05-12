@@ -6,13 +6,6 @@ import quizIconSrc from "../../../assets/image/quiz.svg";
 import tutorialIconSrc from "../../../assets/image/tutorial.svg";
 import profileIconSrc from "../../../assets/image/my.svg";
 
-const iconStyle = css`
-  margin-right: 19px;
-  margin-bottom: 2px;
-  color: #7e84a3;
-  transition: transform 0.3s ease, filter 0.3s ease;
-`;
-
 export const Sidebar = styled.div`
   width: 288px;
   height: auto;
@@ -93,6 +86,13 @@ const MenuItemContainer = styled.div`
   ${(props) => props.isActive && activeContainerStyle}
 `;
 
+const iconStyle = css`
+  margin-right: 19px;
+  margin-bottom: 2px;
+  color: #7e84a3;
+  transition: transform 0.3s ease, filter 0.3s ease;
+`;
+
 const MenuItemImg = styled.img`
   ${iconStyle}
 `;
@@ -135,3 +135,4 @@ export const ProfileImg = styled(MenuItemImg).attrs({
   src: profileIconSrc,
   alt: "profileIcon",
 })``;
+

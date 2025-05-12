@@ -108,7 +108,7 @@ export const PaginationButton = styled.button`
 
 export const RecommendWords = styled.div`
   width: 934px;
-  height: 166px;
+  height: auto;
   background-color: #ffffff;
   border-radius: 10px;
   margin-top: 32px;

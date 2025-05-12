@@ -18,10 +18,15 @@ export const PageContent = styled.div`
 `;
 
 export const MainContainer = styled.div`
-  margin-left: 60px;
-  margin-top: 47px;
-  padding: 20px 40px;
-  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 3.5%;
+`;
+export const CenterdContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const SplineContainer = styled.div`
@@ -95,6 +100,7 @@ export const VerticalContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 `;
 
 export const Line = styled.div`

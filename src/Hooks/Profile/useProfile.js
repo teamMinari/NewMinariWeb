@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import customAxios from "../../utils/customAxios";
 import { useNavigate } from "react-router-dom";
 import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
@@ -20,11 +20,7 @@ const useProfile = () => {
         return;
       }
       try {
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/member/profile`, {
-          headers: {
-            Authorization: `Bearer ${storedToken}`,
-          },
-        });
+        const response = await customAxios.get("/member/profile");
         setUserData(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
