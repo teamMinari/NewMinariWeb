@@ -7,6 +7,7 @@ import pwIconSrc from '../../assets/image/pw.svg';
 export const Form = styled.form`
   display: flex;
   align-items: flex-start;
+
 `;
 
 export const LoginPart = styled.form`
@@ -21,11 +22,11 @@ export const Container = styled.div`
 `;
 
 export const BannerContainer = styled.div`
-  margin-left: auto;
-  margin-right: 20px;
-  margin-top: 30px;
-  width: 680px;
-  height: 859px;
+  display: flex;
+  justify-content: end;
+  margin-right: 3%;
+  width: 100%;
+  margin-top: 1.5%;
 `;
 
 export const Title = styled.div`

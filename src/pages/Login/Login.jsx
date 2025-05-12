@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import * as M from "./LoginStyle";
 import { ReactComponent as Logo } from "../../assets/image/logo.svg";
 import LoginBanner from "../../assets/image/Group 1544.svg";
-import { ReactComponent as Google } from "../../assets/image/google.svg";
 import { useNavigate } from "react-router-dom";
 import useLogin from "../../Hooks/Login/useLogin";
 
@@ -11,10 +10,6 @@ const Login = () => {
   const { loginUser, loading, error } = useLogin(); // useLogin 훅을 통한 상태 관리
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleGoogleLogin = () => {
-    navigate("/googleLogin");
-  };
 
   // 로그인 폼 제출 시 호출되는 함수
   const onSubmit = async (e) => {
@@ -76,13 +71,9 @@ const Login = () => {
         <M.LoginBtn type="submit" disabled={loading} onClick={onSubmit}>
           {loading ? "로그인 중..." : "로그인"}
         </M.LoginBtn>
-        <M.SnsTxt>sns 로그인</M.SnsTxt>
-        <M.Snsbtn onClick={handleGoogleLogin}>
-          <Google />
-        </M.Snsbtn>
       </M.LoginPart>
       <M.BannerContainer>
-        <img src={LoginBanner} alt="Login Banner" />
+        <img src={LoginBanner} style={{ objectFit: "fit", width: "80vh" }} alt="Login Banner" />
       </M.BannerContainer>
     </M.Form>
   );
