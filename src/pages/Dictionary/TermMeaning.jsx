@@ -64,9 +64,6 @@ const TermMeaning = () => {
         <Sidebar />
         <M.MainContent>
           <M.CenteredContent>
-            <M.SearchBarContainer>
-              <SearchBar />
-            </M.SearchBarContainer>
             {term ?
             <M.DictionaryContainer>
               <M.TermText>{term.termNm}</M.TermText>

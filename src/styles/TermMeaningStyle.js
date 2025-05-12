@@ -18,7 +18,6 @@ export const PageContent = styled.div`
 
 export const MainContent = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
   width: 100%;
 `;
@@ -26,7 +25,6 @@ export const MainContent = styled.div`
 export const CenteredContent = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 export const SearchBarContainer = styled.div`
@@ -35,11 +33,13 @@ export const SearchBarContainer = styled.div`
 
 export const DictionaryContainer = styled.div`
   width: 934px;
-  height: 1600px;
+  min-height: 70%;
+  height: auto;
   background-color: #ffffff;
   border-radius: 10px;
-  margin-top: 32px;
+  margin-top: 40px;
   margin-bottom: 100px;
+  padding-bottom: 80px;
 `;
 
 export const TermText = styled.div`
