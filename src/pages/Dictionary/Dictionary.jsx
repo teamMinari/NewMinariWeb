@@ -4,8 +4,7 @@ import Header from "../../components/Common/Header/Header";
 import Sidebar from "../../components/Common/Sidebar/Sidebar";
 import SearchBar from "../../components/Common/SearchBar/SearchBar";
 import Term from "../../components/Term/Term";
-import axios from "axios";
-import * as gvar from "../../common/global_variables";
+import customAxios from "../../utils/customAxios";
 import Spinner from "../Home/Spinner";
 import { useNavigate } from "react-router-dom";
 
@@ -45,15 +44,13 @@ const Dictionary = () => {
           throw new Error("인증 토큰이 없습니다.");
         }
 
-        const response = await axios.get(`${gvar.SERVER_URL}/terms`, {
+        const response = await customAxios.get(`/terms`, {
           params: { page, size },
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
         });
 
         if (response.data.data.length > 0) {
           const formattedTerms = response.data.data.map((term) => ({
+            termId: term.termId,
             title: term.termNm,
             explanation: term.termExplain,
             difficulty: term.termDifficulty,
@@ -65,22 +62,29 @@ const Dictionary = () => {
           const storedDate = localStorage.getItem("lastUpdatedDate");
 
           // 오늘 날짜에 추천 용어를 새로 설정
-          if (storedDate !== today) {
+            if (storedDate !== today || !localStorage.getItem("recommendedTerms")) {
             const shuffled = [...formattedTerms].sort(
               () => 0.5 - Math.random()
             );
-            setRecommendedTerms(shuffled.slice(0, 10));
+            // recommendedTerms에 termId도 함께 저장
+            const recommended = shuffled.slice(0, 12).map(term => ({
+              termId: term.termId,
+              title: term.title,
+              explanation: term.explanation,
+              difficulty: term.difficulty,
+            }));
+            setRecommendedTerms(recommended.slice(0, 10));
             localStorage.setItem(
               "recommendedTerms",
-              JSON.stringify(shuffled.slice(0, 12))
+              JSON.stringify(recommended)
             );
             localStorage.setItem("lastUpdatedDate", today);
-          } else {
+            } else {
             const storedTerms = JSON.parse(
               localStorage.getItem("recommendedTerms")
             );
             if (storedTerms) {
-              setRecommendedTerms(storedTerms);
+              setRecommendedTerms(storedTerms.slice(0, 14));
             }
           }
         } else {
@@ -134,7 +138,7 @@ const Dictionary = () => {
   const totalPages = Math.ceil(filteredTerms.length / termsPerPage);
 
   const handleTermClick = (term) => {
-    navigate(`/termmeaning`, { state: { term } });
+    navigate(`/termmeaning?termId=${term.termId}`);
   };
 
   return (
@@ -151,16 +155,20 @@ const Dictionary = () => {
             <M.RecommendWords>
               <M.PageText>오늘의 경제 단어</M.PageText>
               <M.BtnContainer>
-                {recommendedTerms.map((term, index) => (
-                  <M.WordsBtn
-                    key={index}
-                    // 버튼 색상은 localStorage에 저장된 색상을 기반으로 고정
-                    bgColor={colors[index % colors.length]}
-                    onClick={() => handleTermClick(term)}
-                  >
-                    {term.title}
-                  </M.WordsBtn>
-                ))}
+                {recommendedTerms.length > 0 ? (
+                  recommendedTerms.map((term, index) => (
+                    <M.WordsBtn
+                      key={index}
+                      // 버튼 색상은 localStorage에 저장된 색상을 기반으로 고정
+                      bgColor={colors[index % colors.length]}
+                      onClick={() => handleTermClick(term)}
+                    >
+                      {term.title}
+                    </M.WordsBtn>
+                  ))
+                ) : (
+                <Spinner />
+              )}
               </M.BtnContainer>
             </M.RecommendWords>
             <M.DictionaryContainer>
@@ -180,8 +188,9 @@ const Dictionary = () => {
                 </M.TextSort>
               </M.TextContainer>
               {currentTerms.length > 0 ? (
-                currentTerms.map((term, index) => (
+                currentTerms.map((term) => (
                   <Term
+                    termId={term.termId}
                     title={term.title}
                     explanation={renderExplanation(term.explanation)}
                     difficulty={term.difficulty}

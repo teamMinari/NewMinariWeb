@@ -1,7 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
+import customAxios from "../../utils/customAxios"; // axios 인스턴스 import
 import { useNavigate } from "react-router-dom";
-import * as gvar from "../../common/global_variables"
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
@@ -31,10 +30,12 @@ const useSignup = () => {
 
     try {
       console.log("Sending request to the server...");
-      const response = await axios.post(
-        `${gvar.SERVER_URL}/member/register`,
-        { email, id, password, confirmPassword }
-      );
+      const response = await customAxios.post(`/member/register`, {
+        email,
+        id,
+        password,
+        confirmPassword,
+      });
 
       console.log("Response from server:", response.data);
 

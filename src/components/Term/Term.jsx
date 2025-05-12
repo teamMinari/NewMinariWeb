@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as M from "../../styles/TermStyle";
 import { useNavigate } from "react-router-dom";
 
-const Term = ({ title, explanation, difficulty }) => {
+const Term = ({ termId, title, explanation, difficulty }) => {
   const [selectedHeart, setSelectedHeart] = useState(false);
   const navigate = useNavigate();
 
@@ -14,7 +14,7 @@ const Term = ({ title, explanation, difficulty }) => {
     <div>
       <M.Container>
         <M.InfoContainer>
-          <M.TermTxt onClick={() => navigate("/termmeaning")}>{title}</M.TermTxt>
+          <M.TermTxt onClick={() => navigate(`/termmeaning?termId=${termId}`)}>{title}</M.TermTxt>
           <M.HeartContainer selected={selectedHeart} onClick={handleHeartClick}>
             <M.HeartImg />
           </M.HeartContainer>
