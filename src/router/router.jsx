@@ -15,7 +15,7 @@ import QuizStart from "../pages/Quiz/QuizStart";
 import GrapeSeed from "../pages/Tutorial/GrapeSeed";
 import Tutoirial from "../pages/Tutorial/Tutoirial";
 import Grapes from "../pages/Tutorial/Grapes/Grapes";
-import InputTutorial from "../pages/InputTurorial/InputTurorial";
+import InputTutorial from "../pages/InputTutorial/InputTutorial";
 
 const AppRouter = ({ openModal, closeModal, isOpen }) => {
   return (

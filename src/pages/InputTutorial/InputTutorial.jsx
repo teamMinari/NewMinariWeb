@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as M from "./InputTurorialStyle";
+import * as M from "./InputTutorialStyle";
 import Header from "../../components/Common/Header/Header";
 import Sidebar from "../../components/Common/Sidebar/Sidebar";
 import axios from "axios";
