@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import * as M from "./TutoirialStyle";
+import * as M from "./TutorialStyle";
 import Header from "../../components/Common/Header/Header";
 import Sidebar from "../../components/Common/Sidebar/Sidebar";
 import Spline from "@splinetool/react-spline";
@@ -7,7 +7,7 @@ import Tip from "../../components/UseTip/Tip";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Tutoirial = () => {
+const Tutorial = () => {
   const navigate = useNavigate();
   const [tutorialData, setTutorialData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -151,4 +151,4 @@ const Tutoirial = () => {
   );
 };
 
-export default Tutoirial;
+export default Tutorial;
